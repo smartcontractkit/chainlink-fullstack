@@ -1,0 +1,22 @@
+{
+  "name": "chainlink-fullstack",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "yarn workspace chainlink-fullstack-frontend dev",
+    "build": "yarn workspace chainlink-fullstack-frontend build",
+    "start": "yarn workspace chainlink-fullstack-frontend start",
+    "chain": "yarn workspace chainlink-fullstack-hardhat chain",
+    "deploy": "yarn workspace chainlink-fullstack-hardhat deploy",
+    "compile": "yarn workspace chainlink-fullstack-hardhat compile"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/hardhat",
+      "**/hardhat/**"
+    ]
+  }
+}
