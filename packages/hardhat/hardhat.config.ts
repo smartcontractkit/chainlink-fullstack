@@ -1,6 +1,7 @@
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-waffle';
 import '@typechain/hardhat';
+import 'hardhat-deploy';
 import { task } from 'hardhat/config';
 import { HardhatUserConfig } from 'hardhat/types';
 
@@ -23,11 +24,21 @@ task('accounts', 'Prints the list of accounts', async (_args, hre) => {
 const config: HardhatUserConfig = {
   solidity: '0.8.3',
   paths: {
-    artifacts: '../frontend/artifacts',
+    deployments: '../frontend/artifacts/contracts',
   },
+  defaultNetwork: 'hardhat',
   networks: {
     hardhat: {
       chainId: 1337,
+    },
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0, // here this will by default take the first account as deployer
+      1: 0 // similarly on mainnet it will take the first account as deployer. Note though that depending on how hardhat network are configured, the account 0 on one network can be different than on another
+    },
+    feeCollector: {
+      default: 1
     },
   },
   typechain: {

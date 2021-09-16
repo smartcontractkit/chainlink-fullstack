@@ -2,8 +2,7 @@ import { Box, Button, Divider, Heading, Input, Text } from '@chakra-ui/react'
 import { ChainId, useEthers, useSendTransaction } from '@usedapp/core'
 import { ethers, providers, utils } from 'ethers'
 import React, { useReducer } from 'react'
-import { YourContract as LOCAL_CONTRACT_ADDRESS } from '../artifacts/contracts/contractAddress'
-import YourContract from '../artifacts/contracts/YourContract.sol/YourContract.json'
+import YourContract from '../artifacts/contracts/hardhat/YourContract.json'
 import { Layout } from '../components/layout/Layout'
 import { YourContract as YourContractType } from '../types/typechain'
 
@@ -84,7 +83,7 @@ function HomeIndex(): JSX.Element {
   async function fetchContractGreeting() {
     if (library) {
       const contract = new ethers.Contract(
-        LOCAL_CONTRACT_ADDRESS,
+        YourContract.address,
         YourContract.abi,
         library
       ) as YourContractType
@@ -108,7 +107,7 @@ function HomeIndex(): JSX.Element {
       })
       const signer = library.getSigner()
       const contract = new ethers.Contract(
-        LOCAL_CONTRACT_ADDRESS,
+        YourContract.address,
         YourContract.abi,
         signer
       ) as YourContractType
@@ -135,7 +134,7 @@ function HomeIndex(): JSX.Element {
         Next.js Ethereum Starter
       </Heading>
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
-        <Text fontSize="xl">Contract Address: {LOCAL_CONTRACT_ADDRESS}</Text>
+        <Text fontSize="xl">Contract Address: {YourContract.address}</Text>
         <Divider my="8" borderColor="gray.400" />
         <Box>
           <Text fontSize="lg">Greeting: {state.greeting}</Text>

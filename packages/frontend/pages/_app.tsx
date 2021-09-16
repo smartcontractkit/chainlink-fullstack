@@ -7,7 +7,7 @@ import {
 } from '@usedapp/core'
 import type { AppProps } from 'next/app'
 import React from 'react'
-import { MulticallContract } from '../artifacts/contracts/contractAddress'
+import MulticallContract from '../artifacts/contracts/hardhat/Multicall.json'
 
 export const INFURA_ID = '3982c8198e2b4a65afb505d94129329d'
 
@@ -29,8 +29,8 @@ const config: Config = {
   ],
   multicallAddresses: {
     ...MULTICALL_ADDRESSES,
-    [ChainId.Hardhat]: MulticallContract,
-    [ChainId.Localhost]: MulticallContract,
+    [ChainId.Hardhat]: MulticallContract.address,
+    [ChainId.Localhost]: MulticallContract.address,
   },
 }
 
