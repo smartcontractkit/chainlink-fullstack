@@ -9,6 +9,7 @@
     "deploy": "npx hardhat deploy --write true"
   },
   "devDependencies": {
+    "@chainlink/contracts": "^0.1.9",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@typechain/ethers-v5": "^7.0.1",
@@ -17,6 +18,7 @@
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.12.2",
     "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.3.0",
     "ethers": "^5.2.0",
     "hardhat": "^2.3.0",

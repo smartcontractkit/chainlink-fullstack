@@ -13,9 +13,29 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
+      name: "AggregatorInterface",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.AggregatorInterface__factory>;
+    getContractFactory(
+      name: "AggregatorV2V3Interface",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.AggregatorV2V3Interface__factory>;
+    getContractFactory(
+      name: "AggregatorV3Interface",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.AggregatorV3Interface__factory>;
+    getContractFactory(
+      name: "MockV3Aggregator",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MockV3Aggregator__factory>;
+    getContractFactory(
       name: "Multicall",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Multicall__factory>;
+    getContractFactory(
+      name: "PriceConsumerV3",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.PriceConsumerV3__factory>;
     getContractFactory(
       name: "YourContract",
       signerOrOptions?: ethers.Signer | FactoryOptions
