@@ -83,6 +83,11 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
                   Home
                 </Link>
               </NextLink>
+              <NextLink href="/feeds" passHref>
+                <Link px="4" py="1">
+                  Data Feeds
+                </Link>
+              </NextLink>
             </Flex>
             {account ? (
               <Flex
