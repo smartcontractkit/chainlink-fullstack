@@ -1,8 +1,9 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
 import React, { useCallback, useEffect, useReducer } from 'react'
+import { Box, Heading, Text } from '@chakra-ui/react'
+import { useEthers } from '@usedapp/core'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
-import PriceConsumerV3 from '../artifacts/contracts/localhost/PriceConsumerV3.json'
+import { contractConfig } from '../conf/config'
 import { PriceConsumerV3 as PriceConsumerV3Type } from '../types/typechain'
 
 /**
@@ -37,9 +38,11 @@ function reducer(state: StateType, action: ActionType): StateType {
 
 function Feeds(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  const { chainId } = useEthers()
   const priceConsumer = useContract<PriceConsumerV3Type>(
-    PriceConsumerV3.address,
-    PriceConsumerV3.abi
+    contractConfig[chainId]?.priceConsumer.address,
+    contractConfig[chainId]?.priceConsumer.abi
   )
 
   const fetchPrice = useCallback(async () => {
