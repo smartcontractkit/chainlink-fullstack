@@ -2,7 +2,7 @@ import { Box, Button, Divider, Heading, Input, Text } from '@chakra-ui/react'
 import { ChainId, useEthers, useSendTransaction } from '@usedapp/core'
 import { ethers, providers, utils } from 'ethers'
 import React, { useReducer } from 'react'
-import YourContract from '../artifacts/contracts/hardhat/YourContract.json'
+import YourContract from '../artifacts/contracts/localhost/YourContract.json'
 import { Layout } from '../components/layout/Layout'
 import { YourContract as YourContractType } from '../types/typechain'
 
