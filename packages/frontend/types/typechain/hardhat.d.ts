@@ -36,10 +36,6 @@ declare module "hardhat/types/runtime" {
       name: "PriceConsumerV3",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.PriceConsumerV3__factory>;
-    getContractFactory(
-      name: "YourContract",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.YourContract__factory>;
 
     // default types
     getContractFactory(

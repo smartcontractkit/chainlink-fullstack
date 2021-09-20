@@ -7,7 +7,6 @@ export type { AggregatorV3Interface } from "./AggregatorV3Interface";
 export type { MockV3Aggregator } from "./MockV3Aggregator";
 export type { Multicall } from "./Multicall";
 export type { PriceConsumerV3 } from "./PriceConsumerV3";
-export type { YourContract } from "./YourContract";
 
 export { AggregatorInterface__factory } from "./factories/AggregatorInterface__factory";
 export { AggregatorV2V3Interface__factory } from "./factories/AggregatorV2V3Interface__factory";
@@ -15,4 +14,3 @@ export { AggregatorV3Interface__factory } from "./factories/AggregatorV3Interfac
 export { MockV3Aggregator__factory } from "./factories/MockV3Aggregator__factory";
 export { Multicall__factory } from "./factories/Multicall__factory";
 export { PriceConsumerV3__factory } from "./factories/PriceConsumerV3__factory";
-export { YourContract__factory } from "./factories/YourContract__factory";
