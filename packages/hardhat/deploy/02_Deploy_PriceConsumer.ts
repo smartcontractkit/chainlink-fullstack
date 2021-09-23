@@ -17,7 +17,7 @@ const func: DeployFunction = async function ({
     const EthUsdAggregator = await deployments.get('EthUsdAggregator')
     ethUsdPriceFeedAddress = EthUsdAggregator.address
   } else {
-    ethUsdPriceFeedAddress = networkConfig[+chainId]['ethUsdPriceFeed'];
+    ethUsdPriceFeedAddress = networkConfig[chainId].ethUsdPriceFeed as string;
   }
 
   await deploy('PriceConsumerV3', {

@@ -7,8 +7,8 @@ const func: DeployFunction = async function ({
   getChainId,
 }: HardhatRuntimeEnvironment) {
 
-  const DECIMALS = '8'
-  const INITIAL_PRICE = '20000000000'
+  const DECIMALS = '8';
+  const INITIAL_PRICE = '20000000000';
 
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
@@ -20,6 +20,12 @@ const func: DeployFunction = async function ({
       from: deployer,
       log: true,
       args: [DECIMALS, INITIAL_PRICE]
+    });
+    const linkToken = await deploy('LinkToken', { from: deployer, log: true });
+    await deploy('VRFCoordinatorMock', {
+      from: deployer,
+      log: true,
+      args: [linkToken.address]
     });
   }
 }

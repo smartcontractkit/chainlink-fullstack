@@ -1,5 +1,6 @@
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-waffle';
+import '@appliedblockchain/chainlink-plugins-fund-link';
 import '@typechain/hardhat';
 import 'hardhat-deploy';
 import 'dotenv/config';
@@ -35,6 +36,10 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       chainId: 1337,
+      // accounts: [PRIVATE_KEY],
+      accounts: {
+        mnemonic: MNEMONIC,
+      },
     },
     rinkeby: {
       url: RINKEBY_RPC_URL,
