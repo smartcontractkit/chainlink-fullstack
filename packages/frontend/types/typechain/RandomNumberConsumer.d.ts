@@ -62,9 +62,11 @@ interface RandomNumberConsumerInterface extends ethers.utils.Interface {
   ): Result;
 
   events: {
+    "FulfilledRandomness(bytes32)": EventFragment;
     "RequestedRandomness(bytes32)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "FulfilledRandomness"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "RequestedRandomness"): EventFragment;
 }
 
@@ -160,6 +162,10 @@ export class RandomNumberConsumer extends BaseContract {
   };
 
   filters: {
+    FulfilledRandomness(
+      requestId?: null
+    ): TypedEventFilter<[string], { requestId: string }>;
+
     RequestedRandomness(
       requestId?: null
     ): TypedEventFilter<[string], { requestId: string }>;
