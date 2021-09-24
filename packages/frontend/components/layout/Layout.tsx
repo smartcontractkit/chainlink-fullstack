@@ -88,6 +88,11 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
                   Data Feeds
                 </Link>
               </NextLink>
+              <NextLink href="/vrf" passHref>
+                <Link px="4" py="1">
+                  VRF
+                </Link>
+              </NextLink>
             </Flex>
             {account ? (
               <Flex

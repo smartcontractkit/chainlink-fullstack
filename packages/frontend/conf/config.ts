@@ -1,6 +1,8 @@
 import { ChainId, Config, MULTICALL_ADDRESSES } from '@usedapp/core'
 import LocalhostPriceConsumerV3 from '../artifacts/contracts/localhost/PriceConsumerV3.json'
 import RinkebyPriceConsumerV3 from '../artifacts/contracts/rinkeby/PriceConsumerV3.json'
+import LocalhostRandomNumberConsumer from '../artifacts/contracts/localhost/RandomNumberConsumer.json'
+import RinkebyRandomNumberConsumer from '../artifacts/contracts/rinkeby/RandomNumberConsumer.json'
 import MulticallContract from '../artifacts/contracts/localhost/Multicall.json'
 
 export const INFURA_ID = '3982c8198e2b4a65afb505d94129329d'
@@ -24,12 +26,20 @@ export type ContractDeployment = {
   abi: unknown
 }
 
-export const contractConfig: Record<number, { priceConsumer: ContractDeployment }> = {
+export const contractConfig: Record<
+  number,
+  {
+    priceConsumer: ContractDeployment
+    randomNumberConsumer: ContractDeployment
+  }
+> = {
   [ChainId.Localhost]: {
     priceConsumer: LocalhostPriceConsumerV3,
+    randomNumberConsumer: LocalhostRandomNumberConsumer,
   },
   [ChainId.Rinkeby]: {
     priceConsumer: RinkebyPriceConsumerV3,
+    randomNumberConsumer: RinkebyRandomNumberConsumer,
   },
 }
 
