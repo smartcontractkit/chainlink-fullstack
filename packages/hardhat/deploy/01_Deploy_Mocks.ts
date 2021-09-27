@@ -27,6 +27,11 @@ const func: DeployFunction = async function ({
       log: true,
       args: [linkToken.address]
     });
+    await deploy('MockOracle', {
+      from: deployer,
+      log: true,
+      args: [linkToken.address]
+    });
   }
 }
 

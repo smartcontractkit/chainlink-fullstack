@@ -13,6 +13,10 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
+      name: "ChainlinkClient",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ChainlinkClient__factory>;
+    getContractFactory(
       name: "AggregatorInterface",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.AggregatorInterface__factory>;
@@ -25,9 +29,25 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.AggregatorV3Interface__factory>;
     getContractFactory(
+      name: "ChainlinkRequestInterface",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ChainlinkRequestInterface__factory>;
+    getContractFactory(
+      name: "ENSInterface",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ENSInterface__factory>;
+    getContractFactory(
       name: "LinkTokenInterface",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.LinkTokenInterface__factory>;
+    getContractFactory(
+      name: "PointerInterface",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.PointerInterface__factory>;
+    getContractFactory(
+      name: "LinkTokenReceiver",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.LinkTokenReceiver__factory>;
     getContractFactory(
       name: "MockV3Aggregator",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -36,6 +56,14 @@ declare module "hardhat/types/runtime" {
       name: "VRFCoordinatorMock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.VRFCoordinatorMock__factory>;
+    getContractFactory(
+      name: "ENSResolver",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ENSResolver__factory>;
+    getContractFactory(
+      name: "Ownable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Ownable__factory>;
     getContractFactory(
       name: "VRFConsumerBase",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -68,6 +96,14 @@ declare module "hardhat/types/runtime" {
       name: "IERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20__factory>;
+    getContractFactory(
+      name: "APIConsumer",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.APIConsumer__factory>;
+    getContractFactory(
+      name: "MockOracle",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MockOracle__factory>;
     getContractFactory(
       name: "Multicall",
       signerOrOptions?: ethers.Signer | FactoryOptions
