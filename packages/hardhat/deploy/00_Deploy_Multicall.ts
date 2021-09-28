@@ -4,12 +4,16 @@ import { DeployFunction } from 'hardhat-deploy/types';
 const func: DeployFunction = async function ({
   deployments,
   getNamedAccounts,
+  getChainId
 }: HardhatRuntimeEnvironment) {
 
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
+  const chainId = await getChainId();
 
-  await deploy('Multicall', { from: deployer });
+  if (chainId === '1337') {
+    await deploy('Multicall', { from: deployer });
+  }
 }
 
 export default func;
