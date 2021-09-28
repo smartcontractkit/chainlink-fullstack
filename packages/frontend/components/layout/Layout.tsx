@@ -93,6 +93,11 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
                   VRF
                 </Link>
               </NextLink>
+              <NextLink href="/external-api" passHref>
+                <Link px="4" py="1">
+                  External API
+                </Link>
+              </NextLink>
             </Flex>
             {account ? (
               <Flex
