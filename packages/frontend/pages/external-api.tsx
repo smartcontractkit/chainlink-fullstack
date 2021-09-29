@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useReducer } from 'react'
 import { Box, Heading, Text, Button } from '@chakra-ui/react'
-import { useEthers } from '@usedapp/core'
+import { useEthers, useContractFunction } from '@usedapp/core'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { contractConfig } from '../conf/config'
@@ -56,18 +56,23 @@ function ExternalAPI(): JSX.Element {
     contractConfig[chainId]?.apiConsumer.address,
     contractConfig[chainId]?.apiConsumer.abi
   )
+  const { send: sendRequestVolumeData } = useContractFunction(
+    apiConsumer,
+    'requestVolumeData',
+    { transactionName: 'External API Request' }
+  )
 
   const requestVolumeData = useCallback(async () => {
     if (apiConsumer) {
       try {
-        await apiConsumer.requestVolumeData()
+        await sendRequestVolumeData()
         dispatch({ type: 'SET_LOADING', loading: true })
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log('Error: ', error)
       }
     }
-  }, [apiConsumer])
+  }, [apiConsumer, sendRequestVolumeData])
 
   const readVolumeData = useCallback(async () => {
     if (apiConsumer) {
@@ -96,7 +101,9 @@ function ExternalAPI(): JSX.Element {
         External API
       </Heading>
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
-        <Heading as="h2" size="sm" mb="4">Volume data from CryptoCompare API</Heading>
+        <Heading as="h2" size="sm" mb="4">
+          Volume data from CryptoCompare API
+        </Heading>
         <Button
           onClick={requestVolumeData}
           isLoading={state.loading}
@@ -106,7 +113,9 @@ function ExternalAPI(): JSX.Element {
           Oracle Request
         </Button>
         {state.ethUsdVolume24h && (
-          <Text fontSize="xl" mt="2">ETH VOLUME 24H: ${state.ethUsdVolume24h}</Text>
+          <Text fontSize="xl" mt="2">
+            ETH VOLUME 24H: ${state.ethUsdVolume24h}
+          </Text>
         )}
       </Box>
     </Layout>

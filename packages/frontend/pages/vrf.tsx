@@ -1,6 +1,14 @@
 import React, { useCallback, useEffect, useReducer } from 'react'
-import { Box, Heading, Text, Image, Button, Code, Stack } from '@chakra-ui/react'
-import { useEthers } from '@usedapp/core'
+import {
+  Box,
+  Heading,
+  Text,
+  Image,
+  Button,
+  Code,
+  Stack,
+} from '@chakra-ui/react'
+import { useEthers, useContractFunction } from '@usedapp/core'
 import blockies from 'blockies-ts'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
@@ -57,18 +65,23 @@ function VRF(): JSX.Element {
     contractConfig[chainId]?.randomNumberConsumer.address,
     contractConfig[chainId]?.randomNumberConsumer.abi
   )
+  const { send: sendGetRandomNumber } = useContractFunction(
+    randomNumberConsumer,
+    'getRandomNumber',
+    { transactionName: 'Randomness Request' }
+  )
 
   const requestRandomNumber = useCallback(async () => {
     if (randomNumberConsumer) {
       try {
-        await randomNumberConsumer.getRandomNumber()
+        await sendGetRandomNumber()
         dispatch({ type: 'SET_LOADING', loading: true })
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log('Error: ', error)
       }
     }
-  }, [randomNumberConsumer])
+  }, [randomNumberConsumer, sendGetRandomNumber])
 
   const fetchRandomNumber = useCallback(async () => {
     if (randomNumberConsumer) {
@@ -112,9 +125,7 @@ function VRF(): JSX.Element {
         </Button>
         {state.randomNumber && (
           <Stack spacing={2} mt={4}>
-            <Text fontSize="xl">
-              Result
-            </Text>
+            <Text fontSize="xl">Result</Text>
             <Code size="xs" colorScheme="red">
               {state.randomNumber}
             </Code>

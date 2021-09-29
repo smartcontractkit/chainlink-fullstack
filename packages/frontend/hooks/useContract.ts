@@ -1,18 +1,18 @@
-import { useEthers } from '@usedapp/core';
-import { Contract, ethers } from 'ethers';
-import { useMemo } from 'react';
+import { useEthers } from '@usedapp/core'
+import { Contract, ethers } from 'ethers'
+import { useMemo } from 'react'
 
 export function useContract<T extends Contract = Contract>(
   address: string | undefined,
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  ABI: any,
+  ABI: any
 ): T | null {
-  const { library } = useEthers();
+  const { library } = useEthers()
 
   return useMemo(() => {
-    if (!library) return null;
-    if (!address) return null;
+    if (!library) return null
+    if (!address) return null
 
-    return new ethers.Contract(address, ABI, library.getSigner()) as T;
-  }, [ABI, address, library]);
+    return new ethers.Contract(address, ABI, library.getSigner()) as T
+  }, [ABI, address, library])
 }

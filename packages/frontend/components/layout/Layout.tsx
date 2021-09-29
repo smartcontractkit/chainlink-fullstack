@@ -36,9 +36,9 @@ declare global {
  */
 
 // Title text for the various transaction notifications.
-const TRANSACTION_TITLES = {
-  transactionStarted: 'Local Transaction Started',
-  transactionSucceed: 'Local Transaction Completed',
+const TRANSACTION_TYPE_TITLES = {
+  transactionStarted: 'Started',
+  transactionSucceed: 'Completed',
 }
 
 // Takes a long hash string and truncates it.
@@ -154,7 +154,8 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
                 <AlertIcon />
                 <Box>
                   <AlertTitle>
-                    {TRANSACTION_TITLES[notification.type]}
+                    {notification.transactionName}{' '}
+                    {TRANSACTION_TYPE_TITLES[notification.type]}
                   </AlertTitle>
                   <AlertDescription overflow="hidden">
                     Transaction Hash:{' '}
