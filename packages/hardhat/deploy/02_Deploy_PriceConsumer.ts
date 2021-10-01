@@ -27,4 +27,6 @@ const func: DeployFunction = async function ({
   });
 }
 
+func.tags = ['all', 'feed'];
+
 export default func;

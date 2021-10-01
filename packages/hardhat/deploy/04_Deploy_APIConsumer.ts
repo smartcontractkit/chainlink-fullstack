@@ -32,4 +32,6 @@ const func: DeployFunction = async function ({
   });
 }
 
+func.tags = ['all', 'api'];
+
 export default func;
