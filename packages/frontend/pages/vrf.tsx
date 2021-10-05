@@ -13,7 +13,7 @@ import blockies from 'blockies-ts'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { contractConfig } from '../conf/config'
-import { RandomNumberConsumer as RandomNumberConsumerType } from '../types/typechain'
+import { RandomNumberConsumer } from 'types/typechain'
 
 /**
  * Prop Types
@@ -61,7 +61,7 @@ function reducer(state: StateType, action: ActionType): StateType {
 function VRF(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState)
   const { chainId } = useEthers()
-  const randomNumberConsumer = useContract<RandomNumberConsumerType>(
+  const randomNumberConsumer = useContract<RandomNumberConsumer>(
     contractConfig[chainId]?.randomNumberConsumer.address,
     contractConfig[chainId]?.randomNumberConsumer.abi
   )

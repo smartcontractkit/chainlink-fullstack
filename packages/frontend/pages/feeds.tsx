@@ -4,7 +4,7 @@ import { useEthers } from '@usedapp/core'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { contractConfig } from '../conf/config'
-import { PriceConsumerV3 as PriceConsumerV3Type } from '../types/typechain'
+import { PriceConsumerV3 } from 'types/typechain'
 
 /**
  * Prop Types
@@ -40,7 +40,7 @@ function Feeds(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const { chainId } = useEthers()
-  const priceConsumer = useContract<PriceConsumerV3Type>(
+  const priceConsumer = useContract<PriceConsumerV3>(
     contractConfig[chainId]?.priceConsumer.address,
     contractConfig[chainId]?.priceConsumer.abi
   )

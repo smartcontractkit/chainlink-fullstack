@@ -4,7 +4,7 @@ import { useEthers, useContractFunction } from '@usedapp/core'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { contractConfig } from '../conf/config'
-import { APIConsumer as APIConsumerType } from '../types/typechain'
+import { APIConsumer } from 'types/typechain'
 
 /**
  * Prop Types
@@ -52,7 +52,7 @@ function reducer(state: StateType, action: ActionType): StateType {
 function ExternalAPI(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState)
   const { chainId } = useEthers()
-  const apiConsumer = useContract<APIConsumerType>(
+  const apiConsumer = useContract<APIConsumer>(
     contractConfig[chainId]?.apiConsumer.address,
     contractConfig[chainId]?.apiConsumer.abi
   )

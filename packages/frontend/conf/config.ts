@@ -6,9 +6,9 @@ import LocalhostRandomNumberConsumer from '../artifacts/contracts/localhost/Rand
 import RinkebyRandomNumberConsumer from '../artifacts/contracts/rinkeby/RandomNumberConsumer.json'
 import KovanRandomNumberConsumer from '../artifacts/contracts/kovan/RandomNumberConsumer.json'
 import MulticallContract from '../artifacts/contracts/localhost/Multicall.json'
-import LocalhostAPIConsumer from '../artifacts/contracts/localhost/APIConsumer.json';
-import RinkebyAPIConsumer from '../artifacts/contracts/rinkeby/APIConsumer.json';
-import KovanAPIConsumer from '../artifacts/contracts/kovan/APIConsumer.json';
+import LocalhostAPIConsumer from '../artifacts/contracts/localhost/APIConsumer.json'
+import RinkebyAPIConsumer from '../artifacts/contracts/rinkeby/APIConsumer.json'
+import KovanAPIConsumer from '../artifacts/contracts/kovan/APIConsumer.json'
 
 export const INFURA_ID = '3982c8198e2b4a65afb505d94129329d'
 

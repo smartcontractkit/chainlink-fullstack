@@ -76,7 +76,7 @@ const config: HardhatUserConfig = {
     },
   },
   typechain: {
-    outDir: '../frontend/types/typechain',
+    outDir: '../types/typechain',
   },
   solidity: {
     compilers: [
