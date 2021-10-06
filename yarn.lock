@@ -11727,6 +11727,11 @@ mnemonist@^0.38.0:
   dependencies:
     obliterator "^1.6.1"
 
+mocha-skip-if@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/mocha-skip-if/-/mocha-skip-if-0.0.3.tgz#6789b6725d93b8f30418346bb0c19677f0d49a3e"
+  integrity sha512-MFv2uymlrAl4q0kd55Bn/dyhvSP+jg14lWFTL6KFY2uBtzJWbwhHG1RcR+wZEIE2OnAFUX9dyJq+t3GGZwK3YQ==
+
 mocha@^7.1.2:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/mocha/-/mocha-7.2.0.tgz#01cc227b00d875ab1eed03a75106689cfed5a604"

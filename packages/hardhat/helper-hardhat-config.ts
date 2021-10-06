@@ -64,6 +64,8 @@ export const networkConfig: Record<
   },
 };
 
+export const developmentChains = ['hardhat', 'localhost'];
+
 export const autoFundCheck = async (contractAddr: string, chainId: string, linkTokenAddress: string) => {
   console.log('Checking to see if contract can be auto-funded with LINK:');
   const accounts = await ethers.getSigners();
