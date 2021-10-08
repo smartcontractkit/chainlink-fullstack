@@ -8,7 +8,9 @@
     "start": "yarn workspace chainlink-fullstack-frontend start",
     "chain": "yarn workspace chainlink-fullstack-hardhat chain",
     "deploy": "yarn workspace chainlink-fullstack-hardhat deploy",
-    "compile": "yarn workspace chainlink-fullstack-hardhat compile"
+    "compile": "yarn workspace chainlink-fullstack-hardhat compile",
+    "test:hardhat": "yarn workspace chainlink-fullstack-hardhat test",
+    "test:frontend": "yarn workspace chainlink-fullstack-frontend test"
   },
   "workspaces": {
     "packages": [
