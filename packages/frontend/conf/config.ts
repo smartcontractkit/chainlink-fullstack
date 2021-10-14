@@ -10,12 +10,12 @@ import LocalhostAPIConsumer from '../artifacts/contracts/localhost/APIConsumer.j
 import RinkebyAPIConsumer from '../artifacts/contracts/rinkeby/APIConsumer.json'
 import KovanAPIConsumer from '../artifacts/contracts/kovan/APIConsumer.json'
 
-export const INFURA_ID = '3982c8198e2b4a65afb505d94129329d'
+const INFURA_KEY = process.env.NEXT_PUBLIC_INFURA_KEY
 
 const config: Config = {
   readOnlyChainId: ChainId.Kovan,
   readOnlyUrls: {
-    [ChainId.Kovan]: `https://kovan.infura.io/v3/${INFURA_ID}`,
+    [ChainId.Kovan]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
   },
   supportedChains: [
     ChainId.Rinkeby,
