@@ -1,65 +1,24 @@
-import React, { useCallback, useEffect, useReducer } from 'react'
+import React from 'react'
 import { Box, Heading, Text } from '@chakra-ui/react'
-import { useEthers } from '@usedapp/core'
+import { useContractCall, useEthers } from '@usedapp/core'
+import { BigNumber } from 'ethers'
+import { Interface } from '@ethersproject/abi'
 import { Layout } from '../components/layout/Layout'
-import { useContract } from '../hooks/useContract'
 import { contractConfig } from '../conf/config'
-import { PriceConsumerV3 } from 'types/typechain'
 
-/**
- * Prop Types
- */
-type StateType = {
-  ethUsdPrice: number
-}
-type ActionType = {
-  type: 'SET_ETH_USD_PRICE'
-  ethUsdPrice: StateType['ethUsdPrice']
-}
-
-/**
- * Component
- */
-const initialState: StateType = {
-  ethUsdPrice: 0,
-}
-
-function reducer(state: StateType, action: ActionType): StateType {
-  switch (action.type) {
-    case 'SET_ETH_USD_PRICE':
-      return {
-        ...state,
-        ethUsdPrice: action.ethUsdPrice,
-      }
-    default:
-      throw new Error()
-  }
-}
+const formatPrice = (value: BigNumber) => value.toNumber() / 10 ** 8
 
 function Feeds(): JSX.Element {
-  const [state, dispatch] = useReducer(reducer, initialState)
-
   const { chainId } = useEthers()
-  const priceConsumer = useContract<PriceConsumerV3>(
-    contractConfig[chainId]?.priceConsumer.address,
-    contractConfig[chainId]?.priceConsumer.abi
-  )
-
-  const fetchPrice = useCallback(async () => {
-    if (priceConsumer) {
-      try {
-        const data = await priceConsumer.getLatestPrice()
-        dispatch({ type: 'SET_ETH_USD_PRICE', ethUsdPrice: +data / 10 ** 8 })
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log('Error: ', error)
+  const [ethUsdPrice] =
+    useContractCall(
+      contractConfig[chainId] && {
+        abi: new Interface(contractConfig[chainId].priceConsumer.abi),
+        address: contractConfig[chainId].priceConsumer.address,
+        method: 'getLatestPrice',
+        args: [],
       }
-    }
-  }, [priceConsumer])
-
-  useEffect(() => {
-    fetchPrice()
-  }, [fetchPrice])
+    ) ?? []
 
   return (
     <Layout>
@@ -67,7 +26,9 @@ function Feeds(): JSX.Element {
         Data Feeds
       </Heading>
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
-        <Text fontSize="xl">ETH/USD: {state.ethUsdPrice}</Text>
+        <Text fontSize="xl">
+          ETH/USD: {ethUsdPrice && formatPrice(ethUsdPrice)}
+        </Text>
       </Box>
     </Layout>
   )

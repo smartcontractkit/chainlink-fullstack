@@ -13,13 +13,16 @@ import KovanAPIConsumer from '../artifacts/contracts/kovan/APIConsumer.json'
 export const INFURA_ID = '3982c8198e2b4a65afb505d94129329d'
 
 const config: Config = {
+  readOnlyChainId: ChainId.Kovan,
   readOnlyUrls: {
-    [ChainId.Rinkeby]: `https://rinkeby.infura.io/v3/${INFURA_ID}`,
     [ChainId.Kovan]: `https://kovan.infura.io/v3/${INFURA_ID}`,
-    [ChainId.Hardhat]: 'http://localhost:8545',
-    [ChainId.Localhost]: 'http://localhost:8545',
   },
-  supportedChains: [ChainId.Rinkeby, ChainId.Kovan, ChainId.Hardhat, ChainId.Localhost],
+  supportedChains: [
+    ChainId.Rinkeby,
+    ChainId.Kovan,
+    ChainId.Hardhat,
+    ChainId.Localhost,
+  ],
   multicallAddresses: {
     ...MULTICALL_ADDRESSES,
     [ChainId.Hardhat]: MulticallContract.address,
@@ -27,19 +30,18 @@ const config: Config = {
   },
 }
 
-export type ContractDeployment = {
+type ContractDeployment = {
   address: string
-  abi: unknown
+  abi: any
 }
 
-export const contractConfig: Record<
-  number,
-  {
-    priceConsumer: ContractDeployment
-    randomNumberConsumer: ContractDeployment
-    apiConsumer: ContractDeployment
-  }
-> = {
+type NetworkConfig = {
+  priceConsumer: ContractDeployment
+  randomNumberConsumer: ContractDeployment
+  apiConsumer: ContractDeployment
+}
+
+export const contractConfig: Record<number, NetworkConfig> = {
   [ChainId.Localhost]: {
     priceConsumer: LocalhostPriceConsumerV3,
     randomNumberConsumer: LocalhostRandomNumberConsumer,
@@ -54,7 +56,7 @@ export const contractConfig: Record<
     priceConsumer: KovanPriceConsumerV3,
     randomNumberConsumer: KovanRandomNumberConsumer,
     apiConsumer: KovanAPIConsumer,
-  }
+  },
 }
 
 export default config
