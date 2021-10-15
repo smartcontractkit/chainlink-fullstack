@@ -1,16 +1,28 @@
 import React, { useCallback, useEffect, useReducer } from 'react'
 import { Box, Heading, Text, Button } from '@chakra-ui/react'
 import { useEthers, useContractFunction } from '@usedapp/core'
+import { BigNumber, utils } from 'ethers'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { contractConfig } from '../conf/config'
 import { APIConsumer } from 'types/typechain'
 
 /**
+ * Helpers
+ */
+const formatter = new Intl.NumberFormat('en-us', {
+  minimumFractionDigits: 4,
+  maximumFractionDigits: 4,
+})
+
+const formatEther = (wei: BigNumber) =>
+  formatter.format(parseFloat(utils.formatEther(wei)))
+
+/**
  * Prop Types
  */
 type StateType = {
-  ethUsdVolume24h?: number
+  ethUsdVolume24h: BigNumber | null
   loading: boolean
 }
 type ActionType =
@@ -27,7 +39,7 @@ type ActionType =
  * Component
  */
 const initialState: StateType = {
-  ethUsdVolume24h: undefined,
+  ethUsdVolume24h: null,
   loading: false,
 }
 
@@ -77,8 +89,8 @@ function ExternalAPI(): JSX.Element {
   const readVolumeData = useCallback(async () => {
     if (apiConsumer) {
       try {
-        const data = await apiConsumer.volume()
-        dispatch({ type: 'SET_VOLUME_DATA', ethUsdVolume24h: +data / 10 ** 18 })
+        const ethUsdVolume24h = await apiConsumer.volume()
+        dispatch({ type: 'SET_VOLUME_DATA', ethUsdVolume24h })
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log('Error: ', error)
@@ -114,7 +126,7 @@ function ExternalAPI(): JSX.Element {
         </Button>
         {state.ethUsdVolume24h && (
           <Text fontSize="xl" mt="2">
-            ETH VOLUME 24H: ${state.ethUsdVolume24h}
+            ETH VOLUME 24H: {formatEther(state.ethUsdVolume24h)}
           </Text>
         )}
       </Box>

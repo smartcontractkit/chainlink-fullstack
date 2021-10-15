@@ -1,13 +1,23 @@
 import React from 'react'
 import { Box, Heading, Text } from '@chakra-ui/react'
-import { useContractCall, useEthers } from '@usedapp/core'
+import { useContractCall, useEthers, FiatCurrency } from '@usedapp/core'
 import { BigNumber } from 'ethers'
 import { Interface } from '@ethersproject/abi'
 import { Layout } from '../components/layout/Layout'
 import { contractConfig } from '../conf/config'
 
-const formatPrice = (value: BigNumber) => value.toNumber() / 10 ** 8
+/**
+ * Helpers
+ */
+const formatter = new FiatCurrency('United States Dollar', 'USD', 8, {
+  fixedPrecisionDigits: 2,
+})
 
+const formatUsd = (value: BigNumber) => formatter.format(value.toString())
+
+/**
+ * Component
+ */
 function Feeds(): JSX.Element {
   const { chainId } = useEthers()
   const [ethUsdPrice] =
@@ -27,7 +37,7 @@ function Feeds(): JSX.Element {
       </Heading>
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
         <Text fontSize="xl">
-          ETH/USD: {ethUsdPrice && formatPrice(ethUsdPrice)}
+          ETH/USD: {ethUsdPrice && formatUsd(ethUsdPrice)}
         </Text>
       </Box>
     </Layout>
