@@ -24,7 +24,7 @@
     "chai": "^4.3.4",
     "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.3.0",
-    "ethers": "^5.2.0",
+    "ethers": "5.4.1",
     "hardhat": "^2.3.0",
     "hardhat-deploy": "^0.9.1",
     "mocha-skip-if": "^0.0.3",
