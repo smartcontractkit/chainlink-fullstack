@@ -30,32 +30,38 @@ const config: Config = {
   },
 }
 
+export enum ContractId {
+  PriceConsumer = 'priceConsumer',
+  RandomNumberConsumer = 'randomNumberConsumer',
+  ApiConsumer = 'apiConsumer',
+}
+
 type ContractDeployment = {
   address: string
   abi: any
 }
 
 type NetworkConfig = {
-  priceConsumer: ContractDeployment
-  randomNumberConsumer: ContractDeployment
-  apiConsumer: ContractDeployment
+  [ContractId.PriceConsumer]: ContractDeployment
+  [ContractId.RandomNumberConsumer]: ContractDeployment
+  [ContractId.ApiConsumer]: ContractDeployment
 }
 
 export const contractConfig: Record<number, NetworkConfig> = {
   [ChainId.Localhost]: {
-    priceConsumer: LocalhostPriceConsumerV3,
-    randomNumberConsumer: LocalhostRandomNumberConsumer,
-    apiConsumer: LocalhostAPIConsumer,
+    [ContractId.PriceConsumer]: LocalhostPriceConsumerV3,
+    [ContractId.RandomNumberConsumer]: LocalhostRandomNumberConsumer,
+    [ContractId.ApiConsumer]: LocalhostAPIConsumer,
   },
   [ChainId.Rinkeby]: {
-    priceConsumer: RinkebyPriceConsumerV3,
-    randomNumberConsumer: RinkebyRandomNumberConsumer,
-    apiConsumer: RinkebyAPIConsumer,
+    [ContractId.PriceConsumer]: RinkebyPriceConsumerV3,
+    [ContractId.RandomNumberConsumer]: RinkebyRandomNumberConsumer,
+    [ContractId.ApiConsumer]: RinkebyAPIConsumer,
   },
   [ChainId.Kovan]: {
-    priceConsumer: KovanPriceConsumerV3,
-    randomNumberConsumer: KovanRandomNumberConsumer,
-    apiConsumer: KovanAPIConsumer,
+    [ContractId.PriceConsumer]: KovanPriceConsumerV3,
+    [ContractId.RandomNumberConsumer]: KovanRandomNumberConsumer,
+    [ContractId.ApiConsumer]: KovanAPIConsumer,
   },
 }
 

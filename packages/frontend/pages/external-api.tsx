@@ -1,11 +1,19 @@
-import React, { useCallback, useEffect, useReducer } from 'react'
-import { Box, Heading, Text, Button } from '@chakra-ui/react'
-import { useEthers, useContractFunction } from '@usedapp/core'
+import React, { useCallback, useEffect, useState } from 'react'
+import {
+  Box,
+  Heading,
+  Text,
+  Button,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
+import { useContractFunction, TransactionState } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
-import { contractConfig } from '../conf/config'
-import { APIConsumer } from 'types/typechain'
+import { ContractId } from '../conf/config'
 
 /**
  * Helpers
@@ -18,84 +26,31 @@ const formatter = new Intl.NumberFormat('en-us', {
 const formatEther = (wei: BigNumber) =>
   formatter.format(parseFloat(utils.formatEther(wei)))
 
-/**
- * Prop Types
- */
-type StateType = {
-  ethUsdVolume24h: BigNumber | null
-  loading: boolean
-}
-type ActionType =
-  | {
-      type: 'SET_VOLUME_DATA'
-      ethUsdVolume24h: StateType['ethUsdVolume24h']
-    }
-  | {
-      type: 'SET_LOADING'
-      loading: StateType['loading']
-    }
+const getLoadingText = (status: TransactionState) =>
+  (status === 'Mining' && 'Mining Request') ||
+  (status === 'Success' && 'Fulfilling Request')
 
 /**
  * Component
  */
-const initialState: StateType = {
-  ethUsdVolume24h: null,
-  loading: false,
-}
-
-function reducer(state: StateType, action: ActionType): StateType {
-  switch (action.type) {
-    case 'SET_VOLUME_DATA':
-      return {
-        ...state,
-        ethUsdVolume24h: action.ethUsdVolume24h,
-        loading: false,
-      }
-    case 'SET_LOADING':
-      return {
-        ...state,
-        loading: action.loading,
-      }
-    default:
-      throw new Error()
-  }
-}
-
 function ExternalAPI(): JSX.Element {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const { chainId } = useEthers()
-  const apiConsumer = useContract<APIConsumer>(
-    contractConfig[chainId]?.apiConsumer.address,
-    contractConfig[chainId]?.apiConsumer.abi
-  )
-  const { send: sendRequestVolumeData } = useContractFunction(
+  const [volumeData, setVolumeData] = useState<BigNumber>()
+
+  const apiConsumer = useContract(ContractId.ApiConsumer)
+
+  const { send, state } = useContractFunction(
     apiConsumer,
     'requestVolumeData',
     { transactionName: 'External API Request' }
   )
 
   const requestVolumeData = useCallback(async () => {
-    if (apiConsumer) {
-      try {
-        await sendRequestVolumeData()
-        dispatch({ type: 'SET_LOADING', loading: true })
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log('Error: ', error)
-      }
-    }
-  }, [apiConsumer, sendRequestVolumeData])
+    await send()
+    setVolumeData(null)
+  }, [send])
 
   const readVolumeData = useCallback(async () => {
-    if (apiConsumer) {
-      try {
-        const ethUsdVolume24h = await apiConsumer.volume()
-        dispatch({ type: 'SET_VOLUME_DATA', ethUsdVolume24h })
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log('Error: ', error)
-      }
-    }
+    setVolumeData(await apiConsumer.volume())
   }, [apiConsumer])
 
   useEffect(() => {
@@ -107,26 +62,39 @@ function ExternalAPI(): JSX.Element {
     }
   }, [apiConsumer, readVolumeData])
 
+  const isLoading =
+    state.status === 'Mining' ||
+    (state.status === 'Success' && !volumeData)
+
+  const hasError = state.status === 'Exception'
+
   return (
     <Layout>
       <Heading as="h1" mb="8">
         External API
       </Heading>
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
-        <Heading as="h2" size="sm" mb="4">
+        {hasError && (
+          <Alert status="error" mb="4">
+            <AlertIcon />
+            <AlertTitle mr={2}>Error:</AlertTitle>
+            <AlertDescription>{state.errorMessage}</AlertDescription>
+          </Alert>
+        )}
+        <Heading as="h2" size="md" mb="4">
           Volume data from CryptoCompare API
         </Heading>
         <Button
           onClick={requestVolumeData}
-          isLoading={state.loading}
-          loadingText="Fulfilling request"
+          isLoading={isLoading}
+          loadingText={getLoadingText(state.status)}
           colorScheme="teal"
         >
-          Oracle Request
+          New Oracle Request
         </Button>
-        {state.ethUsdVolume24h && (
+        {volumeData && (
           <Text fontSize="xl" mt="2">
-            ETH VOLUME 24H: {formatEther(state.ethUsdVolume24h)}
+            ETH VOLUME 24H: {formatEther(volumeData)}
           </Text>
         )}
       </Box>

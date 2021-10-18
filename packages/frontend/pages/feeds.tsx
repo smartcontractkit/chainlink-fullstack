@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
 import { useContractCall, useEthers, FiatCurrency } from '@usedapp/core'
 import { BigNumber } from 'ethers'
 import { Interface } from '@ethersproject/abi'
@@ -36,9 +36,12 @@ function Feeds(): JSX.Element {
         Data Feeds
       </Heading>
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
-        <Text fontSize="xl">
-          ETH/USD: {ethUsdPrice && formatUsd(ethUsdPrice)}
-        </Text>
+        {!ethUsdPrice && <Spinner color="teal" />}
+        {ethUsdPrice && (
+          <Text fontSize="xl">
+            ETH/USD: {ethUsdPrice && formatUsd(ethUsdPrice)}
+          </Text>
+        )}
       </Box>
     </Layout>
   )

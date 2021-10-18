@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import {
   Box,
   Heading,
@@ -7,107 +7,66 @@ import {
   Button,
   Code,
   Stack,
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  AlertIcon,
 } from '@chakra-ui/react'
-import { useEthers, useContractFunction } from '@usedapp/core'
+import { TransactionState, useContractFunction } from '@usedapp/core'
 import blockies from 'blockies-ts'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
-import { contractConfig } from '../conf/config'
-import { RandomNumberConsumer } from 'types/typechain'
+import { ContractId } from '../conf/config'
 
 /**
- * Prop Types
+ * Helpers
  */
-type StateType = {
-  randomNumber: string
-  loading: boolean
-}
-type ActionType =
-  | {
-      type: 'SET_RANDOM_NUMBER'
-      randomNumber: StateType['randomNumber']
-    }
-  | {
-      type: 'SET_LOADING'
-      loading: StateType['loading']
-    }
+const getLoadingText = (status: TransactionState) =>
+  (status === 'Mining' && 'Mining Request') ||
+  (status === 'Success' && 'Fulfilling Request')
 
 /**
  * Component
  */
-const initialState: StateType = {
-  randomNumber: '',
-  loading: false,
-}
-
-function reducer(state: StateType, action: ActionType): StateType {
-  switch (action.type) {
-    case 'SET_RANDOM_NUMBER':
-      return {
-        ...state,
-        randomNumber: action.randomNumber,
-        loading: false,
-      }
-    case 'SET_LOADING':
-      return {
-        ...state,
-        loading: action.loading,
-      }
-    default:
-      throw new Error()
-  }
-}
-
 function VRF(): JSX.Element {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const { chainId } = useEthers()
-  const randomNumberConsumer = useContract<RandomNumberConsumer>(
-    contractConfig[chainId]?.randomNumberConsumer.address,
-    contractConfig[chainId]?.randomNumberConsumer.abi
-  )
-  const { send: sendGetRandomNumber } = useContractFunction(
+  const [randomNumber, setRandomNumber] = useState('')
+
+  const randomNumberConsumer = useContract(ContractId.RandomNumberConsumer)
+
+  const { send, state } = useContractFunction(
     randomNumberConsumer,
     'getRandomNumber',
     { transactionName: 'Randomness Request' }
   )
 
   const requestRandomNumber = useCallback(async () => {
-    if (randomNumberConsumer) {
-      try {
-        await sendGetRandomNumber()
-        dispatch({ type: 'SET_LOADING', loading: true })
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log('Error: ', error)
-      }
-    }
-  }, [randomNumberConsumer, sendGetRandomNumber])
+    await send()
+    setRandomNumber('')
+  }, [send])
 
-  const fetchRandomNumber = useCallback(async () => {
-    if (randomNumberConsumer) {
-      try {
-        const data = await randomNumberConsumer.randomResult()
-        dispatch({ type: 'SET_RANDOM_NUMBER', randomNumber: data.toString() })
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log('Error: ', error)
-      }
-    }
+  const readRandomNumber = useCallback(async () => {
+    const result = await randomNumberConsumer.randomResult()
+    setRandomNumber(String(result))
   }, [randomNumberConsumer])
 
   useEffect(() => {
     if (randomNumberConsumer) {
-      randomNumberConsumer.on('FulfilledRandomness', fetchRandomNumber)
+      randomNumberConsumer.on('FulfilledRandomness', readRandomNumber)
       return () => {
-        randomNumberConsumer.off('FulfilledRandomness', fetchRandomNumber)
+        randomNumberConsumer.off('FulfilledRandomness', readRandomNumber)
       }
     }
-  }, [randomNumberConsumer, fetchRandomNumber])
+  }, [randomNumberConsumer, readRandomNumber])
 
   let blockieImageSrc
-  if (state.randomNumber && typeof window !== 'undefined') {
-    blockieImageSrc = blockies.create({ seed: state.randomNumber }).toDataURL()
+  if (randomNumber && typeof window !== 'undefined') {
+    blockieImageSrc = blockies.create({ seed: randomNumber }).toDataURL()
   }
+
+  const isLoading =
+    state.status === 'Mining' || (state.status === 'Success' && !randomNumber)
+
+  const hasError = state.status === 'Exception'
 
   return (
     <Layout>
@@ -115,19 +74,26 @@ function VRF(): JSX.Element {
         VRF
       </Heading>
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
+        {hasError && (
+          <Alert status="error" mb="4">
+            <AlertIcon />
+            <AlertTitle mr={2}>Error:</AlertTitle>
+            <AlertDescription>{state.errorMessage}</AlertDescription>
+          </Alert>
+        )}
         <Button
           onClick={requestRandomNumber}
-          isLoading={state.loading}
-          loadingText="Fulfilling request"
+          isLoading={isLoading}
+          loadingText={getLoadingText(state.status)}
           colorScheme="teal"
         >
-          Request randomness
+          Request Randomness
         </Button>
-        {state.randomNumber && (
+        {randomNumber && (
           <Stack spacing={2} mt={4}>
             <Text fontSize="xl">Result</Text>
             <Code size="xs" colorScheme="red">
-              {state.randomNumber}
+              {randomNumber}
             </Code>
             <Image boxSize="200px" src={blockieImageSrc} alt="Random image" />
           </Stack>
