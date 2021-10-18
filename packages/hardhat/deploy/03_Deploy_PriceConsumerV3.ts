@@ -12,17 +12,17 @@ const func: DeployFunction = async function ({
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId();
 
-  let feedRegistryAddress: string;
+  let ethUsdPriceFeedAddress: string;
   if (chainId === '1337') {
-    const MockFeedRegistry = await deployments.get('MockFeedRegistry');
-    feedRegistryAddress = MockFeedRegistry.address;
+    const EthUsdAggregator = await deployments.get('EthUsdAggregator')
+    ethUsdPriceFeedAddress = EthUsdAggregator.address
   } else {
-    feedRegistryAddress = networkConfig[chainId].feedRegistry as string;
+    ethUsdPriceFeedAddress = networkConfig[chainId].ethUsdPriceFeed as string;
   }
 
-  await deploy('PriceConsumer', {
+  await deploy('PriceConsumerV3', {
     from: deployer,
-    args: [feedRegistryAddress],
+    args: [ethUsdPriceFeedAddress],
     log: true
   });
 }

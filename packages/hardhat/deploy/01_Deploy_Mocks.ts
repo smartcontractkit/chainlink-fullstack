@@ -15,6 +15,10 @@ const func: DeployFunction = async function ({
   const chainId = await getChainId();
 
   if (chainId === '1337') {
+    await deploy('MockFeedRegistry', {
+      from: deployer,
+      log: true
+    })
     await deploy('EthUsdAggregator', {
       contract: 'MockV3Aggregator',
       from: deployer,
