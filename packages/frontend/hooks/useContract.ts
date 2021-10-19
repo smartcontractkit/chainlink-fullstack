@@ -8,12 +8,16 @@ export function useContract<T extends Contract = Contract>(
 ): T | null {
   const { library, chainId } = useEthers()
 
-  const { abi, address } = contractConfig[chainId]?.[id] || {}
+  const contract = chainId && contractConfig[chainId][id]
 
   return useMemo(() => {
     if (!library) return null
-    if (!address) return null
+    if (!contract.address) return null
 
-    return new ethers.Contract(address, abi, library.getSigner()) as T
-  }, [abi, address, library])
+    return new ethers.Contract(
+      contract.address,
+      contract.abi,
+      library.getSigner()
+    ) as T
+  }, [contract, library])
 }

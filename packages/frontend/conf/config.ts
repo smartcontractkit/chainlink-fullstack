@@ -1,4 +1,6 @@
 import { ChainId, Config, MULTICALL_ADDRESSES } from '@usedapp/core'
+import LocalhostPriceConsumer from '../artifacts/contracts/localhost/PriceConsumer.json'
+import KovanPriceConsumer from '../artifacts/contracts/kovan/PriceConsumer.json'
 import LocalhostPriceConsumerV3 from '../artifacts/contracts/localhost/PriceConsumerV3.json'
 import RinkebyPriceConsumerV3 from '../artifacts/contracts/rinkeby/PriceConsumerV3.json'
 import KovanPriceConsumerV3 from '../artifacts/contracts/kovan/PriceConsumerV3.json'
@@ -32,6 +34,7 @@ const config: Config = {
 
 export enum ContractId {
   PriceConsumer = 'priceConsumer',
+  PriceConsumerV3 = 'priceConsumerV3',
   RandomNumberConsumer = 'randomNumberConsumer',
   ApiConsumer = 'apiConsumer',
 }
@@ -42,27 +45,38 @@ type ContractDeployment = {
 }
 
 type NetworkConfig = {
-  [ContractId.PriceConsumer]: ContractDeployment
+  [ContractId.PriceConsumer]?: ContractDeployment
+  [ContractId.PriceConsumerV3]: ContractDeployment
   [ContractId.RandomNumberConsumer]: ContractDeployment
   [ContractId.ApiConsumer]: ContractDeployment
 }
 
 export const contractConfig: Record<number, NetworkConfig> = {
   [ChainId.Localhost]: {
-    [ContractId.PriceConsumer]: LocalhostPriceConsumerV3,
+    [ContractId.PriceConsumer]: LocalhostPriceConsumer,
+    [ContractId.PriceConsumerV3]: LocalhostPriceConsumerV3,
     [ContractId.RandomNumberConsumer]: LocalhostRandomNumberConsumer,
     [ContractId.ApiConsumer]: LocalhostAPIConsumer,
   },
   [ChainId.Rinkeby]: {
-    [ContractId.PriceConsumer]: RinkebyPriceConsumerV3,
+    [ContractId.PriceConsumerV3]: RinkebyPriceConsumerV3,
     [ContractId.RandomNumberConsumer]: RinkebyRandomNumberConsumer,
     [ContractId.ApiConsumer]: RinkebyAPIConsumer,
   },
   [ChainId.Kovan]: {
-    [ContractId.PriceConsumer]: KovanPriceConsumerV3,
+    [ContractId.PriceConsumer]: KovanPriceConsumer,
+    [ContractId.PriceConsumerV3]: KovanPriceConsumerV3,
     [ContractId.RandomNumberConsumer]: KovanRandomNumberConsumer,
     [ContractId.ApiConsumer]: KovanAPIConsumer,
   },
+}
+
+export const LinkTokenAddress = '0xa36085F69e2889c224210F603D836748e7dC0088'
+
+export enum Denominations {
+  ETH = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+  BTC = '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
+  USD = '0x0000000000000000000000000000000000000348',
 }
 
 export default config
