@@ -17,6 +17,6 @@ skip.if(!developmentChains.includes(network.name)).
 
     it('should return a positive value', async () => {
       let result = await priceConsumerV3.getLatestPrice();
-      expect(result.gt(BigNumber.from(0))).to.be.true;
+      expect(result).to.be.gt(0);
     });
   });
