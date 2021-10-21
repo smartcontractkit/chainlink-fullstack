@@ -17,6 +17,7 @@ import blockies from 'blockies-ts'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { ContractId } from '../conf/config'
+import { RandomNumberConsumer } from '../../types/typechain'
 
 /**
  * Helpers
@@ -31,7 +32,9 @@ const getLoadingText = (status: TransactionState) =>
 function VRF(): JSX.Element {
   const [randomNumber, setRandomNumber] = useState('')
 
-  const randomNumberConsumer = useContract(ContractId.RandomNumberConsumer)
+  const randomNumberConsumer = useContract<RandomNumberConsumer>(
+    ContractId.RandomNumberConsumer
+  )
 
   const { send, state } = useContractFunction(
     randomNumberConsumer,

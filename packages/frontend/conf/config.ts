@@ -11,6 +11,7 @@ import MulticallContract from '../artifacts/contracts/localhost/Multicall.json'
 import LocalhostAPIConsumer from '../artifacts/contracts/localhost/APIConsumer.json'
 import RinkebyAPIConsumer from '../artifacts/contracts/rinkeby/APIConsumer.json'
 import KovanAPIConsumer from '../artifacts/contracts/kovan/APIConsumer.json'
+import WbtcPorAggregator from '../artifacts/contracts/mainnet/WbtcPorAggregator.json'
 
 const INFURA_KEY = process.env.NEXT_PUBLIC_INFURA_KEY
 
@@ -18,6 +19,7 @@ const config: Config = {
   readOnlyChainId: ChainId.Kovan,
   readOnlyUrls: {
     [ChainId.Kovan]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
+    [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
   },
   supportedChains: [
     ChainId.Rinkeby,
@@ -37,6 +39,7 @@ export enum ContractId {
   PriceConsumerV3 = 'priceConsumerV3',
   RandomNumberConsumer = 'randomNumberConsumer',
   ApiConsumer = 'apiConsumer',
+  WbtcPorAggregator = 'wbtcPorAggregator'
 }
 
 type ContractDeployment = {
@@ -46,9 +49,10 @@ type ContractDeployment = {
 
 type NetworkConfig = {
   [ContractId.PriceConsumer]?: ContractDeployment
-  [ContractId.PriceConsumerV3]: ContractDeployment
-  [ContractId.RandomNumberConsumer]: ContractDeployment
-  [ContractId.ApiConsumer]: ContractDeployment
+  [ContractId.PriceConsumerV3]?: ContractDeployment
+  [ContractId.RandomNumberConsumer]?: ContractDeployment
+  [ContractId.ApiConsumer]?: ContractDeployment,
+  [ContractId.WbtcPorAggregator]?: ContractDeployment
 }
 
 export const contractConfig: Record<number, NetworkConfig> = {
@@ -69,6 +73,9 @@ export const contractConfig: Record<number, NetworkConfig> = {
     [ContractId.RandomNumberConsumer]: KovanRandomNumberConsumer,
     [ContractId.ApiConsumer]: KovanAPIConsumer,
   },
+  [ChainId.Mainnet]: {
+    [ContractId.WbtcPorAggregator]: WbtcPorAggregator
+  }
 }
 
 export const LinkTokenAddress = '0xa36085F69e2889c224210F603D836748e7dC0088'

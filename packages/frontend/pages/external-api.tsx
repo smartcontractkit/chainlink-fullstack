@@ -14,6 +14,7 @@ import { BigNumber, utils } from 'ethers'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { ContractId } from '../conf/config'
+import { APIConsumer } from '../../types/typechain'
 
 /**
  * Helpers
@@ -36,7 +37,7 @@ const getLoadingText = (status: TransactionState) =>
 function ExternalAPI(): JSX.Element {
   const [volumeData, setVolumeData] = useState<BigNumber>()
 
-  const apiConsumer = useContract(ContractId.ApiConsumer)
+  const apiConsumer = useContract<APIConsumer>(ContractId.ApiConsumer)
 
   const { send, state } = useContractFunction(
     apiConsumer,
@@ -63,8 +64,7 @@ function ExternalAPI(): JSX.Element {
   }, [apiConsumer, readVolumeData])
 
   const isLoading =
-    state.status === 'Mining' ||
-    (state.status === 'Success' && !volumeData)
+    state.status === 'Mining' || (state.status === 'Success' && !volumeData)
 
   const hasError = state.status === 'Exception'
 

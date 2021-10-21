@@ -1,9 +1,11 @@
+import { Currency, FiatCurrency } from '@usedapp/core'
 import { UnsupportedChainIdError } from '@web3-react/core'
 import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
 } from '@web3-react/injected-connector'
 import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector'
+import { BigNumber } from 'ethers'
 
 // From https://github.com/NoahZinsmeister/web3-react/blob/v6/example/pages/index.tsx
 // Parses the possible errors provided by web3-react
@@ -22,3 +24,18 @@ export function getErrorMessage(error: Error): string {
     return 'An unknown error occurred. Check the console for more details.'
   }
 }
+
+const btcFormatter = new Currency('Bitcoin', 'BTC', 8, {
+  fixedPrecisionDigits: 2,
+  useFixedPrecision: true,
+})
+
+export const formatBtc = (value: BigNumber): string =>
+  btcFormatter.format(value.toString())
+
+const usdFormatter = new FiatCurrency('United States Dollar', 'USD', 8, {
+  fixedPrecisionDigits: 2,
+})
+
+export const formatUsd = (value: BigNumber): string =>
+  usdFormatter.format(value.toString())
