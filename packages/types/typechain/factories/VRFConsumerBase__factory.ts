@@ -13,22 +13,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "_vrfCoordinator",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_link",
-        type: "address",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [
-      {
         internalType: "bytes32",
         name: "requestId",
         type: "bytes32",
