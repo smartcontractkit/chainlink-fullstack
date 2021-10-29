@@ -7,6 +7,9 @@ import KovanPriceConsumerV3 from '../artifacts/contracts/kovan/PriceConsumerV3.j
 import LocalhostRandomNumberConsumer from '../artifacts/contracts/localhost/RandomNumberConsumer.json'
 import RinkebyRandomNumberConsumer from '../artifacts/contracts/rinkeby/RandomNumberConsumer.json'
 import KovanRandomNumberConsumer from '../artifacts/contracts/kovan/RandomNumberConsumer.json'
+import LocalhostRandomSVG from '../artifacts/contracts/localhost/RandomSVG.json'
+import RinkebyRandomSVG from '../artifacts/contracts/rinkeby/RandomSVG.json'
+import KovanRandomSVG from '../artifacts/contracts/kovan/RandomSVG.json'
 import MulticallContract from '../artifacts/contracts/localhost/Multicall.json'
 import LocalhostAPIConsumer from '../artifacts/contracts/localhost/APIConsumer.json'
 import RinkebyAPIConsumer from '../artifacts/contracts/rinkeby/APIConsumer.json'
@@ -38,8 +41,9 @@ export enum ContractId {
   PriceConsumer = 'priceConsumer',
   PriceConsumerV3 = 'priceConsumerV3',
   RandomNumberConsumer = 'randomNumberConsumer',
+  RandomSvg = 'randomSvg',
   ApiConsumer = 'apiConsumer',
-  WbtcPorAggregator = 'wbtcPorAggregator'
+  WbtcPorAggregator = 'wbtcPorAggregator',
 }
 
 type ContractDeployment = {
@@ -51,7 +55,8 @@ type NetworkConfig = {
   [ContractId.PriceConsumer]?: ContractDeployment
   [ContractId.PriceConsumerV3]?: ContractDeployment
   [ContractId.RandomNumberConsumer]?: ContractDeployment
-  [ContractId.ApiConsumer]?: ContractDeployment,
+  [ContractId.RandomSvg]?: ContractDeployment
+  [ContractId.ApiConsumer]?: ContractDeployment
   [ContractId.WbtcPorAggregator]?: ContractDeployment
 }
 
@@ -60,22 +65,25 @@ export const contractConfig: Record<number, NetworkConfig> = {
     [ContractId.PriceConsumer]: LocalhostPriceConsumer,
     [ContractId.PriceConsumerV3]: LocalhostPriceConsumerV3,
     [ContractId.RandomNumberConsumer]: LocalhostRandomNumberConsumer,
+    [ContractId.RandomSvg]: LocalhostRandomSVG,
     [ContractId.ApiConsumer]: LocalhostAPIConsumer,
   },
   [ChainId.Rinkeby]: {
     [ContractId.PriceConsumerV3]: RinkebyPriceConsumerV3,
     [ContractId.RandomNumberConsumer]: RinkebyRandomNumberConsumer,
+    [ContractId.RandomSvg]: RinkebyRandomSVG,
     [ContractId.ApiConsumer]: RinkebyAPIConsumer,
   },
   [ChainId.Kovan]: {
     [ContractId.PriceConsumer]: KovanPriceConsumer,
     [ContractId.PriceConsumerV3]: KovanPriceConsumerV3,
     [ContractId.RandomNumberConsumer]: KovanRandomNumberConsumer,
+    [ContractId.RandomSvg]: KovanRandomSVG,
     [ContractId.ApiConsumer]: KovanAPIConsumer,
   },
   [ChainId.Mainnet]: {
-    [ContractId.WbtcPorAggregator]: WbtcPorAggregator
-  }
+    [ContractId.WbtcPorAggregator]: WbtcPorAggregator,
+  },
 }
 
 export const LinkTokenAddress = '0xa36085F69e2889c224210F603D836748e7dC0088'

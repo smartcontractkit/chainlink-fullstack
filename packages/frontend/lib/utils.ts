@@ -1,4 +1,4 @@
-import { Currency, FiatCurrency } from '@usedapp/core'
+import { Currency, FiatCurrency, TransactionState } from '@usedapp/core'
 import { UnsupportedChainIdError } from '@web3-react/core'
 import {
   NoEthereumProviderError,
@@ -39,3 +39,7 @@ const usdFormatter = new FiatCurrency('United States Dollar', 'USD', 8, {
 
 export const formatUsd = (value: BigNumber): string =>
   usdFormatter.format(value.toString())
+
+export const getRequestStatus = (status: TransactionState): string =>
+  (status === 'Mining' && 'Mining Request') ||
+  (status === 'Success' && 'Fulfilling Request')

@@ -27,6 +27,13 @@ const func: DeployFunction = async function ({
     await run("fund-link", { contract: randomNumberConsumer.address, linkaddress: linkTokenAddress });
   }
 
+  // Try Auto-fund RandomSVG contract
+  const RandomSVG = await deployments.get('RandomSVG');
+  const randomSVG = await ethers.getContractAt('RandomSVG', RandomSVG.address);
+  if (await autoFundCheck(randomSVG.address, chainId, linkTokenAddress)) {
+    await run("fund-link", { contract: randomSVG.address, linkaddress: linkTokenAddress });
+  }
+
   // Try Auto-fund APIConsumer contract with LINK
   const APIConsumer = await deployments.get('APIConsumer');
   const apiConsumer = await ethers.getContractAt('APIConsumer', APIConsumer.address);
