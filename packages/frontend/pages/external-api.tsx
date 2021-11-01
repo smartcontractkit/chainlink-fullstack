@@ -35,11 +35,12 @@ const getLoadingText = (status: TransactionState) =>
  * Component
  */
 function ExternalAPI(): JSX.Element {
-  const [volumeData, setVolumeData] = useState<BigNumber>()
+  const [requestId, setRequestId] = useState('')
+  const [volumeData, setVolumeData] = useState<BigNumber | undefined>()
 
   const apiConsumer = useContract<APIConsumer>(ContractId.ApiConsumer)
 
-  const { send, state } = useContractFunction(
+  const { send, state, events } = useContractFunction(
     apiConsumer,
     'requestVolumeData',
     { transactionName: 'External API Request' }
@@ -51,17 +52,29 @@ function ExternalAPI(): JSX.Element {
   }, [send])
 
   const readVolumeData = useCallback(async () => {
-    setVolumeData(await apiConsumer.volume())
+    const volume = await apiConsumer.volume()
+    setVolumeData(volume)
   }, [apiConsumer])
 
   useEffect(() => {
-    if (apiConsumer) {
-      apiConsumer.on('ChainlinkFulfilled', readVolumeData)
-      return () => {
-        apiConsumer.off('ChainlinkFulfilled', readVolumeData)
+    if (events) {
+      const event = events.find((e) => e.name === 'ChainlinkRequested')
+      if (event) {
+        setRequestId(event.args.id)
       }
     }
-  }, [apiConsumer, readVolumeData])
+  }, [events])
+
+  useEffect(() => {
+    if (apiConsumer && requestId) {
+      apiConsumer.on('ChainlinkFulfilled', (id: string) => {
+        if (requestId === id) {
+          readVolumeData()
+          apiConsumer.removeAllListeners()
+        }
+      })
+    }
+  }, [apiConsumer, requestId, readVolumeData])
 
   const isLoading =
     state.status === 'Mining' || (state.status === 'Success' && !volumeData)
