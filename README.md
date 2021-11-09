@@ -29,6 +29,9 @@ Clone the repo and install all dependencies
 git clone https://github.com/hackbg/chainlink-fullstack
 cd chainlink-fullstack
 
+git submodule init
+git submodule update
+
 yarn install
 ```
 
