@@ -1,5 +1,6 @@
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-waffle';
+import "@nomiclabs/hardhat-etherscan";
 import '@appliedblockchain/chainlink-plugins-fund-link';
 import '@typechain/hardhat';
 import 'hardhat-deploy';
@@ -24,6 +25,7 @@ const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || 'https://rinkeby.infura.i
 const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || 'https://kovan.infura.io/v3/your-api-key'
 const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL || 'https://mumbai.infura.io/v3/your-api-key'
 const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || 'Your etherscan API key'
 // const PRIVATE_KEY = process.env.PRIVATE_KEY || 'your private key'
 
 /**
@@ -65,6 +67,11 @@ const config: HardhatUserConfig = {
       },
       saveDeployments: true,
     },
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: ETHERSCAN_API_KEY,
   },
   namedAccounts: {
     deployer: {
