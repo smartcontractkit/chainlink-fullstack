@@ -1,7 +1,8 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { DeployFunction } from 'hardhat-deploy/types';
 import { ethers } from 'hardhat';
-import { networkConfig, autoFundCheck } from '../helper-hardhat-config';
+import { networkConfig } from '../helper-hardhat-config';
+import { autoFundCheck } from '../utils';
 
 const func: DeployFunction = async function ({
   deployments,

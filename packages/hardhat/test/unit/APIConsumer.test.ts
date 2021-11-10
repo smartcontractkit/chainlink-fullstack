@@ -2,7 +2,8 @@ import { ethers, deployments, network, getChainId, run } from 'hardhat';
 import { BigNumber, Contract } from 'ethers';
 import { expect } from 'chai';
 import skip from 'mocha-skip-if';
-import { developmentChains, autoFundCheck } from '../../helper-hardhat-config';
+import { developmentChains } from '../../helper-hardhat-config';
+import { autoFundCheck } from '../../utils';
 
 skip.if(!developmentChains.includes(network.name)).
   describe('APIConsumer Unit Tests', () => {
