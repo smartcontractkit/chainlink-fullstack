@@ -1,5 +1,4 @@
 import { ethers, deployments, network } from 'hardhat';
-import { BigNumber } from 'ethers';
 import { expect } from 'chai';
 import skip from 'mocha-skip-if';
 import { developmentChains } from '../../helper-hardhat-config';
