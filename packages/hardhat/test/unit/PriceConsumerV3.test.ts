@@ -1,12 +1,11 @@
 import { ethers, deployments, network } from 'hardhat';
-import { BigNumber } from 'ethers';
 import { expect } from 'chai';
 import skip from 'mocha-skip-if';
 import { developmentChains } from '../../helper-hardhat-config';
 import { PriceConsumerV3 } from 'types/typechain'
 
 skip.if(!developmentChains.includes(network.name)).
-  describe('PriceConsumer Unit Tests', () => {
+  describe('PriceConsumerV3 Unit Tests', () => {
     let priceConsumerV3: PriceConsumerV3;
 
     beforeEach(async () => {
