@@ -21,7 +21,7 @@ yarn install
 yarn build
 yarn export -o $build_dir
 
-rm -rfv *
+rm -rf ./*
 mv $build_dir/* .
 
 git add .
