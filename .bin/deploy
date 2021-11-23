@@ -14,8 +14,7 @@ git config user.name "$GITHUB_ACTOR"
 git config user.email "${GITHUB_ACTOR}@bots.github.com"
 
 git fetch
-git checkout "$target_branch"
-git rebase "${remote_name}/${main_branch}"
+git checkout "$main_branch"
 
 yarn install
 yarn build
@@ -24,8 +23,9 @@ yarn export -o $build_dir
 mv .git $build_dir
 rm -rf ./*
 mv $build_dir/* .
+
 touch .nojekyll
-echo "chainlink-fullstack.demo.hack.bg" > CNAME
+echo -n "chainlink-fullstack.demo.hack.bg" > CNAME
 
 git add .
 git commit -m "updated GitHub Pages"
