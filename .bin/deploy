@@ -2,9 +2,14 @@
 set -eu
 
 repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-source_branch="feature/gh-pages"
+source_branch="main"
 target_branch="gh-pages"
 build_dir="/tmp/dist"
+short_hash="$(git rev-parse --short=8 HEAD)"
+short_subject="$(git log -1 --pretty=format:'%s')"
+current_action_url="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+br="
+"
 
 cd "$GITHUB_WORKSPACE"
 
@@ -13,9 +18,10 @@ git config user.email "${GITHUB_ACTOR}@bots.github.com"
 git fetch
 git checkout "$source_branch"
 
+
 yarn install
 yarn build
-yarn export -o $build_dir
+yarn export -o "$build_dir"
 
 git checkout "$target_branch"
 
@@ -25,7 +31,7 @@ touch .nojekyll
 echo -n "chainlink-fullstack.demo.hack.bg" > CNAME
 
 git add .
-git commit -m "update GitHub Pages"
+git commit -m "⚙️ rebuild ${short_hash} (${short_subject})${br}${br}${current_action_url}"
 
 if [ $? -ne 0 ]; then
     echo "nothing to commit"
