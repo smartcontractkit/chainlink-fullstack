@@ -1,9 +1,0 @@
-{
-  "name": "types",
-  "author": "@hackbg",
-  "license": "MIT",
-  "version": "0.0.1",
-  "dependencies": {
-    "ethers": "5.4.1"
-  }
-}
