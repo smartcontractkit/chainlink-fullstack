@@ -2,9 +2,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
-      - feature/gh-pages
-
+      - main
 jobs:
   deploy:
     name: Deploy to GitHub Pages
