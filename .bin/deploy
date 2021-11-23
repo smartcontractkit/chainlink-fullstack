@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -eu
 shopt -s dotglob
+shopt -s extglob
 
 repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 remote_name="origin"
@@ -21,7 +22,7 @@ yarn install
 yarn build
 yarn export -o $build_dir
 
-rm -rf ./*
+rm -rf !(".git")
 mv $build_dir/* .
 
 git add .
