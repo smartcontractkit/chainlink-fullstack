@@ -2,7 +2,7 @@
 set -eu
 
 repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-source_branch="main"
+source_branch="feature/gh-pages"
 target_branch="gh-pages"
 build_dir="/tmp/dist"
 short_hash="$(git rev-parse --short=8 HEAD)"
