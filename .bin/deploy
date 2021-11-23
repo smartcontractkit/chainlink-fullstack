@@ -8,6 +8,7 @@ build_dir="/tmp/dist"
 
 cd "$GITHUB_WORKSPACE"
 
+echo "NEXT_PUBLIC_INFURA_KEY:"
 echo "$NEXT_PUBLIC_INFURA_KEY"
 exit 0
 
