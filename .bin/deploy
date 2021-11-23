@@ -18,7 +18,6 @@ git config user.email "${GITHUB_ACTOR}@bots.github.com"
 git fetch
 git checkout "$source_branch"
 
-
 yarn install
 yarn build
 yarn export -o "$build_dir"
@@ -29,9 +28,10 @@ mv .git "$build_dir"
 cd "$build_dir"
 touch .nojekyll
 echo -n "chainlink-fullstack.demo.hack.bg" > CNAME
+echo "[![Deploy to GitHub Pages](https://github.com/hackbg/chainlink-fullstack/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/hackbg/chainlink-fullstack/actions/workflows/gh-pages.yml)" > README.md
 
 git add .
-git commit -m "⚙️ rebuild ${short_hash} (${short_subject})${br}${br}${current_action_url}"
+git commit -m "⚙️ rebuild ${short_hash} [${short_subject}]${br}${br}${current_action_url}"
 
 if [ $? -ne 0 ]; then
     echo "nothing to commit"
