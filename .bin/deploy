@@ -24,6 +24,8 @@ yarn export -o $build_dir
 mv .git $build_dir
 rm -rf ./*
 mv $build_dir/* .
+touch .nojekyll
+echo "chainlink-fullstack.demo.hack.bg" > CNAME
 
 git add .
 git commit -m "updated GitHub Pages"
