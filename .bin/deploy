@@ -18,6 +18,7 @@ git checkout "$target_branch"
 git rebase "${remote_name}/${main_branch}"
 
 yarn install
+yarn build
 yarn export -o $build_dir
 
 rm -rfv *
