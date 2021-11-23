@@ -4,7 +4,7 @@ shopt -s dotglob
 
 repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 remote_name="origin"
-main_branch="main"
+main_branch="feature/gh-pages"
 target_branch="gh-pages"
 build_dir="/tmp/dist"
 
