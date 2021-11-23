@@ -21,10 +21,10 @@ skip.if(!developmentChains.includes(network.name)).
     it('should return the expected value', async () => {
       const mockEthPrice = BigNumber.from(1000);
       const mockEthAddress = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
-      const mockBTCAddress = '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB';
+      const mockUSDAddress = '0x0000000000000000000000000000000000000348';
 
       await mockFeedRegistry.updateAnswer(mockEthPrice);
-      let result = await priceConsumer.getPrice(mockEthAddress, mockBTCAddress);
+      let result = await priceConsumer.getPrice(mockEthAddress, mockUSDAddress);
       expect(result).to.be.equal(mockEthPrice);
     });
   });
