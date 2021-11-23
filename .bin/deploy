@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -eu
-shopt -s dotglob extglob
 
 repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-remote_name="origin"
-main_branch="feature/gh-pages"
+source_branch="feature/gh-pages"
 target_branch="gh-pages"
 build_dir="/tmp/dist"
 
 cd "$GITHUB_WORKSPACE"
 
+echo "$NEXT_PUBLIC_INFURA_KEY"
+
 git config user.name "$GITHUB_ACTOR"
 git config user.email "${GITHUB_ACTOR}@bots.github.com"
 git fetch
-git checkout "$main_branch"
+git checkout "$source_branch"
 
 yarn install
 yarn build
@@ -34,5 +34,5 @@ if [ $? -ne 0 ]; then
     exit 0
 fi
 
-git remote set-url "$remote_name" "$repo_uri"
-git push --force-with-lease "$remote_name" "$target_branch"
+git remote set-url origin "$repo_uri"
+git push --force-with-lease origin "$target_branch"
