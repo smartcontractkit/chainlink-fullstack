@@ -14,7 +14,7 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14
-    - run: ./bin/deploy
+    - run: "${GITHUB_WORKSPACE}/.bin/deploy"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NEXT_PUBLIC_INFURA_KEY: ${{ secrets.NEXT_PUBLIC_INFURA_KEY }}
