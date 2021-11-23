@@ -10,6 +10,7 @@ cd "$GITHUB_WORKSPACE"
 
 echo "NEXT_PUBLIC_INFURA_KEY:"
 echo "$NEXT_PUBLIC_INFURA_KEY"
+
 exit 0
 
 git config user.name "$GITHUB_ACTOR"
