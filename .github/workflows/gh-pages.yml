@@ -17,6 +17,8 @@ jobs:
     - name: Install dependencies
       run: yarn install
     - name: Build
+      env:
+        NEXT_PUBLIC_INFURA_KEY: ${{ secrets.NEXT_PUBLIC_INFURA_KEY }}
       run: yarn build
     - name: Export
       run: yarn export
