@@ -14,16 +14,6 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14
-    - name: Install dependencies
-      run: yarn install
-    - name: Build
-      run: yarn build
-    - name: Export
-      run: yarn export
-    - name: Deploy
-      uses: s0/git-publish-subdir-action@develop
+    - run: ./bin/deploy
       env:
-        REPO: self
-        BRANCH: gh-pages
-        FOLDER: packages/frontend/out
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
