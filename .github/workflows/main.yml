@@ -1,0 +1,31 @@
+name: CI
+on: push
+jobs:
+  test:
+    name: Test contracts
+    runs-on: ubuntu-latest
+    env:
+      REPORT_GAS: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          
+      - name: Init submodules
+        run: git submodule init
+
+      - name: Update submodules
+        run: git submodule update
+      
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      
+      - name: Compile contracts
+        run: yarn compile
+
+      - name: Run tests
+        run: yarn test:hardhat
+
+      # - name: Coverage report
+      #   run: yarn coverage
