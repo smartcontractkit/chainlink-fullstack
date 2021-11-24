@@ -5,7 +5,7 @@ import { developmentChains } from '../../helper-hardhat-config';
 import { APIConsumer } from 'types/typechain';
 
 skip.if(developmentChains.includes(network.name)).
-  describe('APIConsumer Integration Tests', async function () {
+  describe('APIConsumer Integration Tests', () => {
 
     let apiConsumer: APIConsumer;
 
