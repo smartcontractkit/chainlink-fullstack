@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "yarn workspace chainlink-fullstack-frontend dev",
     "build": "yarn workspace chainlink-fullstack-frontend build",
+    "export": "yarn workspace chainlink-fullstack-frontend export",
     "start": "yarn workspace chainlink-fullstack-frontend start",
     "chain": "yarn workspace chainlink-fullstack-hardhat chain",
     "deploy": "yarn workspace chainlink-fullstack-hardhat deploy",
