@@ -27,5 +27,10 @@ jobs:
       - name: Run tests
         run: yarn test:hardhat
 
-      # - name: Coverage report
-      #   run: yarn coverage
+      - name: Coverage
+        run: yarn coverage:contracts
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.COVERALLS_TOKEN }}
