@@ -1,17 +1,26 @@
-import { ethers, deployments, network } from 'hardhat';
+import { ethers, deployments, network, getChainId, run } from 'hardhat';
 import { expect } from 'chai';
 import skip from 'mocha-skip-if';
-import { developmentChains } from '../../helper-hardhat-config';
-import { RandomNumberConsumer } from 'types/typechain';
+import { developmentChains, networkConfig } from '../../helper-hardhat-config';
+import { autoFundCheck } from '../../utils';
+import { RandomNumberConsumer, LinkToken } from 'types/typechain';
 
 skip.if(developmentChains.includes(network.name)).
   describe('RandomNumberConsumer Integration Tests', async function () {
 
-    let randomNumberConsumer: RandomNumberConsumer;
+    let randomNumberConsumer: RandomNumberConsumer, linkToken: LinkToken;
 
     beforeEach(async () => {
       const RandomNumberConsumer = await deployments.get('RandomNumberConsumer');
       randomNumberConsumer = await ethers.getContractAt('RandomNumberConsumer', RandomNumberConsumer.address) as unknown as RandomNumberConsumer;
+
+      const chainId = await getChainId();
+      const linkTokenAddress = networkConfig[chainId].linkToken as string;
+      linkToken = await ethers.getContractAt('LinkToken', linkTokenAddress) as unknown as LinkToken;
+
+      if (await autoFundCheck(randomNumberConsumer.address, chainId, linkTokenAddress)) {
+        await run("fund-link", { contract: randomNumberConsumer.address, linkaddress: linkTokenAddress });
+      }
     });
 
     it('should successfully make a VRF request and get a result', async () => {
