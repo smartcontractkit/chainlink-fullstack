@@ -28,7 +28,7 @@ jobs:
         run: yarn test:hardhat
 
       - name: Coverage
-        run: yarn coverage:contracts
+        run: yarn coverage:hardhat
 
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.2
