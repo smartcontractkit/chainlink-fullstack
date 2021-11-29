@@ -32,5 +32,9 @@ jobs:
 
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.2
+        env:
+          NODE_COVERALLS_DEBUG: 1
         with:
-          github-token: ${{ secrets.COVERALLS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: packages/hardhat/coverage/lcov.info
+          base-path: packages/hardhat
