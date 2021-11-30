@@ -22,7 +22,7 @@ yarn install
 yarn build
 yarn export -o "$build_dir"
 
-git checkout "$target_branch"
+git checkout -f "$target_branch"
 
 mv .git "$build_dir"
 cd "$build_dir"
