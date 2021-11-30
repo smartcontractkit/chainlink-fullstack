@@ -1,5 +1,6 @@
 name: CI
-on: push
+on: ["push", "pull_request"]
+
 jobs:
   test:
     name: Test contracts
@@ -27,5 +28,12 @@ jobs:
       - name: Run tests
         run: yarn test:hardhat
 
-      # - name: Coverage report
-      #   run: yarn coverage
+      - name: Coverage
+        run: yarn coverage:hardhat
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: packages/hardhat/coverage/lcov.info
+          base-path: packages/hardhat

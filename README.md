@@ -1,5 +1,7 @@
 # Chainlink Fullstack Demo App
 
+[![Coverage Status](https://coveralls.io/repos/github/hackbg/chainlink-fullstack/badge.svg?branch=feat/coverage)](https://coveralls.io/github/hackbg/chainlink-fullstack?branch=feat/coverage)
+
 End-to-end implementation of the following Chainlink features using Hardhat development environment and Next.js frontend framework:
 
 * [Request & Receive data](https://docs.chain.link/docs/request-and-receive-data/)
