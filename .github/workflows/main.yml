@@ -1,5 +1,6 @@
 name: CI
-on: push
+on: ["push", "pull_request"]
+
 jobs:
   test:
     name: Test contracts
@@ -32,8 +33,6 @@ jobs:
 
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.2
-        env:
-          NODE_COVERALLS_DEBUG: 1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: packages/hardhat/coverage/lcov.info
