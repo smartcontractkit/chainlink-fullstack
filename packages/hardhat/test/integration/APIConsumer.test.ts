@@ -18,8 +18,8 @@ skip.if(developmentChains.includes(network.name)).
       const linkTokenAddress = networkConfig[chainId].linkToken as string;
       linkToken = await ethers.getContractAt('LinkToken', linkTokenAddress) as unknown as LinkToken;
 
-      if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress)) {
-        await run("fund-link", { contract: apiConsumer.address, linkaddress: linkTokenAddress });
+      if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress, networkConfig[chainId].fee)) {
+        await run("fund-link", { contract: apiConsumer.address, fundamount: networkConfig[chainId].fee, linkaddress: linkTokenAddress});
       }
     });
 

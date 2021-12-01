@@ -2,7 +2,7 @@ import fs from 'fs';
 import { ethers, deployments, network, getChainId, run } from 'hardhat';
 import { expect } from 'chai';
 import skip from 'mocha-skip-if';
-import { developmentChains } from '../../helper-hardhat-config';
+import { developmentChains, networkConfig } from '../../helper-hardhat-config';
 import { autoFundCheck } from '../../utils';
 import { RandomSVG, VRFCoordinatorMock, LinkToken } from 'types/typechain';
 
@@ -24,8 +24,8 @@ skip.if(!developmentChains.includes(network.name)).
       const VRFCoordinatorMock = await deployments.get('VRFCoordinatorMock');
       vrfCoordinator = await ethers.getContractAt('VRFCoordinatorMock', VRFCoordinatorMock.address) as unknown as VRFCoordinatorMock;
 
-      if (await autoFundCheck(rsNFT.address, chainId, linkTokenAddress)) {
-        await run("fund-link", { contract: rsNFT.address, linkaddress: linkTokenAddress });
+      if (await autoFundCheck(rsNFT.address, chainId, linkTokenAddress, networkConfig[chainId].fee)) {
+        await run("fund-link", { contract: rsNFT.address, fundamount: networkConfig[chainId].fee, linkaddress: linkTokenAddress });
       }
     });
 

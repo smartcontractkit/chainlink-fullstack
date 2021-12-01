@@ -2,7 +2,7 @@ import { ethers, deployments, network, getChainId, run } from 'hardhat';
 import { BigNumber } from 'ethers';
 import { expect } from 'chai';
 import skip from 'mocha-skip-if';
-import { developmentChains } from '../../helper-hardhat-config';
+import { developmentChains, networkConfig } from '../../helper-hardhat-config';
 import { autoFundCheck } from '../../utils';
 import { RandomNumberConsumer, LinkToken } from 'types/typechain';
 
@@ -21,8 +21,8 @@ skip.if(!developmentChains.includes(network.name)).
       const RandomNumberConsumer = await deployments.get('RandomNumberConsumer');
       randomNumberConsumer = await ethers.getContractAt('RandomNumberConsumer', RandomNumberConsumer.address) as unknown as RandomNumberConsumer;
 
-      if (await autoFundCheck(randomNumberConsumer.address, chainId, linkTokenAddress)) {
-        await run("fund-link", { contract: randomNumberConsumer.address, linkaddress: linkTokenAddress });
+      if (await autoFundCheck(randomNumberConsumer.address, chainId, linkTokenAddress, networkConfig[chainId].fee)) {
+        await run("fund-link", { contract: randomNumberConsumer.address, fundamount: networkConfig[chainId].fee, linkaddress: linkTokenAddress });
       }
     });
 

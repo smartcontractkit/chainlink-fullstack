@@ -2,7 +2,7 @@ import { ethers } from 'hardhat';
 import { BigNumber } from 'ethers';
 import { networkConfig } from './helper-hardhat-config';
 
-export const autoFundCheck = async (contractAddr: string, chainId: string, linkTokenAddress: string ) => {
+export const autoFundCheck = async (contractAddr: string, chainId: string, linkTokenAddress: string, fundAmt?: string ) => {
   console.log('Checking to see if contract can be auto-funded with LINK:');
   const accounts = await ethers.getSigners();
   const signer = accounts[0];
@@ -10,7 +10,7 @@ export const autoFundCheck = async (contractAddr: string, chainId: string, linkT
   const linkTokenContract = new ethers.Contract(linkTokenAddress, LinkToken.interface, signer);
   const accountBalance: BigNumber = await linkTokenContract.balanceOf(signer.address);
   const contractBalance: BigNumber = await linkTokenContract.balanceOf(contractAddr);
-  const fundAmount = BigNumber.from(networkConfig[chainId]['fundAmount']);
+  const fundAmount = fundAmt === undefined ? BigNumber.from(networkConfig[chainId]['fundAmount']) : BigNumber.from(fundAmt);
   if (accountBalance.gt(fundAmount) && fundAmount.gt(0) && contractBalance.lt(fundAmount)) {
     //user has enough LINK to auto-fund
     //and the contract isn't already funded
