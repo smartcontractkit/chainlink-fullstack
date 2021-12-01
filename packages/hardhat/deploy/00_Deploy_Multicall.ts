@@ -16,6 +16,6 @@ const func: DeployFunction = async function ({
   }
 }
 
-func.tags = ['all'];
+func.tags = ['all', 'main'];
 
 export default func;

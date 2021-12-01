@@ -32,6 +32,6 @@ const func: DeployFunction = async function ({
   });
 }
 
-func.tags = ['all', 'vrf'];
+func.tags = ['all', 'vrf', 'main'];
 
 export default func;

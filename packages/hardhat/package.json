@@ -6,7 +6,7 @@
   "scripts": {
     "chain": "npx hardhat node",
     "compile": "npx hardhat compile",
-    "deploy": "npx hardhat deploy --network localhost --write true",
+    "deploy": "npx hardhat deploy --write true",
     "test": "npx hardhat test",
     "coverage": "npx hardhat coverage"
   },
