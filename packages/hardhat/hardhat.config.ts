@@ -7,6 +7,7 @@ import 'hardhat-deploy';
 import 'dotenv/config';
 import { task } from 'hardhat/config';
 import './tasks/withdraw-link';
+import './tasks/accounts';
 import { HardhatUserConfig } from 'hardhat/types';
 import 'solidity-coverage';
 
