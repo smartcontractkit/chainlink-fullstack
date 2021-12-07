@@ -1,6 +1,6 @@
 # Chainlink Fullstack Demo App
 
-[![Coverage Status](https://coveralls.io/repos/github/hackbg/chainlink-fullstack/badge.svg?branch=feat/coverage)](https://coveralls.io/github/hackbg/chainlink-fullstack?branch=feat/coverage)
+[![codecov](https://codecov.io/gh/hackbg/chainlink-fullstack/branch/main/graph/badge.svg?token=60ZDWLHB53)](https://codecov.io/gh/hackbg/chainlink-fullstack)
 
 End-to-end implementation of the following Chainlink features using Hardhat development environment and Next.js frontend framework:
 
