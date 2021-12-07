@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.6.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -59,7 +60,7 @@
     "jest-watch-typeahead": "^0.6.1",
     "lint-staged": "^10.0.10",
     "prettier": "^2.0.2",
-    "typescript": "^4.3.2",
-    "types": "0.0.1"
+    "types": "0.0.1",
+    "typescript": "^4.3.2"
   }
 }
