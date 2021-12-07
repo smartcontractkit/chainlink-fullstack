@@ -39,6 +39,6 @@ const func: DeployFunction = async function ({
   }
 }
 
-func.tags = ['all', 'mocks'];
+func.tags = ['all', 'mocks', 'main'];
 
 export default func;

@@ -32,6 +32,6 @@ const func: DeployFunction = async function ({
   });
 }
 
-func.tags = ['all', 'vrf', 'nft'];
+func.tags = ['all', 'vrf', 'nft', 'main'];
 
 export default func;
