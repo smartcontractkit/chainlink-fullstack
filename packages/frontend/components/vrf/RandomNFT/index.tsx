@@ -131,7 +131,7 @@ export function RandomNFT(): JSX.Element {
           loadingText={getRequestStatus(createState.status)}
           colorScheme="teal"
         >
-          Request NFT
+          {metadata ? 'Request New NFT' : 'Request NFT'}
         </Button>
       )}
       {pending && (
