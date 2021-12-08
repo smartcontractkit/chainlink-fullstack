@@ -46,10 +46,10 @@ function ExternalAPI(): JSX.Element {
     { transactionName: 'External API Request' }
   )
 
-  const requestVolumeData = useCallback(async () => {
+  const requestVolumeData = async () => {
     await send()
     setVolumeData(null)
-  }, [send])
+  }
 
   const readVolumeData = useCallback(async () => {
     const volume = await apiConsumer.volume()

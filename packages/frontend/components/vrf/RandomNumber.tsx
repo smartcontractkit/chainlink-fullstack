@@ -28,10 +28,10 @@ export function RandomNumber(): JSX.Element {
     { transactionName: 'Randomness Request' }
   )
 
-  const requestRandomNumber = useCallback(async () => {
+  const requestRandomNumber = async () => {
     await send()
     setRandomNumber('')
-  }, [send])
+  }
 
   const readRandomNumber = useCallback(async () => {
     const result = await randomNumberConsumer.randomResult()

@@ -59,11 +59,11 @@ export function RandomNFT(): JSX.Element {
     transactionName: 'NFT Mint Finish',
   })
 
-  const createRequest = useCallback(async () => {
+  const createRequest = async () => {
     await create()
     setTokenId(undefined)
     setFulfilled(false)
-  }, [create])
+  }
 
   const getMetadata = useCallback(async () => {
     const result = await randomSvg.tokenURI(tokenId)
