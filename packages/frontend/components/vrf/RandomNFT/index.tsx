@@ -11,10 +11,17 @@ import {
 } from '@chakra-ui/react'
 import { useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
-import { getRequestStatus } from '../../lib/utils'
-import { useContract } from '../../hooks/useContract'
-import { ContractId } from '../../conf/config'
-import { RandomSVG } from '../../../types/typechain'
+import { getRequestStatus } from '../../../lib/utils'
+import { useContract } from '../../../hooks/useContract'
+import { ContractId } from '../../../conf/config'
+import { RandomSVG } from '../../../../types/typechain'
+import { ExternalLink } from './ExternalLink'
+
+/**
+ * Constants & Helpers
+ */
+const parseMetadata = (encoded: string): Metadata =>
+  JSON.parse(atob(encoded.split(',')[1]))
 
 /**
  * Types
@@ -24,12 +31,6 @@ type Metadata = {
   description: string
   image: string
 }
-
-/**
- * Helpers
- */
-const parseMetadata = (encoded: string): Metadata =>
-  JSON.parse(atob(encoded.split(',')[1]))
 
 /**
  * Component
@@ -154,6 +155,7 @@ export function RandomNFT(): JSX.Element {
             borderRadius="lg"
             mt="8"
           />
+          <ExternalLink tokenId={tokenId} />
         </Stack>
       )}
     </>
