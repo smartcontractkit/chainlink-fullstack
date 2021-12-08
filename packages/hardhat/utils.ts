@@ -18,7 +18,7 @@ export const autoFundCheck = async (contractAddr: string, chainId: string, linkT
   } else { //user doesn't have enough LINK, print a warning
     console.log("Account doesn't have enough LINK to fund contracts, or the contract you want to fund have enough LINK, or you're deploying to a network where auto funding is not done by default");
     console.log('Please obtain LINK via the faucet at https://' + networkConfig[chainId].name + '.chain.link/, then run the following command to fund contract with LINK:');
-    console.log('npx hardhat fund-link --contract ' + contractAddr + ' --network ' + networkConfig[chainId].name + chainId === '1337' ? ' --linkaddress ' + linkTokenAddress : '');
+    console.log('npx hardhat fund-link --contract ' + contractAddr + ' --network ' + networkConfig[chainId].name + (chainId === '1337' ? ' --linkaddress ' + linkTokenAddress : ''));
     return false;
   }
 }
