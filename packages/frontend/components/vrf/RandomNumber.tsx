@@ -16,13 +16,14 @@ import { ContractId } from '../../conf/config'
 import { RandomNumberConsumer } from '../../../types/typechain'
 
 export function RandomNumber(): JSX.Element {
+  const [requestId, setRequestId] = useState('')
   const [randomNumber, setRandomNumber] = useState('')
 
   const randomNumberConsumer = useContract<RandomNumberConsumer>(
     ContractId.RandomNumberConsumer
   )
 
-  const { send, state } = useContractFunction(
+  const { send, state, events } = useContractFunction(
     randomNumberConsumer,
     'getRandomNumber',
     { transactionName: 'Randomness Request' }
@@ -39,13 +40,24 @@ export function RandomNumber(): JSX.Element {
   }, [randomNumberConsumer])
 
   useEffect(() => {
-    if (randomNumberConsumer) {
-      randomNumberConsumer.on('FulfilledRandomness', readRandomNumber)
-      return () => {
-        randomNumberConsumer.off('FulfilledRandomness', readRandomNumber)
+    if (events) {
+      const event = events.find((e) => e.name === 'RequestedRandomness')
+      if (event) {
+        setRequestId(event.args.requestId)
       }
     }
-  }, [randomNumberConsumer, readRandomNumber])
+  }, [events])
+
+  useEffect(() => {
+    if (randomNumberConsumer && requestId) {
+      randomNumberConsumer.on('FulfilledRandomness', (id: string) => {
+        if (requestId === id) {
+          readRandomNumber()
+          randomNumberConsumer.removeAllListeners()
+        }
+      })
+    }
+  }, [randomNumberConsumer, requestId, readRandomNumber])
 
   const isLoading =
     state.status === 'Mining' || (state.status === 'Success' && !randomNumber)
