@@ -1,0 +1,439 @@
+{
+  "address": "0x062ff5F1748b374E2B20a45ec74c204dA012929e",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oracle",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_jobId",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_fee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_link",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ChainlinkCancelled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ChainlinkFulfilled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ChainlinkRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "data",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_requestId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_data",
+          "type": "uint256"
+        }
+      ],
+      "name": "fulfill",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "path",
+          "type": "string"
+        },
+        {
+          "internalType": "int256",
+          "name": "timesAmount",
+          "type": "int256"
+        }
+      ],
+      "name": "requestData",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "requestId",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "source",
+          "type": "string"
+        }
+      ],
+      "name": "stringToBytes32",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "result",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "text",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawLink",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x7beb6d03868de49be5de7616123916ed5b3faa8beb9e370cd9761dd820b533ee",
+  "receipt": {
+    "to": null,
+    "from": "0x047012d0BEed73E5efA757274d327915cD1522f8",
+    "contractAddress": "0x062ff5F1748b374E2B20a45ec74c204dA012929e",
+    "transactionIndex": 0,
+    "gasUsed": "1571543",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000000000000000000000400000000000000000000000100000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000020000000000000000000000000000100000000008000000000000000000000000000",
+    "blockHash": "0x9f49632ad6732adb00a2fae7363acc1511c366b8d2e334db29498fa93eac9d6d",
+    "transactionHash": "0x7beb6d03868de49be5de7616123916ed5b3faa8beb9e370cd9761dd820b533ee",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 28911173,
+        "transactionHash": "0x7beb6d03868de49be5de7616123916ed5b3faa8beb9e370cd9761dd820b533ee",
+        "address": "0x062ff5F1748b374E2B20a45ec74c204dA012929e",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000047012d0beed73e5efa757274d327915cd1522f8"
+        ],
+        "data": "0x",
+        "logIndex": 0,
+        "blockHash": "0x9f49632ad6732adb00a2fae7363acc1511c366b8d2e334db29498fa93eac9d6d"
+      }
+    ],
+    "blockNumber": 28911173,
+    "cumulativeGasUsed": "1571543",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8",
+    "d5270d1c311941d0b08bead21fea7747",
+    "100000000000000000",
+    "0xa36085F69e2889c224210F603D836748e7dC0088"
+  ],
+  "solcInputHash": "d0be40b1e71ab1bdc685b7608b10e22d",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_oracle\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_jobId\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_fee\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_link\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"ChainlinkCancelled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"ChainlinkFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"ChainlinkRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"data\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_requestId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_data\",\"type\":\"uint256\"}],\"name\":\"fulfill\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"path\",\"type\":\"string\"},{\"internalType\":\"int256\",\"name\":\"timesAmount\",\"type\":\"int256\"}],\"name\":\"requestData\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"requestId\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"name\":\"stringToBytes32\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"result\",\"type\":\"bytes32\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"text\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdrawLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"details\":\"Returns true if the caller is the current owner.\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}}},\"userdoc\":{\"methods\":{\"constructor\":\"Network: Kovan Oracle: 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8 Job ID: d5270d1c311941d0b08bead21fea7747 Fee: 0.1 LINK\",\"fulfill(bytes32,uint256)\":{\"notice\":\"Receive the response in the form of uint256\"},\"requestData(string,string,int256)\":{\"notice\":\"Create a Chainlink request to retrieve API response, find the target data, then multiply by timesAmount (to remove decimal places from data).\"},\"withdrawLink()\":{\"notice\":\"Withdraw LINK from this contract     \"}}}},\"settings\":{\"compilationTarget\":{\"contracts/APIRequestBuilder.sol\":\"APIRequestBuilder\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts/src/v0.6/Chainlink.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\nimport { CBORChainlink } from \\\"./vendor/CBORChainlink.sol\\\";\\nimport { BufferChainlink } from \\\"./vendor/BufferChainlink.sol\\\";\\n\\n/**\\n * @title Library for common Chainlink functions\\n * @dev Uses imported CBOR library for encoding to buffer\\n */\\nlibrary Chainlink {\\n  uint256 internal constant defaultBufferSize = 256; // solhint-disable-line const-name-snakecase\\n\\n  using CBORChainlink for BufferChainlink.buffer;\\n\\n  struct Request {\\n    bytes32 id;\\n    address callbackAddress;\\n    bytes4 callbackFunctionId;\\n    uint256 nonce;\\n    BufferChainlink.buffer buf;\\n  }\\n\\n  /**\\n   * @notice Initializes a Chainlink request\\n   * @dev Sets the ID, callback address, and callback function signature on the request\\n   * @param self The uninitialized request\\n   * @param _id The Job Specification ID\\n   * @param _callbackAddress The callback address\\n   * @param _callbackFunction The callback function signature\\n   * @return The initialized request\\n   */\\n  function initialize(\\n    Request memory self,\\n    bytes32 _id,\\n    address _callbackAddress,\\n    bytes4 _callbackFunction\\n  ) internal pure returns (Chainlink.Request memory) {\\n    BufferChainlink.init(self.buf, defaultBufferSize);\\n    self.id = _id;\\n    self.callbackAddress = _callbackAddress;\\n    self.callbackFunctionId = _callbackFunction;\\n    return self;\\n  }\\n\\n  /**\\n   * @notice Sets the data for the buffer without encoding CBOR on-chain\\n   * @dev CBOR can be closed with curly-brackets {} or they can be left off\\n   * @param self The initialized request\\n   * @param _data The CBOR data\\n   */\\n  function setBuffer(Request memory self, bytes memory _data)\\n    internal pure\\n  {\\n    BufferChainlink.init(self.buf, _data.length);\\n    BufferChainlink.append(self.buf, _data);\\n  }\\n\\n  /**\\n   * @notice Adds a string value to the request with a given key name\\n   * @param self The initialized request\\n   * @param _key The name of the key\\n   * @param _value The string value to add\\n   */\\n  function add(Request memory self, string memory _key, string memory _value)\\n    internal pure\\n  {\\n    self.buf.encodeString(_key);\\n    self.buf.encodeString(_value);\\n  }\\n\\n  /**\\n   * @notice Adds a bytes value to the request with a given key name\\n   * @param self The initialized request\\n   * @param _key The name of the key\\n   * @param _value The bytes value to add\\n   */\\n  function addBytes(Request memory self, string memory _key, bytes memory _value)\\n    internal pure\\n  {\\n    self.buf.encodeString(_key);\\n    self.buf.encodeBytes(_value);\\n  }\\n\\n  /**\\n   * @notice Adds a int256 value to the request with a given key name\\n   * @param self The initialized request\\n   * @param _key The name of the key\\n   * @param _value The int256 value to add\\n   */\\n  function addInt(Request memory self, string memory _key, int256 _value)\\n    internal pure\\n  {\\n    self.buf.encodeString(_key);\\n    self.buf.encodeInt(_value);\\n  }\\n\\n  /**\\n   * @notice Adds a uint256 value to the request with a given key name\\n   * @param self The initialized request\\n   * @param _key The name of the key\\n   * @param _value The uint256 value to add\\n   */\\n  function addUint(Request memory self, string memory _key, uint256 _value)\\n    internal pure\\n  {\\n    self.buf.encodeString(_key);\\n    self.buf.encodeUInt(_value);\\n  }\\n\\n  /**\\n   * @notice Adds an array of strings to the request with a given key name\\n   * @param self The initialized request\\n   * @param _key The name of the key\\n   * @param _values The array of string values to add\\n   */\\n  function addStringArray(Request memory self, string memory _key, string[] memory _values)\\n    internal pure\\n  {\\n    self.buf.encodeString(_key);\\n    self.buf.startArray();\\n    for (uint256 i = 0; i < _values.length; i++) {\\n      self.buf.encodeString(_values[i]);\\n    }\\n    self.buf.endSequence();\\n  }\\n}\\n\",\"keccak256\":\"0x7bef34fd97f611103c6113025e3d6af755f326069767e72266698f64258e62b6\"},\"@chainlink/contracts/src/v0.6/ChainlinkClient.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\nimport \\\"./Chainlink.sol\\\";\\nimport \\\"./interfaces/ENSInterface.sol\\\";\\nimport \\\"./interfaces/LinkTokenInterface.sol\\\";\\nimport \\\"./interfaces/ChainlinkRequestInterface.sol\\\";\\nimport \\\"./interfaces/PointerInterface.sol\\\";\\nimport { ENSResolver as ENSResolver_Chainlink } from \\\"./vendor/ENSResolver.sol\\\";\\n\\n/**\\n * @title The ChainlinkClient contract\\n * @notice Contract writers can inherit this contract in order to create requests for the\\n * Chainlink network\\n */\\ncontract ChainlinkClient {\\n  using Chainlink for Chainlink.Request;\\n\\n  uint256 constant internal LINK = 10**18;\\n  uint256 constant private AMOUNT_OVERRIDE = 0;\\n  address constant private SENDER_OVERRIDE = address(0);\\n  uint256 constant private ARGS_VERSION = 1;\\n  bytes32 constant private ENS_TOKEN_SUBNAME = keccak256(\\\"link\\\");\\n  bytes32 constant private ENS_ORACLE_SUBNAME = keccak256(\\\"oracle\\\");\\n  address constant private LINK_TOKEN_POINTER = 0xC89bD4E1632D3A43CB03AAAd5262cbe4038Bc571;\\n\\n  ENSInterface private ens;\\n  bytes32 private ensNode;\\n  LinkTokenInterface private link;\\n  ChainlinkRequestInterface private oracle;\\n  uint256 private requestCount = 1;\\n  mapping(bytes32 => address) private pendingRequests;\\n\\n  event ChainlinkRequested(bytes32 indexed id);\\n  event ChainlinkFulfilled(bytes32 indexed id);\\n  event ChainlinkCancelled(bytes32 indexed id);\\n\\n  /**\\n   * @notice Creates a request that can hold additional parameters\\n   * @param _specId The Job Specification ID that the request will be created for\\n   * @param _callbackAddress The callback address that the response will be sent to\\n   * @param _callbackFunctionSignature The callback function signature to use for the callback address\\n   * @return A Chainlink Request struct in memory\\n   */\\n  function buildChainlinkRequest(\\n    bytes32 _specId,\\n    address _callbackAddress,\\n    bytes4 _callbackFunctionSignature\\n  ) internal pure returns (Chainlink.Request memory) {\\n    Chainlink.Request memory req;\\n    return req.initialize(_specId, _callbackAddress, _callbackFunctionSignature);\\n  }\\n\\n  /**\\n   * @notice Creates a Chainlink request to the stored oracle address\\n   * @dev Calls `chainlinkRequestTo` with the stored oracle address\\n   * @param _req The initialized Chainlink Request\\n   * @param _payment The amount of LINK to send for the request\\n   * @return requestId The request ID\\n   */\\n  function sendChainlinkRequest(Chainlink.Request memory _req, uint256 _payment)\\n    internal\\n    returns (bytes32)\\n  {\\n    return sendChainlinkRequestTo(address(oracle), _req, _payment);\\n  }\\n\\n  /**\\n   * @notice Creates a Chainlink request to the specified oracle address\\n   * @dev Generates and stores a request ID, increments the local nonce, and uses `transferAndCall` to\\n   * send LINK which creates a request on the target oracle contract.\\n   * Emits ChainlinkRequested event.\\n   * @param _oracle The address of the oracle for the request\\n   * @param _req The initialized Chainlink Request\\n   * @param _payment The amount of LINK to send for the request\\n   * @return requestId The request ID\\n   */\\n  function sendChainlinkRequestTo(address _oracle, Chainlink.Request memory _req, uint256 _payment)\\n    internal\\n    returns (bytes32 requestId)\\n  {\\n    requestId = keccak256(abi.encodePacked(this, requestCount));\\n    _req.nonce = requestCount;\\n    pendingRequests[requestId] = _oracle;\\n    emit ChainlinkRequested(requestId);\\n    require(link.transferAndCall(_oracle, _payment, encodeRequest(_req)), \\\"unable to transferAndCall to oracle\\\");\\n    requestCount += 1;\\n\\n    return requestId;\\n  }\\n\\n  /**\\n   * @notice Allows a request to be cancelled if it has not been fulfilled\\n   * @dev Requires keeping track of the expiration value emitted from the oracle contract.\\n   * Deletes the request from the `pendingRequests` mapping.\\n   * Emits ChainlinkCancelled event.\\n   * @param _requestId The request ID\\n   * @param _payment The amount of LINK sent for the request\\n   * @param _callbackFunc The callback function specified for the request\\n   * @param _expiration The time of the expiration for the request\\n   */\\n  function cancelChainlinkRequest(\\n    bytes32 _requestId,\\n    uint256 _payment,\\n    bytes4 _callbackFunc,\\n    uint256 _expiration\\n  )\\n    internal\\n  {\\n    ChainlinkRequestInterface requested = ChainlinkRequestInterface(pendingRequests[_requestId]);\\n    delete pendingRequests[_requestId];\\n    emit ChainlinkCancelled(_requestId);\\n    requested.cancelOracleRequest(_requestId, _payment, _callbackFunc, _expiration);\\n  }\\n\\n  /**\\n   * @notice Sets the stored oracle address\\n   * @param _oracle The address of the oracle contract\\n   */\\n  function setChainlinkOracle(address _oracle) internal {\\n    oracle = ChainlinkRequestInterface(_oracle);\\n  }\\n\\n  /**\\n   * @notice Sets the LINK token address\\n   * @param _link The address of the LINK token contract\\n   */\\n  function setChainlinkToken(address _link) internal {\\n    link = LinkTokenInterface(_link);\\n  }\\n\\n  /**\\n   * @notice Sets the Chainlink token address for the public\\n   * network as given by the Pointer contract\\n   */\\n  function setPublicChainlinkToken() internal {\\n    setChainlinkToken(PointerInterface(LINK_TOKEN_POINTER).getAddress());\\n  }\\n\\n  /**\\n   * @notice Retrieves the stored address of the LINK token\\n   * @return The address of the LINK token\\n   */\\n  function chainlinkTokenAddress()\\n    internal\\n    view\\n    returns (address)\\n  {\\n    return address(link);\\n  }\\n\\n  /**\\n   * @notice Retrieves the stored address of the oracle contract\\n   * @return The address of the oracle contract\\n   */\\n  function chainlinkOracleAddress()\\n    internal\\n    view\\n    returns (address)\\n  {\\n    return address(oracle);\\n  }\\n\\n  /**\\n   * @notice Allows for a request which was created on another contract to be fulfilled\\n   * on this contract\\n   * @param _oracle The address of the oracle contract that will fulfill the request\\n   * @param _requestId The request ID used for the response\\n   */\\n  function addChainlinkExternalRequest(address _oracle, bytes32 _requestId)\\n    internal\\n    notPendingRequest(_requestId)\\n  {\\n    pendingRequests[_requestId] = _oracle;\\n  }\\n\\n  /**\\n   * @notice Sets the stored oracle and LINK token contracts with the addresses resolved by ENS\\n   * @dev Accounts for subnodes having different resolvers\\n   * @param _ens The address of the ENS contract\\n   * @param _node The ENS node hash\\n   */\\n  function useChainlinkWithENS(address _ens, bytes32 _node)\\n    internal\\n  {\\n    ens = ENSInterface(_ens);\\n    ensNode = _node;\\n    bytes32 linkSubnode = keccak256(abi.encodePacked(ensNode, ENS_TOKEN_SUBNAME));\\n    ENSResolver_Chainlink resolver = ENSResolver_Chainlink(ens.resolver(linkSubnode));\\n    setChainlinkToken(resolver.addr(linkSubnode));\\n    updateChainlinkOracleWithENS();\\n  }\\n\\n  /**\\n   * @notice Sets the stored oracle contract with the address resolved by ENS\\n   * @dev This may be called on its own as long as `useChainlinkWithENS` has been called previously\\n   */\\n  function updateChainlinkOracleWithENS()\\n    internal\\n  {\\n    bytes32 oracleSubnode = keccak256(abi.encodePacked(ensNode, ENS_ORACLE_SUBNAME));\\n    ENSResolver_Chainlink resolver = ENSResolver_Chainlink(ens.resolver(oracleSubnode));\\n    setChainlinkOracle(resolver.addr(oracleSubnode));\\n  }\\n\\n  /**\\n   * @notice Encodes the request to be sent to the oracle contract\\n   * @dev The Chainlink node expects values to be in order for the request to be picked up. Order of types\\n   * will be validated in the oracle contract.\\n   * @param _req The initialized Chainlink Request\\n   * @return The bytes payload for the `transferAndCall` method\\n   */\\n  function encodeRequest(Chainlink.Request memory _req)\\n    private\\n    view\\n    returns (bytes memory)\\n  {\\n    return abi.encodeWithSelector(\\n      oracle.oracleRequest.selector,\\n      SENDER_OVERRIDE, // Sender value - overridden by onTokenTransfer by the requesting contract's address\\n      AMOUNT_OVERRIDE, // Amount value - overridden by onTokenTransfer by the actual amount of LINK sent\\n      _req.id,\\n      _req.callbackAddress,\\n      _req.callbackFunctionId,\\n      _req.nonce,\\n      ARGS_VERSION,\\n      _req.buf.buf);\\n  }\\n\\n  /**\\n   * @notice Ensures that the fulfillment is valid for this contract\\n   * @dev Use if the contract developer prefers methods instead of modifiers for validation\\n   * @param _requestId The request ID for fulfillment\\n   */\\n  function validateChainlinkCallback(bytes32 _requestId)\\n    internal\\n    recordChainlinkFulfillment(_requestId)\\n    // solhint-disable-next-line no-empty-blocks\\n  {}\\n\\n  /**\\n   * @dev Reverts if the sender is not the oracle of the request.\\n   * Emits ChainlinkFulfilled event.\\n   * @param _requestId The request ID for fulfillment\\n   */\\n  modifier recordChainlinkFulfillment(bytes32 _requestId) {\\n    require(msg.sender == pendingRequests[_requestId],\\n            \\\"Source must be the oracle of the request\\\");\\n    delete pendingRequests[_requestId];\\n    emit ChainlinkFulfilled(_requestId);\\n    _;\\n  }\\n\\n  /**\\n   * @dev Reverts if the request is already pending\\n   * @param _requestId The request ID for fulfillment\\n   */\\n  modifier notPendingRequest(bytes32 _requestId) {\\n    require(pendingRequests[_requestId] == address(0), \\\"Request is already pending\\\");\\n    _;\\n  }\\n}\\n\",\"keccak256\":\"0x9f8883b8b5b76bba151e5f30d4c353b8a3f15ee3d97117deee4cccd91fe8640f\"},\"@chainlink/contracts/src/v0.6/interfaces/ChainlinkRequestInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\ninterface ChainlinkRequestInterface {\\n  function oracleRequest(\\n    address sender,\\n    uint256 requestPrice,\\n    bytes32 serviceAgreementID,\\n    address callbackAddress,\\n    bytes4 callbackFunctionId,\\n    uint256 nonce,\\n    uint256 dataVersion,\\n    bytes calldata data\\n  ) external;\\n\\n  function cancelOracleRequest(\\n    bytes32 requestId,\\n    uint256 payment,\\n    bytes4 callbackFunctionId,\\n    uint256 expiration\\n  ) external;\\n}\\n\",\"keccak256\":\"0xe513c0f60edf13da7d82625489cf2008c7b66170f3b1ed1606b84c73f95b17ad\"},\"@chainlink/contracts/src/v0.6/interfaces/ENSInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\ninterface ENSInterface {\\n\\n  // Logged when the owner of a node assigns a new owner to a subnode.\\n  event NewOwner(bytes32 indexed node, bytes32 indexed label, address owner);\\n\\n  // Logged when the owner of a node transfers ownership to a new account.\\n  event Transfer(bytes32 indexed node, address owner);\\n\\n  // Logged when the resolver for a node changes.\\n  event NewResolver(bytes32 indexed node, address resolver);\\n\\n  // Logged when the TTL of a node changes\\n  event NewTTL(bytes32 indexed node, uint64 ttl);\\n\\n\\n  function setSubnodeOwner(bytes32 node, bytes32 label, address _owner) external;\\n  function setResolver(bytes32 node, address _resolver) external;\\n  function setOwner(bytes32 node, address _owner) external;\\n  function setTTL(bytes32 node, uint64 _ttl) external;\\n  function owner(bytes32 node) external view returns (address);\\n  function resolver(bytes32 node) external view returns (address);\\n  function ttl(bytes32 node) external view returns (uint64);\\n\\n}\\n\",\"keccak256\":\"0xdef864af6e516477773ea246b73531b1836de5bea4ac1cfd8be6e7f4b3f3c3fd\"},\"@chainlink/contracts/src/v0.6/interfaces/LinkTokenInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\ninterface LinkTokenInterface {\\n  function allowance(address owner, address spender) external view returns (uint256 remaining);\\n  function approve(address spender, uint256 value) external returns (bool success);\\n  function balanceOf(address owner) external view returns (uint256 balance);\\n  function decimals() external view returns (uint8 decimalPlaces);\\n  function decreaseApproval(address spender, uint256 addedValue) external returns (bool success);\\n  function increaseApproval(address spender, uint256 subtractedValue) external;\\n  function name() external view returns (string memory tokenName);\\n  function symbol() external view returns (string memory tokenSymbol);\\n  function totalSupply() external view returns (uint256 totalTokensIssued);\\n  function transfer(address to, uint256 value) external returns (bool success);\\n  function transferAndCall(address to, uint256 value, bytes calldata data) external returns (bool success);\\n  function transferFrom(address from, address to, uint256 value) external returns (bool success);\\n}\\n\",\"keccak256\":\"0xe245a7be950c94d87bb775ae9ee9fbd693fbe2987778e6ce0b04605ea44b7b68\"},\"@chainlink/contracts/src/v0.6/interfaces/PointerInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\ninterface PointerInterface {\\n  function getAddress() external view returns (address);\\n}\\n\",\"keccak256\":\"0x08aed19c3bef1ae2d90fc0d9d28a497fd7f312991ed08fedfe545de6b9a476e4\"},\"@chainlink/contracts/src/v0.6/vendor/BufferChainlink.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\n/**\\n* @dev A library for working with mutable byte buffers in Solidity.\\n*\\n* Byte buffers are mutable and expandable, and provide a variety of primitives\\n* for writing to them. At any time you can fetch a bytes object containing the\\n* current contents of the buffer. The bytes object should not be stored between\\n* operations, as it may change due to resizing of the buffer.\\n*/\\nlibrary BufferChainlink {\\n  /**\\n  * @dev Represents a mutable buffer. Buffers have a current value (buf) and\\n  *      a capacity. The capacity may be longer than the current value, in\\n  *      which case it can be extended without the need to allocate more memory.\\n  */\\n  struct buffer {\\n    bytes buf;\\n    uint capacity;\\n  }\\n\\n  /**\\n  * @dev Initializes a buffer with an initial capacity.\\n  * @param buf The buffer to initialize.\\n  * @param capacity The number of bytes of space to allocate the buffer.\\n  * @return The buffer, for chaining.\\n  */\\n  function init(buffer memory buf, uint capacity) internal pure returns(buffer memory) {\\n    if (capacity % 32 != 0) {\\n      capacity += 32 - (capacity % 32);\\n    }\\n    // Allocate space for the buffer data\\n    buf.capacity = capacity;\\n    assembly {\\n      let ptr := mload(0x40)\\n      mstore(buf, ptr)\\n      mstore(ptr, 0)\\n      mstore(0x40, add(32, add(ptr, capacity)))\\n    }\\n    return buf;\\n  }\\n\\n  /**\\n  * @dev Initializes a new buffer from an existing bytes object.\\n  *      Changes to the buffer may mutate the original value.\\n  * @param b The bytes object to initialize the buffer with.\\n  * @return A new buffer.\\n  */\\n  function fromBytes(bytes memory b) internal pure returns(buffer memory) {\\n    buffer memory buf;\\n    buf.buf = b;\\n    buf.capacity = b.length;\\n    return buf;\\n  }\\n\\n  function resize(buffer memory buf, uint capacity) private pure {\\n    bytes memory oldbuf = buf.buf;\\n    init(buf, capacity);\\n    append(buf, oldbuf);\\n  }\\n\\n  function max(uint a, uint b) private pure returns(uint) {\\n    if (a > b) {\\n      return a;\\n    }\\n    return b;\\n  }\\n\\n  /**\\n  * @dev Sets buffer length to 0.\\n  * @param buf The buffer to truncate.\\n  * @return The original buffer, for chaining..\\n  */\\n  function truncate(buffer memory buf) internal pure returns (buffer memory) {\\n    assembly {\\n      let bufptr := mload(buf)\\n      mstore(bufptr, 0)\\n    }\\n    return buf;\\n  }\\n\\n  /**\\n  * @dev Writes a byte string to a buffer. Resizes if doing so would exceed\\n  *      the capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param off The start offset to write to.\\n  * @param data The data to append.\\n  * @param len The number of bytes to copy.\\n  * @return The original buffer, for chaining.\\n  */\\n  function write(buffer memory buf, uint off, bytes memory data, uint len) internal pure returns(buffer memory) {\\n    require(len <= data.length);\\n\\n    if (off + len > buf.capacity) {\\n      resize(buf, max(buf.capacity, len + off) * 2);\\n    }\\n\\n    uint dest;\\n    uint src;\\n    assembly {\\n      // Memory address of the buffer data\\n      let bufptr := mload(buf)\\n      // Length of existing buffer data\\n      let buflen := mload(bufptr)\\n      // Start address = buffer address + offset + sizeof(buffer length)\\n      dest := add(add(bufptr, 32), off)\\n      // Update buffer length if we're extending it\\n      if gt(add(len, off), buflen) {\\n        mstore(bufptr, add(len, off))\\n      }\\n      src := add(data, 32)\\n    }\\n\\n    // Copy word-length chunks while possible\\n    for (; len >= 32; len -= 32) {\\n      assembly {\\n        mstore(dest, mload(src))\\n      }\\n      dest += 32;\\n      src += 32;\\n    }\\n\\n    // Copy remaining bytes\\n    uint mask = 256 ** (32 - len) - 1;\\n    assembly {\\n      let srcpart := and(mload(src), not(mask))\\n      let destpart := and(mload(dest), mask)\\n      mstore(dest, or(destpart, srcpart))\\n    }\\n\\n    return buf;\\n  }\\n\\n  /**\\n  * @dev Appends a byte string to a buffer. Resizes if doing so would exceed\\n  *      the capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param data The data to append.\\n  * @param len The number of bytes to copy.\\n  * @return The original buffer, for chaining.\\n  */\\n  function append(buffer memory buf, bytes memory data, uint len) internal pure returns (buffer memory) {\\n    return write(buf, buf.buf.length, data, len);\\n  }\\n\\n  /**\\n  * @dev Appends a byte string to a buffer. Resizes if doing so would exceed\\n  *      the capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param data The data to append.\\n  * @return The original buffer, for chaining.\\n  */\\n  function append(buffer memory buf, bytes memory data) internal pure returns (buffer memory) {\\n    return write(buf, buf.buf.length, data, data.length);\\n  }\\n\\n  /**\\n  * @dev Writes a byte to the buffer. Resizes if doing so would exceed the\\n  *      capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param off The offset to write the byte at.\\n  * @param data The data to append.\\n  * @return The original buffer, for chaining.\\n  */\\n  function writeUint8(buffer memory buf, uint off, uint8 data) internal pure returns(buffer memory) {\\n    if (off >= buf.capacity) {\\n      resize(buf, buf.capacity * 2);\\n    }\\n\\n    assembly {\\n      // Memory address of the buffer data\\n      let bufptr := mload(buf)\\n      // Length of existing buffer data\\n      let buflen := mload(bufptr)\\n      // Address = buffer address + sizeof(buffer length) + off\\n      let dest := add(add(bufptr, off), 32)\\n      mstore8(dest, data)\\n      // Update buffer length if we extended it\\n      if eq(off, buflen) {\\n        mstore(bufptr, add(buflen, 1))\\n      }\\n    }\\n    return buf;\\n  }\\n\\n  /**\\n  * @dev Appends a byte to the buffer. Resizes if doing so would exceed the\\n  *      capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param data The data to append.\\n  * @return The original buffer, for chaining.\\n  */\\n  function appendUint8(buffer memory buf, uint8 data) internal pure returns(buffer memory) {\\n    return writeUint8(buf, buf.buf.length, data);\\n  }\\n\\n  /**\\n  * @dev Writes up to 32 bytes to the buffer. Resizes if doing so would\\n  *      exceed the capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param off The offset to write at.\\n  * @param data The data to append.\\n  * @param len The number of bytes to write (left-aligned).\\n  * @return The original buffer, for chaining.\\n  */\\n  function write(buffer memory buf, uint off, bytes32 data, uint len) private pure returns(buffer memory) {\\n    if (len + off > buf.capacity) {\\n      resize(buf, (len + off) * 2);\\n    }\\n\\n    uint mask = 256 ** len - 1;\\n    // Right-align data\\n    data = data >> (8 * (32 - len));\\n    assembly {\\n      // Memory address of the buffer data\\n      let bufptr := mload(buf)\\n      // Address = buffer address + sizeof(buffer length) + off + len\\n      let dest := add(add(bufptr, off), len)\\n      mstore(dest, or(and(mload(dest), not(mask)), data))\\n      // Update buffer length if we extended it\\n      if gt(add(off, len), mload(bufptr)) {\\n        mstore(bufptr, add(off, len))\\n      }\\n    }\\n    return buf;\\n  }\\n\\n  /**\\n  * @dev Writes a bytes20 to the buffer. Resizes if doing so would exceed the\\n  *      capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param off The offset to write at.\\n  * @param data The data to append.\\n  * @return The original buffer, for chaining.\\n  */\\n  function writeBytes20(buffer memory buf, uint off, bytes20 data) internal pure returns (buffer memory) {\\n    return write(buf, off, bytes32(data), 20);\\n  }\\n\\n  /**\\n  * @dev Appends a bytes20 to the buffer. Resizes if doing so would exceed\\n  *      the capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param data The data to append.\\n  * @return The original buffer, for chhaining.\\n  */\\n  function appendBytes20(buffer memory buf, bytes20 data) internal pure returns (buffer memory) {\\n    return write(buf, buf.buf.length, bytes32(data), 20);\\n  }\\n\\n  /**\\n  * @dev Appends a bytes32 to the buffer. Resizes if doing so would exceed\\n  *      the capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param data The data to append.\\n  * @return The original buffer, for chaining.\\n  */\\n  function appendBytes32(buffer memory buf, bytes32 data) internal pure returns (buffer memory) {\\n    return write(buf, buf.buf.length, data, 32);\\n  }\\n\\n  /**\\n  * @dev Writes an integer to the buffer. Resizes if doing so would exceed\\n  *      the capacity of the buffer.\\n  * @param buf The buffer to append to.\\n  * @param off The offset to write at.\\n  * @param data The data to append.\\n  * @param len The number of bytes to write (right-aligned).\\n  * @return The original buffer, for chaining.\\n  */\\n  function writeInt(buffer memory buf, uint off, uint data, uint len) private pure returns(buffer memory) {\\n    if (len + off > buf.capacity) {\\n      resize(buf, (len + off) * 2);\\n    }\\n\\n    uint mask = 256 ** len - 1;\\n    assembly {\\n      // Memory address of the buffer data\\n      let bufptr := mload(buf)\\n      // Address = buffer address + off + sizeof(buffer length) + len\\n      let dest := add(add(bufptr, off), len)\\n      mstore(dest, or(and(mload(dest), not(mask)), data))\\n      // Update buffer length if we extended it\\n      if gt(add(off, len), mload(bufptr)) {\\n        mstore(bufptr, add(off, len))\\n      }\\n    }\\n    return buf;\\n  }\\n\\n  /**\\n    * @dev Appends a byte to the end of the buffer. Resizes if doing so would\\n    * exceed the capacity of the buffer.\\n    * @param buf The buffer to append to.\\n    * @param data The data to append.\\n    * @return The original buffer.\\n    */\\n  function appendInt(buffer memory buf, uint data, uint len) internal pure returns(buffer memory) {\\n    return writeInt(buf, buf.buf.length, data, len);\\n  }\\n}\\n\",\"keccak256\":\"0x14f13139229a2fef8f705f29f91de0bc81bcd5070ec75b4bd3fd82c1536ca685\"},\"@chainlink/contracts/src/v0.6/vendor/CBORChainlink.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >= 0.4.19;\\n\\nimport { BufferChainlink } from \\\"./BufferChainlink.sol\\\";\\n\\nlibrary CBORChainlink {\\n  using BufferChainlink for BufferChainlink.buffer;\\n\\n  uint8 private constant MAJOR_TYPE_INT = 0;\\n  uint8 private constant MAJOR_TYPE_NEGATIVE_INT = 1;\\n  uint8 private constant MAJOR_TYPE_BYTES = 2;\\n  uint8 private constant MAJOR_TYPE_STRING = 3;\\n  uint8 private constant MAJOR_TYPE_ARRAY = 4;\\n  uint8 private constant MAJOR_TYPE_MAP = 5;\\n  uint8 private constant MAJOR_TYPE_TAG = 6;\\n  uint8 private constant MAJOR_TYPE_CONTENT_FREE = 7;\\n\\n  uint8 private constant TAG_TYPE_BIGNUM = 2;\\n  uint8 private constant TAG_TYPE_NEGATIVE_BIGNUM = 3;\\n\\n  function encodeType(\\n    BufferChainlink.buffer memory buf,\\n    uint8 major,\\n    uint value\\n  )\\n    private\\n    pure\\n  {\\n    if(value <= 23) {\\n      buf.appendUint8(uint8((major << 5) | value));\\n    } else if(value <= 0xFF) {\\n      buf.appendUint8(uint8((major << 5) | 24));\\n      buf.appendInt(value, 1);\\n    } else if(value <= 0xFFFF) {\\n      buf.appendUint8(uint8((major << 5) | 25));\\n      buf.appendInt(value, 2);\\n    } else if(value <= 0xFFFFFFFF) {\\n      buf.appendUint8(uint8((major << 5) | 26));\\n      buf.appendInt(value, 4);\\n    } else if(value <= 0xFFFFFFFFFFFFFFFF) {\\n      buf.appendUint8(uint8((major << 5) | 27));\\n      buf.appendInt(value, 8);\\n    }\\n  }\\n\\n  function encodeIndefiniteLengthType(\\n    BufferChainlink.buffer memory buf,\\n    uint8 major\\n  )\\n    private\\n    pure\\n  {\\n    buf.appendUint8(uint8((major << 5) | 31));\\n  }\\n\\n  function encodeUInt(\\n    BufferChainlink.buffer memory buf,\\n    uint value\\n  )\\n    internal\\n    pure\\n  {\\n    encodeType(buf, MAJOR_TYPE_INT, value);\\n  }\\n\\n  function encodeInt(\\n    BufferChainlink.buffer memory buf,\\n    int value\\n  )\\n    internal\\n    pure\\n  {\\n    if(value < -0x10000000000000000) {\\n      encodeSignedBigNum(buf, value);\\n    } else if(value > 0xFFFFFFFFFFFFFFFF) {\\n      encodeBigNum(buf, value);\\n    } else if(value >= 0) {\\n      encodeType(buf, MAJOR_TYPE_INT, uint(value));\\n    } else {\\n      encodeType(buf, MAJOR_TYPE_NEGATIVE_INT, uint(-1 - value));\\n    }\\n  }\\n\\n  function encodeBytes(\\n    BufferChainlink.buffer memory buf,\\n    bytes memory value\\n  )\\n    internal\\n    pure\\n  {\\n    encodeType(buf, MAJOR_TYPE_BYTES, value.length);\\n    buf.append(value);\\n  }\\n\\n  function encodeBigNum(\\n    BufferChainlink.buffer memory buf,\\n    int value\\n  )\\n    internal\\n    pure\\n  {\\n    buf.appendUint8(uint8((MAJOR_TYPE_TAG << 5) | TAG_TYPE_BIGNUM));\\n    encodeBytes(buf, abi.encode(uint(value)));\\n  }\\n\\n  function encodeSignedBigNum(\\n    BufferChainlink.buffer memory buf,\\n    int input\\n  )\\n    internal\\n    pure\\n  {\\n    buf.appendUint8(uint8((MAJOR_TYPE_TAG << 5) | TAG_TYPE_NEGATIVE_BIGNUM));\\n    encodeBytes(buf, abi.encode(uint(-1 - input)));\\n  }\\n\\n  function encodeString(\\n    BufferChainlink.buffer memory buf,\\n    string memory value\\n  )\\n    internal\\n    pure\\n  {\\n    encodeType(buf, MAJOR_TYPE_STRING, bytes(value).length);\\n    buf.append(bytes(value));\\n  }\\n\\n  function startArray(\\n    BufferChainlink.buffer memory buf\\n  )\\n    internal\\n    pure\\n  {\\n    encodeIndefiniteLengthType(buf, MAJOR_TYPE_ARRAY);\\n  }\\n\\n  function startMap(\\n    BufferChainlink.buffer memory buf\\n  )\\n    internal\\n    pure\\n  {\\n    encodeIndefiniteLengthType(buf, MAJOR_TYPE_MAP);\\n  }\\n\\n  function endSequence(\\n    BufferChainlink.buffer memory buf\\n  )\\n    internal\\n    pure\\n  {\\n    encodeIndefiniteLengthType(buf, MAJOR_TYPE_CONTENT_FREE);\\n  }\\n}\\n\",\"keccak256\":\"0xe7c6e4290ac2a41a138e6bd89d89a2779f66847a5ee6fb5a6f2a3386e5ce589d\"},\"@chainlink/contracts/src/v0.6/vendor/ENSResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\nabstract contract ENSResolver {\\n  function addr(bytes32 node) public view virtual returns (address);\\n}\\n\",\"keccak256\":\"0xfd992937d215ad669f69e91fefbe62cad8973ae329b4e810ca9b26a1ae0b6bb7\"},\"@chainlink/contracts/src/v0.6/vendor/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.0;\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be aplied to your functions to restrict their use to\\n * the owner.\\n *\\n * This contract has been modified to remove the revokeOwnership function\\n */\\ncontract Ownable {\\n  address private _owner;\\n\\n  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n  /**\\n   * @dev Initializes the contract setting the deployer as the initial owner.\\n   */\\n  constructor () internal {\\n    _owner = msg.sender;\\n    emit OwnershipTransferred(address(0), _owner);\\n  }\\n\\n  /**\\n   * @dev Returns the address of the current owner.\\n   */\\n  function owner() public view returns (address) {\\n    return _owner;\\n  }\\n\\n  /**\\n   * @dev Throws if called by any account other than the owner.\\n   */\\n  modifier onlyOwner() {\\n    require(isOwner(), \\\"Ownable: caller is not the owner\\\");\\n    _;\\n  }\\n\\n  /**\\n   * @dev Returns true if the caller is the current owner.\\n   */\\n  function isOwner() public view returns (bool) {\\n    return msg.sender == _owner;\\n  }\\n\\n  /**\\n   * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n   * Can only be called by the current owner.\\n   */\\n  function transferOwnership(address newOwner) public onlyOwner {\\n    _transferOwnership(newOwner);\\n  }\\n\\n  /**\\n   * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n   */\\n  function _transferOwnership(address newOwner) internal {\\n    require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n    emit OwnershipTransferred(_owner, newOwner);\\n    _owner = newOwner;\\n  }\\n}\\n\",\"keccak256\":\"0x20a325da437d524570c833519481749e6e33018fe899dfdad66e59e1f60f6192\"},\"contracts/APIRequestBuilder.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.6.6;\\n\\nimport \\\"@chainlink/contracts/src/v0.6/ChainlinkClient.sol\\\";\\nimport \\\"@chainlink/contracts/src/v0.6/vendor/Ownable.sol\\\";\\n\\ncontract APIRequestBuilder is ChainlinkClient, Ownable {\\n\\n    uint256 public data;\\n    string public text;\\n\\n    address private oracle;\\n    bytes32 private jobId;\\n    uint256 private fee;\\n\\n    /**\\n     * Network: Kovan\\n     * Oracle: 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8\\n     * Job ID: d5270d1c311941d0b08bead21fea7747\\n     * Fee: 0.1 LINK\\n     */\\n    constructor(address _oracle, string memory _jobId, uint256 _fee, address _link) public {\\n        if (_link == address(0)) {\\n            setPublicChainlinkToken();\\n        } else {\\n            setChainlinkToken(_link);\\n        }\\n        // oracle = 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8;\\n        // jobId = \\\"d5270d1c311941d0b08bead21fea7747\\\";\\n        // fee = 0.1 * 10 ** 18; // 0.1 LINK\\n        oracle = _oracle;\\n        jobId = stringToBytes32(_jobId);\\n        fee = _fee;\\n    }\\n\\n    /**\\n     * Create a Chainlink request to retrieve API response, find the target\\n     * data, then multiply by timesAmount (to remove decimal places from data).\\n     */\\n    function requestData(string memory url, string memory path, int timesAmount) public returns (bytes32 requestId)\\n    {\\n        Chainlink.Request memory request = buildChainlinkRequest(jobId, address(this), this.fulfill.selector);\\n\\n        // Set the URL to perform the GET request on\\n        request.add(\\\"get\\\", url);\\n\\n        // Set the path to find the desired data in the API response, where the response format is:\\n        // {\\\"RAW\\\":\\n        //   {\\\"ETH\\\":\\n        //    {\\\"USD\\\":\\n        //     {\\n        //      \\\"VOLUME24HOUR\\\": xxx.xxx,\\n        //     }\\n        //    }\\n        //   }\\n        //  }\\n        request.add(\\\"path\\\", path);\\n\\n        // Multiply the result by timesAmount to remove decimals\\n        request.addInt(\\\"times\\\", timesAmount);\\n\\n        // Sends the request\\n        return sendChainlinkRequestTo(oracle, request, fee);\\n    }\\n\\n    /**\\n     * Receive the response in the form of uint256\\n     */\\n    function fulfill(bytes32 _requestId, uint256 _data) public recordChainlinkFulfillment(_requestId)\\n    {\\n        data = _data;\\n    }\\n\\n    /**\\n     * Withdraw LINK from this contract\\n     *\\n     */\\n    function withdrawLink() external onlyOwner {\\n        LinkTokenInterface linkToken = LinkTokenInterface(chainlinkTokenAddress());\\n        require(linkToken.transfer(msg.sender, linkToken.balanceOf(address(this))), \\\"Unable to transfer\\\");\\n    }\\n\\n    function stringToBytes32(string memory source) public pure returns (bytes32 result) {\\n        bytes memory tempEmptyStringTest = bytes(source);\\n        if (tempEmptyStringTest.length == 0) {\\n            return 0x0;\\n        }\\n\\n        assembly {\\n            result := mload(add(source, 32))\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xe56f6db67ecbcd3218659872464ae7c01debf8e6aefdee17fff6b74dade421fe\"}},\"version\":1}",
+  "bytecode": "0x608060405260016004553480156200001657600080fd5b5060405162001c9738038062001c97833981810160405260808110156200003c57600080fd5b8101908080519060200190929190805160405193929190846401000000008211156200006757600080fd5b838201915060208201858111156200007e57600080fd5b82518660018202830111640100000000821117156200009c57600080fd5b8083526020830192505050908051906020019080838360005b83811015620000d2578082015181840152602081019050620000b5565b50505050905090810190601f168015620001005780820380516001836020036101000a031916815260200191505b50604052602001805190602001909291908051906020019092919050505033600660006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415620002285762000222620002a360201b60201c565b6200023a565b62000239816200034d60201b60201c565b5b83600960006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506200028c836200039160201b60201c565b600a8190555081600b8190555050505050620003be565b6200034b73c89bd4e1632d3a43cb03aaad5262cbe4038bc57173ffffffffffffffffffffffffffffffffffffffff166338cc48316040518163ffffffff1660e01b815260040160206040518083038186803b1580156200030257600080fd5b505afa15801562000317573d6000803e3d6000fd5b505050506040513d60208110156200032e57600080fd5b81019080805190602001909291905050506200034d60201b60201c565b565b80600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b60006060829050600081511415620003b0576000801b915050620003b9565b60208301519150505b919050565b6118c980620003ce6000396000f3fe608060405234801561001057600080fd5b50600436106100935760003560e01c80638dc654a2116100665780638dc654a2146101bb5780638f32d59b146101c5578063cfb51928146101e7578063f2fde38b146102b6578063ff825bf6146102fa57610093565b80631f1bd692146100985780634357855e1461011b57806373d4a13a146101535780638da5cb5b14610171575b600080fd5b6100a061046a565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100e05780820151818401526020810190506100c5565b50505050905090810190601f16801561010d5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101516004803603604081101561013157600080fd5b810190808035906020019092919080359060200190929190505050610508565b005b61015b61062f565b6040518082815260200191505060405180910390f35b610179610635565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101c361065f565b005b6101cd6108d3565b604051808215151515815260200191505060405180910390f35b6102a0600480360360208110156101fd57600080fd5b810190808035906020019064010000000081111561021a57600080fd5b82018360208201111561022c57600080fd5b8035906020019184600183028401116401000000008311171561024e57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061092b565b6040518082815260200191505060405180910390f35b6102f8600480360360208110156102cc57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610956565b005b6104546004803603606081101561031057600080fd5b810190808035906020019064010000000081111561032d57600080fd5b82018360208201111561033f57600080fd5b8035906020019184600183028401116401000000008311171561036157600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803590602001906401000000008111156103c457600080fd5b8201836020820111156103d657600080fd5b803590602001918460018302840111640100000000831117156103f857600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803590602001909291905050506109dc565b6040518082815260200191505060405180910390f35b60088054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156105005780601f106104d557610100808354040283529160200191610500565b820191906000526020600020905b8154815290600101906020018083116104e357829003601f168201915b505050505081565b816005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146105c0576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602881526020018061186c6028913960400191505060405180910390fd5b6005600082815260200190815260200160002060006101000a81549073ffffffffffffffffffffffffffffffffffffffff0219169055807f7cc135e0cebb02c3480ae5d74d377283180a2601f8f644edf7987b009316c63a60405160405180910390a281600781905550505050565b60075481565b6000600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6106676108d3565b6106d9576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b60006106e3610b13565b90508073ffffffffffffffffffffffffffffffffffffffff1663a9059cbb338373ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff1660e01b8152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b15801561077f57600080fd5b505afa158015610793573d6000803e3d6000fd5b505050506040513d60208110156107a957600080fd5b81019080805190602001909291905050506040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561082357600080fd5b505af1158015610837573d6000803e3d6000fd5b505050506040513d602081101561084d57600080fd5b81019080805190602001909291905050506108d0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260128152602001807f556e61626c6520746f207472616e73666572000000000000000000000000000081525060200191505060405180910390fd5b50565b6000600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60006060829050600081511415610948576000801b915050610951565b60208301519150505b919050565b61095e6108d3565b6109d0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6109d981610b3d565b50565b60006109e661179b565b6109fa600a5430634357855e60e01b610c83565b9050610a466040518060400160405280600381526020017f67657400000000000000000000000000000000000000000000000000000000008152508683610cb49092919063ffffffff16565b610a906040518060400160405280600481526020017f70617468000000000000000000000000000000000000000000000000000000008152508583610cb49092919063ffffffff16565b610ada6040518060400160405280600581526020017f74696d65730000000000000000000000000000000000000000000000000000008152508483610ce79092919063ffffffff16565b610b09600960009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1682600b54610d1a565b9150509392505050565b6000600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610bc3576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260268152602001806118236026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff16600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600660006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b610c8b61179b565b610c9361179b565b610caa85858584610fd2909392919063ffffffff16565b9150509392505050565b610ccb82846080015161108290919063ffffffff16565b610ce281846080015161108290919063ffffffff16565b505050565b610cfe82846080015161108290919063ffffffff16565b610d158184608001516110a790919063ffffffff16565b505050565b600030600454604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b815260140182815260200192505050604051602081830303815290604052805190602001209050600454836060018181525050836005600083815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550807fb5e6e01e79f91267dc17b4e6314d5d4d03593d2ceee0fbb452b750bd70ea5af960405160405180910390a2600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16634000aea08584610e528761114b565b6040518463ffffffff1660e01b8152600401808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610ed9578082015181840152602081019050610ebe565b50505050905090810190601f168015610f065780820380516001836020036101000a031916815260200191505b50945050505050602060405180830381600087803b158015610f2757600080fd5b505af1158015610f3b573d6000803e3d6000fd5b505050506040513d6020811015610f5157600080fd5b8101908080519060200190929190505050610fb7576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260238152602001806118496023913960400191505060405180910390fd5b60016004600082825401925050819055508090509392505050565b610fda61179b565b610fea8560800151610100611317565b508385600001818152505082856020019073ffffffffffffffffffffffffffffffffffffffff16908173ffffffffffffffffffffffffffffffffffffffff16815250508185604001907bffffffffffffffffffffffffffffffffffffffffffffffffffffffff191690817bffffffffffffffffffffffffffffffffffffffffffffffffffffffff191681525050849050949350505050565b61108f826003835161136b565b6110a281836114b090919063ffffffff16565b505050565b7fffffffffffffffffffffffffffffffffffffffffffffffff00000000000000008112156110de576110d982826114d2565b611147565b67ffffffffffffffff8113156110fd576110f88282611540565b611146565b60008112611116576111118260008361136b565b611145565b611144826001837fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0361136b565b5b5b5b5050565b6060634042994660e01b60008084600001518560200151866040015187606001516001896080015160000151604051602401808973ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018881526020018781526020018673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001857bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815260200184815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561127a57808201518184015260208101905061125f565b50505050905090810190601f1680156112a75780820380516001836020036101000a031916815260200191505b509950505050505050505050604051602081830303815290604052907bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19166020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff83818316178352505050509050919050565b61131f611808565b60006020838161132b57fe5b0614611344576020828161133b57fe5b06602003820191505b81836020018181525050604051808452600081528281016020016040525082905092915050565b60178111611398576113928160058460ff16901b60ff16178461158c90919063ffffffff16565b506114ab565b60ff81116113da576113bd601860058460ff16901b178461158c90919063ffffffff16565b506113d4816001856115ac9092919063ffffffff16565b506114aa565b61ffff811161141d57611400601960058460ff16901b178461158c90919063ffffffff16565b50611417816002856115ac9092919063ffffffff16565b506114a9565b63ffffffff811161146257611445601a60058460ff16901b178461158c90919063ffffffff16565b5061145c816004856115ac9092919063ffffffff16565b506114a8565b67ffffffffffffffff81116114a75761148e601b60058460ff16901b178461158c90919063ffffffff16565b506114a5816008856115ac9092919063ffffffff16565b505b5b5b5b5b505050565b6114b8611808565b6114ca838460000151518485516115ce565b905092915050565b6114f060036005600660ff16901b178361158c90919063ffffffff16565b5061153c82827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0360405160200180828152602001915050604051602081830303815290604052611687565b5050565b61155e60026005600660ff16901b178361158c90919063ffffffff16565b50611588828260405160200180828152602001915050604051602081830303815290604052611687565b5050565b611594611808565b6115a483846000015151846116ac565b905092915050565b6115b4611808565b6115c58485600001515185856116fa565b90509392505050565b6115d6611808565b82518211156115e457600080fd5b8460200151828501111561160f5761160e856002611608886020015188870161175b565b02611777565b5b60008086518051876020830101935080888701111561162e5787860182525b60208701925050505b6020841061165a5780518252602082019150602081019050602084039350611637565b60006001856020036101000a03905080198251168184511681811785525050879350505050949350505050565b611694826002835161136b565b6116a781836114b090919063ffffffff16565b505050565b6116b4611808565b836020015183106116d1576116d0846002866020015102611777565b5b83518051602085830101848153818614156116ed576001820183525b5050508390509392505050565b611702611808565b846020015184830111156117205761171f85600286850102611777565b5b60006001836101000a039050855183868201018583198251161781528151858801111561174d5784870182525b505085915050949350505050565b60008183111561176d57829050611771565b8190505b92915050565b60608260000151905061178a8383611317565b5061179583826114b0565b50505050565b6040518060a0016040528060008019168152602001600073ffffffffffffffffffffffffffffffffffffffff16815260200160007bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815260200160008152602001611802611808565b81525090565b60405180604001604052806060815260200160008152509056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373756e61626c6520746f207472616e73666572416e6443616c6c20746f206f7261636c65536f75726365206d75737420626520746865206f7261636c65206f66207468652072657175657374a2646970667358221220266792610236af6b474ee020a215ae936e023fc3e94d34cbf3c25829321f634164736f6c63430006060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100935760003560e01c80638dc654a2116100665780638dc654a2146101bb5780638f32d59b146101c5578063cfb51928146101e7578063f2fde38b146102b6578063ff825bf6146102fa57610093565b80631f1bd692146100985780634357855e1461011b57806373d4a13a146101535780638da5cb5b14610171575b600080fd5b6100a061046a565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100e05780820151818401526020810190506100c5565b50505050905090810190601f16801561010d5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101516004803603604081101561013157600080fd5b810190808035906020019092919080359060200190929190505050610508565b005b61015b61062f565b6040518082815260200191505060405180910390f35b610179610635565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101c361065f565b005b6101cd6108d3565b604051808215151515815260200191505060405180910390f35b6102a0600480360360208110156101fd57600080fd5b810190808035906020019064010000000081111561021a57600080fd5b82018360208201111561022c57600080fd5b8035906020019184600183028401116401000000008311171561024e57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061092b565b6040518082815260200191505060405180910390f35b6102f8600480360360208110156102cc57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610956565b005b6104546004803603606081101561031057600080fd5b810190808035906020019064010000000081111561032d57600080fd5b82018360208201111561033f57600080fd5b8035906020019184600183028401116401000000008311171561036157600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803590602001906401000000008111156103c457600080fd5b8201836020820111156103d657600080fd5b803590602001918460018302840111640100000000831117156103f857600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803590602001909291905050506109dc565b6040518082815260200191505060405180910390f35b60088054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156105005780601f106104d557610100808354040283529160200191610500565b820191906000526020600020905b8154815290600101906020018083116104e357829003601f168201915b505050505081565b816005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146105c0576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602881526020018061186c6028913960400191505060405180910390fd5b6005600082815260200190815260200160002060006101000a81549073ffffffffffffffffffffffffffffffffffffffff0219169055807f7cc135e0cebb02c3480ae5d74d377283180a2601f8f644edf7987b009316c63a60405160405180910390a281600781905550505050565b60075481565b6000600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6106676108d3565b6106d9576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b60006106e3610b13565b90508073ffffffffffffffffffffffffffffffffffffffff1663a9059cbb338373ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff1660e01b8152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060206040518083038186803b15801561077f57600080fd5b505afa158015610793573d6000803e3d6000fd5b505050506040513d60208110156107a957600080fd5b81019080805190602001909291905050506040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561082357600080fd5b505af1158015610837573d6000803e3d6000fd5b505050506040513d602081101561084d57600080fd5b81019080805190602001909291905050506108d0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260128152602001807f556e61626c6520746f207472616e73666572000000000000000000000000000081525060200191505060405180910390fd5b50565b6000600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60006060829050600081511415610948576000801b915050610951565b60208301519150505b919050565b61095e6108d3565b6109d0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6109d981610b3d565b50565b60006109e661179b565b6109fa600a5430634357855e60e01b610c83565b9050610a466040518060400160405280600381526020017f67657400000000000000000000000000000000000000000000000000000000008152508683610cb49092919063ffffffff16565b610a906040518060400160405280600481526020017f70617468000000000000000000000000000000000000000000000000000000008152508583610cb49092919063ffffffff16565b610ada6040518060400160405280600581526020017f74696d65730000000000000000000000000000000000000000000000000000008152508483610ce79092919063ffffffff16565b610b09600960009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1682600b54610d1a565b9150509392505050565b6000600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610bc3576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260268152602001806118236026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff16600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600660006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b610c8b61179b565b610c9361179b565b610caa85858584610fd2909392919063ffffffff16565b9150509392505050565b610ccb82846080015161108290919063ffffffff16565b610ce281846080015161108290919063ffffffff16565b505050565b610cfe82846080015161108290919063ffffffff16565b610d158184608001516110a790919063ffffffff16565b505050565b600030600454604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b815260140182815260200192505050604051602081830303815290604052805190602001209050600454836060018181525050836005600083815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550807fb5e6e01e79f91267dc17b4e6314d5d4d03593d2ceee0fbb452b750bd70ea5af960405160405180910390a2600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16634000aea08584610e528761114b565b6040518463ffffffff1660e01b8152600401808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610ed9578082015181840152602081019050610ebe565b50505050905090810190601f168015610f065780820380516001836020036101000a031916815260200191505b50945050505050602060405180830381600087803b158015610f2757600080fd5b505af1158015610f3b573d6000803e3d6000fd5b505050506040513d6020811015610f5157600080fd5b8101908080519060200190929190505050610fb7576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260238152602001806118496023913960400191505060405180910390fd5b60016004600082825401925050819055508090509392505050565b610fda61179b565b610fea8560800151610100611317565b508385600001818152505082856020019073ffffffffffffffffffffffffffffffffffffffff16908173ffffffffffffffffffffffffffffffffffffffff16815250508185604001907bffffffffffffffffffffffffffffffffffffffffffffffffffffffff191690817bffffffffffffffffffffffffffffffffffffffffffffffffffffffff191681525050849050949350505050565b61108f826003835161136b565b6110a281836114b090919063ffffffff16565b505050565b7fffffffffffffffffffffffffffffffffffffffffffffffff00000000000000008112156110de576110d982826114d2565b611147565b67ffffffffffffffff8113156110fd576110f88282611540565b611146565b60008112611116576111118260008361136b565b611145565b611144826001837fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0361136b565b5b5b5b5050565b6060634042994660e01b60008084600001518560200151866040015187606001516001896080015160000151604051602401808973ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018881526020018781526020018673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001857bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815260200184815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561127a57808201518184015260208101905061125f565b50505050905090810190601f1680156112a75780820380516001836020036101000a031916815260200191505b509950505050505050505050604051602081830303815290604052907bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19166020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff83818316178352505050509050919050565b61131f611808565b60006020838161132b57fe5b0614611344576020828161133b57fe5b06602003820191505b81836020018181525050604051808452600081528281016020016040525082905092915050565b60178111611398576113928160058460ff16901b60ff16178461158c90919063ffffffff16565b506114ab565b60ff81116113da576113bd601860058460ff16901b178461158c90919063ffffffff16565b506113d4816001856115ac9092919063ffffffff16565b506114aa565b61ffff811161141d57611400601960058460ff16901b178461158c90919063ffffffff16565b50611417816002856115ac9092919063ffffffff16565b506114a9565b63ffffffff811161146257611445601a60058460ff16901b178461158c90919063ffffffff16565b5061145c816004856115ac9092919063ffffffff16565b506114a8565b67ffffffffffffffff81116114a75761148e601b60058460ff16901b178461158c90919063ffffffff16565b506114a5816008856115ac9092919063ffffffff16565b505b5b5b5b5b505050565b6114b8611808565b6114ca838460000151518485516115ce565b905092915050565b6114f060036005600660ff16901b178361158c90919063ffffffff16565b5061153c82827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0360405160200180828152602001915050604051602081830303815290604052611687565b5050565b61155e60026005600660ff16901b178361158c90919063ffffffff16565b50611588828260405160200180828152602001915050604051602081830303815290604052611687565b5050565b611594611808565b6115a483846000015151846116ac565b905092915050565b6115b4611808565b6115c58485600001515185856116fa565b90509392505050565b6115d6611808565b82518211156115e457600080fd5b8460200151828501111561160f5761160e856002611608886020015188870161175b565b02611777565b5b60008086518051876020830101935080888701111561162e5787860182525b60208701925050505b6020841061165a5780518252602082019150602081019050602084039350611637565b60006001856020036101000a03905080198251168184511681811785525050879350505050949350505050565b611694826002835161136b565b6116a781836114b090919063ffffffff16565b505050565b6116b4611808565b836020015183106116d1576116d0846002866020015102611777565b5b83518051602085830101848153818614156116ed576001820183525b5050508390509392505050565b611702611808565b846020015184830111156117205761171f85600286850102611777565b5b60006001836101000a039050855183868201018583198251161781528151858801111561174d5784870182525b505085915050949350505050565b60008183111561176d57829050611771565b8190505b92915050565b60608260000151905061178a8383611317565b5061179583826114b0565b50505050565b6040518060a0016040528060008019168152602001600073ffffffffffffffffffffffffffffffffffffffff16815260200160007bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815260200160008152602001611802611808565b81525090565b60405180604001604052806060815260200160008152509056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373756e61626c6520746f207472616e73666572416e6443616c6c20746f206f7261636c65536f75726365206d75737420626520746865206f7261636c65206f66207468652072657175657374a2646970667358221220266792610236af6b474ee020a215ae936e023fc3e94d34cbf3c25829321f634164736f6c63430006060033",
+  "devdoc": {
+    "methods": {
+      "isOwner()": {
+        "details": "Returns true if the caller is the current owner."
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "constructor": "Network: Kovan Oracle: 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8 Job ID: d5270d1c311941d0b08bead21fea7747 Fee: 0.1 LINK",
+      "fulfill(bytes32,uint256)": {
+        "notice": "Receive the response in the form of uint256"
+      },
+      "requestData(string,string,int256)": {
+        "notice": "Create a Chainlink request to retrieve API response, find the target data, then multiply by timesAmount (to remove decimal places from data)."
+      },
+      "withdrawLink()": {
+        "notice": "Withdraw LINK from this contract     "
+      }
+    }
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 303,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "ens",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(ENSInterface)828"
+      },
+      {
+        "astId": 305,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "ensNode",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 307,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "link",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_contract(LinkTokenInterface)923"
+      },
+      {
+        "astId": 309,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "oracle",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_contract(ChainlinkRequestInterface)748"
+      },
+      {
+        "astId": 312,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "requestCount",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 316,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "pendingRequests",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_bytes32,t_address)"
+      },
+      {
+        "astId": 1847,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      },
+      {
+        "astId": 1953,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "data",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1955,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "text",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1957,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "oracle",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_address"
+      },
+      {
+        "astId": 1959,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "jobId",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 1961,
+        "contract": "contracts/APIRequestBuilder.sol:APIRequestBuilder",
+        "label": "fee",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(ChainlinkRequestInterface)748": {
+        "encoding": "inplace",
+        "label": "contract ChainlinkRequestInterface",
+        "numberOfBytes": "20"
+      },
+      "t_contract(ENSInterface)828": {
+        "encoding": "inplace",
+        "label": "contract ENSInterface",
+        "numberOfBytes": "20"
+      },
+      "t_contract(LinkTokenInterface)923": {
+        "encoding": "inplace",
+        "label": "contract LinkTokenInterface",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_bytes32,t_address)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

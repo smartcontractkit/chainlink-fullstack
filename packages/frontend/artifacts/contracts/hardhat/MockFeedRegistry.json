@@ -1,0 +1,274 @@
+{
+  "address": "0x0Cb5BC00708126899c320bB341e5DCf3479f0ace",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAnswer",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "getTimestamp",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestAnswer",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestRound",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "base",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "quote",
+          "type": "address"
+        }
+      ],
+      "name": "latestRoundData",
+      "outputs": [
+        {
+          "internalType": "uint80",
+          "name": "roundId",
+          "type": "uint80"
+        },
+        {
+          "internalType": "int256",
+          "name": "answer",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "startedAt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "updatedAt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint80",
+          "name": "answeredInRound",
+          "type": "uint80"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestTimestamp",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int256",
+          "name": "_answer",
+          "type": "int256"
+        }
+      ],
+      "name": "updateAnswer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x123e2664dffe080adf5934d1b0cdadb83f68f114cfedcebef91c08c33f7df164",
+  "receipt": {
+    "to": null,
+    "from": "0x047012d0BEed73E5efA757274d327915cD1522f8",
+    "contractAddress": "0x0Cb5BC00708126899c320bB341e5DCf3479f0ace",
+    "transactionIndex": 0,
+    "gasUsed": "379979",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x6276b2a411e799bd38c022234bb861762efc0bed080a4cfe429feac58740fc80",
+    "transactionHash": "0x123e2664dffe080adf5934d1b0cdadb83f68f114cfedcebef91c08c33f7df164",
+    "logs": [],
+    "blockNumber": 2,
+    "cumulativeGasUsed": "379979",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "solcInputHash": "cdf6a64e210c8d1f7295e999501ba985",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getAnswer\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getTimestamp\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestAnswer\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestRound\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"base\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"quote\",\"type\":\"address\"}],\"name\":\"latestRoundData\",\"outputs\":[{\"internalType\":\"uint80\",\"name\":\"roundId\",\"type\":\"uint80\"},{\"internalType\":\"int256\",\"name\":\"answer\",\"type\":\"int256\"},{\"internalType\":\"uint256\",\"name\":\"startedAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"updatedAt\",\"type\":\"uint256\"},{\"internalType\":\"uint80\",\"name\":\"answeredInRound\",\"type\":\"uint80\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestTimestamp\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"int256\",\"name\":\"_answer\",\"type\":\"int256\"}],\"name\":\"updateAnswer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/MockFeedRegistry.sol\":\"MockFeedRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/mocks/MockFeedRegistry.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.3;\\n\\ncontract MockFeedRegistry {\\n  uint8 public decimals;\\n  int256 public latestAnswer;\\n  uint256 public latestTimestamp;\\n  uint256 public latestRound;\\n\\n  mapping(uint256 => int256) public getAnswer;\\n  mapping(uint256 => uint256) public getTimestamp;\\n  mapping(uint256 => uint256) private getStartedAt;\\n\\n  function updateAnswer(int256 _answer) public {\\n    latestAnswer = _answer;\\n    latestTimestamp = block.timestamp;\\n    latestRound++;\\n    getAnswer[latestRound] = _answer;\\n    getTimestamp[latestRound] = block.timestamp;\\n    getStartedAt[latestRound] = block.timestamp;\\n  }\\n\\n  function latestRoundData(address base, address quote)\\n    external\\n    view\\n    returns (\\n      uint80 roundId,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    )\\n  {\\n    return (\\n      uint80(latestRound),\\n      getAnswer[latestRound],\\n      getStartedAt[latestRound],\\n      getTimestamp[latestRound],\\n      uint80(latestRound)\\n    );\\n  }\\n}\\n\",\"keccak256\":\"0x5305051f27fcbf01ecfde5cf91423af70dc76c061b263de70b6d9cd588ea30a0\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506105ec806100206000396000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c8063a87a20ce1161005b578063a87a20ce14610105578063b5ab58dc14610121578063b633620c14610151578063bcfd032d1461018157610088565b8063313ce5671461008d57806350d25bcd146100ab578063668a0f02146100c95780638205bf6a146100e7575b600080fd5b6100956101b5565b6040516100a29190610475565b60405180910390f35b6100b36101c6565b6040516100c091906103ec565b60405180910390f35b6100d16101cc565b6040516100de9190610407565b60405180910390f35b6100ef6101d2565b6040516100fc9190610407565b60405180910390f35b61011f600480360381019061011a919061035e565b6101d8565b005b61013b60048036038101906101369190610387565b61024f565b60405161014891906103ec565b60405180910390f35b61016b60048036038101906101669190610387565b610267565b6040516101789190610407565b60405180910390f35b61019b60048036038101906101969190610322565b61027f565b6040516101ac959493929190610422565b60405180910390f35b60008054906101000a900460ff1681565b60015481565b60035481565b60025481565b8060018190555042600281905550600360008154809291906101f9906104f9565b919050555080600460006003548152602001908152602001600020819055504260056000600354815260200190815260200160002081905550426006600060035481526020019081526020016000208190555050565b60046020528060005260406000206000915090505481565b60056020528060005260406000206000915090505481565b6000806000806000600354600460006003548152602001908152602001600020546006600060035481526020019081526020016000205460056000600354815260200190815260200160002054600354945094509450945094509295509295909350565b6000813590506102f281610571565b92915050565b60008135905061030781610588565b92915050565b60008135905061031c8161059f565b92915050565b6000806040838503121561033557600080fd5b6000610343858286016102e3565b9250506020610354858286016102e3565b9150509250929050565b60006020828403121561037057600080fd5b600061037e848285016102f8565b91505092915050565b60006020828403121561039957600080fd5b60006103a78482850161030d565b91505092915050565b6103b9816104a2565b82525050565b6103c8816104cc565b82525050565b6103d7816104e3565b82525050565b6103e6816104d6565b82525050565b600060208201905061040160008301846103b0565b92915050565b600060208201905061041c60008301846103bf565b92915050565b600060a08201905061043760008301886103ce565b61044460208301876103b0565b61045160408301866103bf565b61045e60608301856103bf565b61046b60808301846103ce565b9695505050505050565b600060208201905061048a60008301846103dd565b92915050565b600061049b826104ac565b9050919050565b6000819050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b600060ff82169050919050565b600069ffffffffffffffffffff82169050919050565b6000610504826104cc565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82141561053757610536610542565b5b600182019050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b61057a81610490565b811461058557600080fd5b50565b610591816104a2565b811461059c57600080fd5b50565b6105a8816104cc565b81146105b357600080fd5b5056fea26469706673582212204f949062866b82c6b8ffb88e778cbc67781ac168f1fe4aa081e2746d2cbcbdae64736f6c63430008030033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c8063a87a20ce1161005b578063a87a20ce14610105578063b5ab58dc14610121578063b633620c14610151578063bcfd032d1461018157610088565b8063313ce5671461008d57806350d25bcd146100ab578063668a0f02146100c95780638205bf6a146100e7575b600080fd5b6100956101b5565b6040516100a29190610475565b60405180910390f35b6100b36101c6565b6040516100c091906103ec565b60405180910390f35b6100d16101cc565b6040516100de9190610407565b60405180910390f35b6100ef6101d2565b6040516100fc9190610407565b60405180910390f35b61011f600480360381019061011a919061035e565b6101d8565b005b61013b60048036038101906101369190610387565b61024f565b60405161014891906103ec565b60405180910390f35b61016b60048036038101906101669190610387565b610267565b6040516101789190610407565b60405180910390f35b61019b60048036038101906101969190610322565b61027f565b6040516101ac959493929190610422565b60405180910390f35b60008054906101000a900460ff1681565b60015481565b60035481565b60025481565b8060018190555042600281905550600360008154809291906101f9906104f9565b919050555080600460006003548152602001908152602001600020819055504260056000600354815260200190815260200160002081905550426006600060035481526020019081526020016000208190555050565b60046020528060005260406000206000915090505481565b60056020528060005260406000206000915090505481565b6000806000806000600354600460006003548152602001908152602001600020546006600060035481526020019081526020016000205460056000600354815260200190815260200160002054600354945094509450945094509295509295909350565b6000813590506102f281610571565b92915050565b60008135905061030781610588565b92915050565b60008135905061031c8161059f565b92915050565b6000806040838503121561033557600080fd5b6000610343858286016102e3565b9250506020610354858286016102e3565b9150509250929050565b60006020828403121561037057600080fd5b600061037e848285016102f8565b91505092915050565b60006020828403121561039957600080fd5b60006103a78482850161030d565b91505092915050565b6103b9816104a2565b82525050565b6103c8816104cc565b82525050565b6103d7816104e3565b82525050565b6103e6816104d6565b82525050565b600060208201905061040160008301846103b0565b92915050565b600060208201905061041c60008301846103bf565b92915050565b600060a08201905061043760008301886103ce565b61044460208301876103b0565b61045160408301866103bf565b61045e60608301856103bf565b61046b60808301846103ce565b9695505050505050565b600060208201905061048a60008301846103dd565b92915050565b600061049b826104ac565b9050919050565b6000819050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b600060ff82169050919050565b600069ffffffffffffffffffff82169050919050565b6000610504826104cc565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82141561053757610536610542565b5b600182019050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b61057a81610490565b811461058557600080fd5b50565b610591816104a2565b811461059c57600080fd5b50565b6105a8816104cc565b81146105b357600080fd5b5056fea26469706673582212204f949062866b82c6b8ffb88e778cbc67781ac168f1fe4aa081e2746d2cbcbdae64736f6c63430008030033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1835,
+        "contract": "contracts/mocks/MockFeedRegistry.sol:MockFeedRegistry",
+        "label": "decimals",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 1837,
+        "contract": "contracts/mocks/MockFeedRegistry.sol:MockFeedRegistry",
+        "label": "latestAnswer",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_int256"
+      },
+      {
+        "astId": 1839,
+        "contract": "contracts/mocks/MockFeedRegistry.sol:MockFeedRegistry",
+        "label": "latestTimestamp",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1841,
+        "contract": "contracts/mocks/MockFeedRegistry.sol:MockFeedRegistry",
+        "label": "latestRound",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1845,
+        "contract": "contracts/mocks/MockFeedRegistry.sol:MockFeedRegistry",
+        "label": "getAnswer",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_uint256,t_int256)"
+      },
+      {
+        "astId": 1849,
+        "contract": "contracts/mocks/MockFeedRegistry.sol:MockFeedRegistry",
+        "label": "getTimestamp",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      },
+      {
+        "astId": 1853,
+        "contract": "contracts/mocks/MockFeedRegistry.sol:MockFeedRegistry",
+        "label": "getStartedAt",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      }
+    ],
+    "types": {
+      "t_int256": {
+        "encoding": "inplace",
+        "label": "int256",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_uint256,t_int256)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => int256)",
+        "numberOfBytes": "32",
+        "value": "t_int256"
+      },
+      "t_mapping(t_uint256,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}

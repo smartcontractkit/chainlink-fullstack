@@ -1,0 +1,115 @@
+{
+  "address": "0x88C29786b994980aCB253030f32646D724D93821",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_registry",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "getEthUsdPrice",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "base",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "quote",
+          "type": "address"
+        }
+      ],
+      "name": "getPrice",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x5e9de1fe06591387aa07b6784584324e8796fea38daddf465559a110f8bb1553",
+  "receipt": {
+    "to": null,
+    "from": "0x047012d0BEed73E5efA757274d327915cD1522f8",
+    "contractAddress": "0x88C29786b994980aCB253030f32646D724D93821",
+    "transactionIndex": 0,
+    "gasUsed": "330698",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8b0f1314615f3308643052c58b8d5341f20674085661f204e46da8bd5c15a06e",
+    "transactionHash": "0x5e9de1fe06591387aa07b6784584324e8796fea38daddf465559a110f8bb1553",
+    "logs": [],
+    "blockNumber": 7,
+    "cumulativeGasUsed": "330698",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x0Cb5BC00708126899c320bB341e5DCf3479f0ace"
+  ],
+  "solcInputHash": "cdf6a64e210c8d1f7295e999501ba985",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_registry\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"getEthUsdPrice\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"base\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"quote\",\"type\":\"address\"}],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"Network: Ethereum Kovan Feed Registry: 0xAa7F6f7f507457a1EE157fE97F6c7DB2BEec5cD0\"},\"getEthUsdPrice()\":{\"notice\":\"Returns the ETH / USD price\"},\"getPrice(address,address)\":{\"notice\":\"Returns the latest price\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/PriceConsumer.sol\":\"PriceConsumer\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts/src/v0.8/Denominations.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\nlibrary Denominations {\\n  address public constant ETH = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;\\n  address public constant BTC = 0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB;\\n\\n  // Fiat currencies follow https://en.wikipedia.org/wiki/ISO_4217\\n  address public constant USD = address(840);\\n  address public constant GBP = address(826);\\n  address public constant EUR = address(978);\\n  address public constant JPY = address(392);\\n  address public constant KRW = address(410);\\n  address public constant CNY = address(156);\\n  address public constant AUD = address(36);\\n  address public constant CAD = address(124);\\n  address public constant CHF = address(756);\\n  address public constant ARS = address(32);\\n  address public constant PHP = address(608);\\n  address public constant NZD = address(554);\\n  address public constant SGD = address(702);\\n  address public constant NGN = address(566);\\n  address public constant ZAR = address(710);\\n  address public constant RUB = address(643);\\n  address public constant INR = address(356);\\n  address public constant BRL = address(986);\\n}\\n\",\"keccak256\":\"0xee406990d671c95993762c3ee15c77987ee35c3682357c419ff73747a728fc4d\",\"license\":\"MIT\"},\"@chainlink/contracts/src/v0.8/interfaces/AggregatorInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ninterface AggregatorInterface {\\n  function latestAnswer()\\n    external\\n    view\\n    returns (\\n      int256\\n    );\\n  \\n  function latestTimestamp()\\n    external\\n    view\\n    returns (\\n      uint256\\n    );\\n\\n  function latestRound()\\n    external\\n    view\\n    returns (\\n      uint256\\n    );\\n\\n  function getAnswer(\\n    uint256 roundId\\n  )\\n    external\\n    view\\n    returns (\\n      int256\\n    );\\n\\n  function getTimestamp(\\n    uint256 roundId\\n  )\\n    external\\n    view\\n    returns (\\n      uint256\\n    );\\n\\n  event AnswerUpdated(\\n    int256 indexed current,\\n    uint256 indexed roundId,\\n    uint256 updatedAt\\n  );\\n\\n  event NewRound(\\n    uint256 indexed roundId,\\n    address indexed startedBy,\\n    uint256 startedAt\\n  );\\n}\\n\",\"keccak256\":\"0x1a5dc81544a6479f64437a8aca22c869769dd54ee3522c7ef5ebae0d329a28f0\",\"license\":\"MIT\"},\"@chainlink/contracts/src/v0.8/interfaces/AggregatorV2V3Interface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\nimport \\\"./AggregatorInterface.sol\\\";\\nimport \\\"./AggregatorV3Interface.sol\\\";\\n\\ninterface AggregatorV2V3Interface is AggregatorInterface, AggregatorV3Interface\\n{\\n}\\n\",\"keccak256\":\"0xe8f8d98b515366730824d24269c7267eee7f0288cf737db8659acbb0c751eb53\",\"license\":\"MIT\"},\"@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ninterface AggregatorV3Interface {\\n\\n  function decimals()\\n    external\\n    view\\n    returns (\\n      uint8\\n    );\\n\\n  function description()\\n    external\\n    view\\n    returns (\\n      string memory\\n    );\\n\\n  function version()\\n    external\\n    view\\n    returns (\\n      uint256\\n    );\\n\\n  // getRoundData and latestRoundData should both raise \\\"No data present\\\"\\n  // if they do not have data to report, instead of returning unset values\\n  // which could be misinterpreted as actual reported values.\\n  function getRoundData(\\n    uint80 _roundId\\n  )\\n    external\\n    view\\n    returns (\\n      uint80 roundId,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n\\n  function latestRoundData()\\n    external\\n    view\\n    returns (\\n      uint80 roundId,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n\\n}\\n\",\"keccak256\":\"0xe6f5ac8c47f3b9b6135051efb9216f9ba5b312a6ecc20209b4f66a780443c328\",\"license\":\"MIT\"},\"@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\npragma abicoder v2;\\n\\nimport \\\"./AggregatorV2V3Interface.sol\\\";\\n\\ninterface FeedRegistryInterface {\\n  struct Phase {\\n    uint16 phaseId;\\n    uint80 startingAggregatorRoundId;\\n    uint80 endingAggregatorRoundId;\\n  }\\n\\n  event FeedProposed(\\n    address indexed asset,\\n    address indexed denomination,\\n    address indexed proposedAggregator,\\n    address currentAggregator,\\n    address sender\\n  );\\n  event FeedConfirmed(\\n    address indexed asset,\\n    address indexed denomination,\\n    address indexed latestAggregator,\\n    address previousAggregator,\\n    uint16 nextPhaseId,\\n    address sender\\n  );\\n\\n  // V3 AggregatorV3Interface\\n\\n  function decimals(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      uint8\\n    );\\n\\n  function description(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      string memory\\n    );\\n\\n  function version(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      uint256\\n    );\\n\\n  function latestRoundData(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      uint80 roundId,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n\\n  function getRoundData(\\n    address base,\\n    address quote,\\n    uint80 _roundId\\n  )\\n    external\\n    view\\n    returns (\\n      uint80 roundId,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n\\n  // V2 AggregatorInterface\\n\\n  function latestAnswer(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      int256 answer\\n    );\\n\\n  function latestTimestamp(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      uint256 timestamp\\n    );\\n\\n  function latestRound(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      uint256 roundId\\n    );\\n\\n  function getAnswer(\\n    address base,\\n    address quote,\\n    uint256 roundId\\n  )\\n    external\\n    view\\n    returns (\\n      int256 answer\\n    );\\n\\n  function getTimestamp(\\n    address base,\\n    address quote,\\n    uint256 roundId\\n  )\\n    external\\n    view\\n    returns (\\n      uint256 timestamp\\n    );\\n\\n  // Registry getters\\n\\n  function getFeed(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      AggregatorV2V3Interface aggregator\\n    );\\n\\n  function getPhaseFeed(\\n    address base,\\n    address quote,\\n    uint16 phaseId\\n  )\\n    external\\n    view\\n    returns (\\n      AggregatorV2V3Interface aggregator\\n    );\\n\\n  function isFeedEnabled(\\n    address aggregator\\n  )\\n    external\\n    view\\n    returns (\\n      bool\\n    );\\n\\n  function getPhase(\\n    address base,\\n    address quote,\\n    uint16 phaseId\\n  )\\n    external\\n    view\\n    returns (\\n      Phase memory phase\\n    );\\n\\n  // Round helpers\\n\\n  function getRoundFeed(\\n    address base,\\n    address quote,\\n    uint80 roundId\\n  )\\n    external\\n    view\\n    returns (\\n      AggregatorV2V3Interface aggregator\\n    );\\n\\n  function getPhaseRange(\\n    address base,\\n    address quote,\\n    uint16 phaseId\\n  )\\n    external\\n    view\\n    returns (\\n      uint80 startingRoundId,\\n      uint80 endingRoundId\\n    );\\n\\n  function getPreviousRoundId(\\n    address base,\\n    address quote,\\n    uint80 roundId\\n  ) external\\n    view\\n    returns (\\n      uint80 previousRoundId\\n    );\\n\\n  function getNextRoundId(\\n    address base,\\n    address quote,\\n    uint80 roundId\\n  ) external\\n    view\\n    returns (\\n      uint80 nextRoundId\\n    );\\n\\n  // Feed management\\n\\n  function proposeFeed(\\n    address base,\\n    address quote,\\n    address aggregator\\n  ) external;\\n\\n  function confirmFeed(\\n    address base,\\n    address quote,\\n    address aggregator\\n  ) external;\\n\\n  // Proposed aggregator\\n\\n  function getProposedFeed(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      AggregatorV2V3Interface proposedAggregator\\n    );\\n\\n  function proposedGetRoundData(\\n    address base,\\n    address quote,\\n    uint80 roundId\\n  )\\n    external\\n    view\\n    returns (\\n      uint80 id,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n\\n  function proposedLatestRoundData(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      uint80 id,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n\\n  // Phases\\n  function getCurrentPhaseId(\\n    address base,\\n    address quote\\n  )\\n    external\\n    view\\n    returns (\\n      uint16 currentPhaseId\\n    );\\n}\\n\",\"keccak256\":\"0x016d081db2915d0455d148fe805f409200d214bb3c7dfad6e4de139e65d7f893\",\"license\":\"MIT\"},\"contracts/PriceConsumer.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.3;\\n\\nimport \\\"@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol\\\";\\nimport \\\"@chainlink/contracts/src/v0.8/Denominations.sol\\\";\\n\\ncontract PriceConsumer {\\n    FeedRegistryInterface internal registry;\\n\\n    /**\\n     * Network: Ethereum Kovan\\n     * Feed Registry: 0xAa7F6f7f507457a1EE157fE97F6c7DB2BEec5cD0\\n     */\\n    constructor(address _registry) {\\n        registry = FeedRegistryInterface(_registry);\\n    }\\n\\n    /**\\n     * Returns the ETH / USD price\\n     */\\n    function getEthUsdPrice() public view returns (int) {\\n        (\\n            uint80 roundID,\\n            int price,\\n            uint startedAt,\\n            uint timeStamp,\\n            uint80 answeredInRound\\n        ) = registry.latestRoundData(Denominations.ETH, Denominations.USD);\\n        return price;\\n    }\\n\\n    /**\\n     * Returns the latest price\\n     */\\n    function getPrice(address base, address quote) public view returns (int) {\\n        (\\n            uint80 roundID, \\n            int price,\\n            uint startedAt,\\n            uint timeStamp,\\n            uint80 answeredInRound\\n        ) = registry.latestRoundData(base, quote);\\n        return price;\\n    }\\n}\\n\",\"keccak256\":\"0xafd6a03d9f069f0587acb3e7f7b00808f80d039bc7b14cf7dc8f1617fb543a25\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516105993803806105998339818101604052810190610032919061008d565b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506100ff565b600081519050610087816100e8565b92915050565b60006020828403121561009f57600080fd5b60006100ad84828501610078565b91505092915050565b60006100c1826100c8565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6100f1816100b6565b81146100fc57600080fd5b50565b61048b8061010e6000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063a0a8045e1461003b578063ac41865a14610059575b600080fd5b610043610089565b6040516100509190610382565b60405180910390f35b610073600480360381019061006e9190610288565b610168565b6040516100809190610382565b60405180910390f35b60008060008060008060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663bcfd032d73eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee6103486040518363ffffffff1660e01b8152600401610103929190610359565b60a06040518083038186803b15801561011b57600080fd5b505afa15801561012f573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061015391906102c4565b94509450945094509450839550505050505090565b60008060008060008060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663bcfd032d89896040518363ffffffff1660e01b81526004016101cc929190610359565b60a06040518083038186803b1580156101e457600080fd5b505afa1580156101f8573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061021c91906102c4565b94509450945094509450839550505050505092915050565b600081359050610243816103f9565b92915050565b60008151905061025881610410565b92915050565b60008151905061026d81610427565b92915050565b6000815190506102828161043e565b92915050565b6000806040838503121561029b57600080fd5b60006102a985828601610234565b92505060206102ba85828601610234565b9150509250929050565b600080600080600060a086880312156102dc57600080fd5b60006102ea88828901610273565b95505060206102fb88828901610249565b945050604061030c8882890161025e565b935050606061031d8882890161025e565b925050608061032e88828901610273565b9150509295509295909350565b6103448161039d565b82525050565b610353816103af565b82525050565b600060408201905061036e600083018561033b565b61037b602083018461033b565b9392505050565b6000602082019050610397600083018461034a565b92915050565b60006103a8826103b9565b9050919050565b6000819050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b600069ffffffffffffffffffff82169050919050565b6104028161039d565b811461040d57600080fd5b50565b610419816103af565b811461042457600080fd5b50565b610430816103d9565b811461043b57600080fd5b50565b610447816103e3565b811461045257600080fd5b5056fea26469706673582212207ceb76decc7e913d6a3cea01eeb4a562b5a1d4fe17041ed5191e48600e09a39a64736f6c63430008030033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063a0a8045e1461003b578063ac41865a14610059575b600080fd5b610043610089565b6040516100509190610382565b60405180910390f35b610073600480360381019061006e9190610288565b610168565b6040516100809190610382565b60405180910390f35b60008060008060008060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663bcfd032d73eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee6103486040518363ffffffff1660e01b8152600401610103929190610359565b60a06040518083038186803b15801561011b57600080fd5b505afa15801561012f573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061015391906102c4565b94509450945094509450839550505050505090565b60008060008060008060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663bcfd032d89896040518363ffffffff1660e01b81526004016101cc929190610359565b60a06040518083038186803b1580156101e457600080fd5b505afa1580156101f8573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061021c91906102c4565b94509450945094509450839550505050505092915050565b600081359050610243816103f9565b92915050565b60008151905061025881610410565b92915050565b60008151905061026d81610427565b92915050565b6000815190506102828161043e565b92915050565b6000806040838503121561029b57600080fd5b60006102a985828601610234565b92505060206102ba85828601610234565b9150509250929050565b600080600080600060a086880312156102dc57600080fd5b60006102ea88828901610273565b95505060206102fb88828901610249565b945050604061030c8882890161025e565b935050606061031d8882890161025e565b925050608061032e88828901610273565b9150509295509295909350565b6103448161039d565b82525050565b610353816103af565b82525050565b600060408201905061036e600083018561033b565b61037b602083018461033b565b9392505050565b6000602082019050610397600083018461034a565b92915050565b60006103a8826103b9565b9050919050565b6000819050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b600069ffffffffffffffffffff82169050919050565b6104028161039d565b811461040d57600080fd5b50565b610419816103af565b811461042457600080fd5b50565b610430816103d9565b811461043b57600080fd5b50565b610447816103e3565b811461045257600080fd5b5056fea26469706673582212207ceb76decc7e913d6a3cea01eeb4a562b5a1d4fe17041ed5191e48600e09a39a64736f6c63430008030033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "Network: Ethereum Kovan Feed Registry: 0xAa7F6f7f507457a1EE157fE97F6c7DB2BEec5cD0"
+      },
+      "getEthUsdPrice()": {
+        "notice": "Returns the ETH / USD price"
+      },
+      "getPrice(address,address)": {
+        "notice": "Returns the latest price"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1079,
+        "contract": "contracts/PriceConsumer.sol:PriceConsumer",
+        "label": "registry",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(FeedRegistryInterface)701"
+      }
+    ],
+    "types": {
+      "t_contract(FeedRegistryInterface)701": {
+        "encoding": "inplace",
+        "label": "contract FeedRegistryInterface",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}

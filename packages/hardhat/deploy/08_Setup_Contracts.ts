@@ -57,6 +57,13 @@ const func: DeployFunction = async function ({
       linkaddress: linkTokenAddress,
     })
   }
+
+  // Try Auto-fund APIRequestBuilder contract with LINK
+  const APIRequestBuilder = await deployments.get('APIRequestBuilder');
+  const apiRequestBuilder = await ethers.getContractAt('APIRequestBuilder', APIRequestBuilder.address);
+  if (await autoFundCheck(apiRequestBuilder.address, chainId, linkTokenAddress)) {
+    await run("fund-link", { contract: apiRequestBuilder.address, linkaddress: linkTokenAddress });
+  }
 }
 
 func.tags = ['all']
