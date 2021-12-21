@@ -50,6 +50,7 @@ export function ConnectWallet(): JSX.Element {
               }
               onClick={() => {
                 activateBrowserWallet()
+                onClose()
               }}
             >
               MetaMask

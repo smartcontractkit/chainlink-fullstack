@@ -18,7 +18,7 @@ import {
 import { useEthers, useNotifications } from '@usedapp/core'
 import blockies from 'blockies-ts'
 import NextLink from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { getErrorMessage } from '../../lib/utils'
 import { Balance } from '../Balance'
 import { ConnectWallet } from '../ConnectWallet'
@@ -58,8 +58,14 @@ interface LayoutProps {
  * Component
  */
 export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
-  const { account, deactivate, error } = useEthers()
+  const { account, deactivate, error, setError } = useEthers()
   const { notifications } = useNotifications()
+
+  useEffect(() => {
+    if (error) {
+      setError(error)
+    }
+  }, [error, setError])
 
   let blockieImageSrc
   if (typeof window !== 'undefined') {
