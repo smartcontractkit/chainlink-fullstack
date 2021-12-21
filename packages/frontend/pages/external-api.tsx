@@ -9,7 +9,12 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@chakra-ui/react'
-import { useContractFunction, TransactionState } from '@usedapp/core'
+import {
+  useContractFunction,
+  TransactionState,
+  useEthers,
+  ChainId,
+} from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
@@ -37,6 +42,8 @@ const getLoadingText = (status: TransactionState) =>
 function ExternalAPI(): JSX.Element {
   const [requestId, setRequestId] = useState('')
   const [volumeData, setVolumeData] = useState<BigNumber | undefined>()
+
+  const { chainId } = useEthers()
 
   const apiConsumer = useContract<APIConsumer>(ContractId.ApiConsumer)
 
@@ -86,6 +93,15 @@ function ExternalAPI(): JSX.Element {
       <Heading as="h1" mb="8">
         External API
       </Heading>
+      {chainId === ChainId.Rinkeby && (
+        <Alert status="error" mb="8">
+          <AlertIcon />
+          <AlertTitle mr={2}>Error:</AlertTitle>
+          <AlertDescription>
+            Oracle on Rinkeby is in maintenance mode. Please switch to Kovan.
+          </AlertDescription>
+        </Alert>
+      )}
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
         {hasError && (
           <Alert status="error" mb="4">
