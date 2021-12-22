@@ -1,14 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react'
-import {
-  Text,
-  Image,
-  Button,
-  Stack,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from '@chakra-ui/react'
+import { Text, Image, Button, Stack } from '@chakra-ui/react'
 import { useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { getRequestStatus } from '../../../lib/utils'
@@ -16,6 +7,7 @@ import { useContract } from '../../../hooks/useContract'
 import { ContractId } from '../../../conf/config'
 import { RandomSVG } from '../../../../types/typechain'
 import { ExternalLink } from './ExternalLink'
+import { Error } from '../../Error'
 
 /**
  * Constants & Helpers
@@ -117,13 +109,7 @@ export function RandomNFT(): JSX.Element {
 
   return (
     <>
-      {hasError && (
-        <Alert status="error" mb="4">
-          <AlertIcon />
-          <AlertTitle mr={2}>Error:</AlertTitle>
-          <AlertDescription>{errorMessage}</AlertDescription>
-        </Alert>
-      )}
+      {hasError && <Error message={errorMessage} />}
       {!pending && (
         <Button
           onClick={createRequest}

@@ -1,20 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { Box, Heading, Text, Button } from '@chakra-ui/react'
 import {
-  Box,
-  Heading,
-  Text,
-  Button,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from '@chakra-ui/react'
-import { useContractFunction, TransactionState } from '@usedapp/core'
+  useContractFunction,
+  TransactionState,
+  useEthers,
+  ChainId,
+} from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
-import { Layout } from '../components/layout/Layout'
 import { useContract } from '../hooks/useContract'
 import { ContractId } from '../conf/config'
 import { APIConsumer } from '../../types/typechain'
+import { Layout } from '../components/layout/Layout'
+import { Error } from '../components/Error'
 
 /**
  * Helpers
@@ -37,6 +34,8 @@ const getLoadingText = (status: TransactionState) =>
 function ExternalAPI(): JSX.Element {
   const [requestId, setRequestId] = useState('')
   const [volumeData, setVolumeData] = useState<BigNumber | undefined>()
+
+  const { chainId } = useEthers()
 
   const apiConsumer = useContract<APIConsumer>(ContractId.ApiConsumer)
 
@@ -86,14 +85,11 @@ function ExternalAPI(): JSX.Element {
       <Heading as="h1" mb="8">
         External API
       </Heading>
+      {chainId === ChainId.Rinkeby && (
+        <Error message="Oracle on Rinkeby is in maintenance mode. Please switch to Kovan." />
+      )}
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
-        {hasError && (
-          <Alert status="error" mb="4">
-            <AlertIcon />
-            <AlertTitle mr={2}>Error:</AlertTitle>
-            <AlertDescription>{state.errorMessage}</AlertDescription>
-          </Alert>
-        )}
+        {hasError && <Error message={state.errorMessage} />}
         <Heading as="h2" size="md" mb="4">
           Volume data from CryptoCompare API
         </Heading>

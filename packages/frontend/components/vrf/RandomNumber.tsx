@@ -1,19 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import {
-  Text,
-  Button,
-  Code,
-  Stack,
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  AlertIcon,
-} from '@chakra-ui/react'
+import { Text, Button, Code, Stack } from '@chakra-ui/react'
 import { useContractFunction } from '@usedapp/core'
 import { getRequestStatus } from '../../lib/utils'
 import { useContract } from '../../hooks/useContract'
 import { ContractId } from '../../conf/config'
 import { RandomNumberConsumer } from '../../../types/typechain'
+import { Error } from '../Error'
 
 export function RandomNumber(): JSX.Element {
   const [requestId, setRequestId] = useState('')
@@ -66,13 +58,7 @@ export function RandomNumber(): JSX.Element {
 
   return (
     <>
-      {hasError && (
-        <Alert status="error" mb="4">
-          <AlertIcon />
-          <AlertTitle mr={2}>Error:</AlertTitle>
-          <AlertDescription>{state.errorMessage}</AlertDescription>
-        </Alert>
-      )}
+      {hasError && <Error message={state.errorMessage} />}
       <Button
         onClick={requestRandomNumber}
         isLoading={isLoading}
