@@ -23,6 +23,7 @@ import { getErrorMessage } from '../../lib/utils'
 import { Balance } from '../Balance'
 import { ConnectWallet } from '../ConnectWallet'
 import { Head, MetaProps } from './Head'
+import { Error } from '../Error'
 
 // Extends `window` to add `ethereum`.
 declare global {
@@ -136,13 +137,7 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
       </header>
       <main>
         <Container maxWidth="container.xl">
-          {error && (
-            <Alert status="error" mb="8">
-              <AlertIcon />
-              <AlertTitle mr={2}>Error:</AlertTitle>
-              <AlertDescription>{getErrorMessage(error)}</AlertDescription>
-            </Alert>
-          )}
+          {error && <Error message={getErrorMessage(error)} />}
           {children}
           {notifications.map((notification) => {
             if (notification.type === 'walletConnected') {
