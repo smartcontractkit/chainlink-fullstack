@@ -116,9 +116,19 @@ example:
 npx hardhat verify --network kovan 0x9279791897f112a41FfDa267ff7DbBC46b96c296 "0x9326BFA02ADD2366b30bacB125260Af641031331"
 ```
 
-## Linting
+## Format
+Fix formatting according to prettier config in the respective workspace
 
-TBD
+```bash
+yarn format:frontend
+yarn format:hardhat
+```
+
+## Lint
+
+```bash
+yarn lint:frontend
+```
 
 ## References
 * [Chainlink Docs](https://docs.chain.link)
