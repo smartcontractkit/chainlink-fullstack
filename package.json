@@ -12,7 +12,10 @@
     "compile": "yarn workspace chainlink-fullstack-hardhat compile",
     "test:hardhat": "yarn workspace chainlink-fullstack-hardhat test",
     "test:frontend": "yarn workspace chainlink-fullstack-frontend test",
-    "coverage:hardhat": "yarn workspace chainlink-fullstack-hardhat coverage"
+    "coverage:hardhat": "yarn workspace chainlink-fullstack-hardhat coverage",
+    "lint:frontend": "yarn workspace chainlink-fullstack-frontend lint",
+    "format:frontend": "yarn workspace chainlink-fullstack-frontend format",
+    "format:hardhat": "yarn workspace chainlink-fullstack-hardhat format"
   },
   "workspaces": {
     "packages": [
@@ -21,7 +24,7 @@
     "nohoist": [
       "**/hardhat",
       "**/hardhat/**",
-			"**"
+      "**"
     ]
   }
 }
