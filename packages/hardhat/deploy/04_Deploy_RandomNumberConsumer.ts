@@ -1,37 +1,36 @@
-import { HardhatRuntimeEnvironment } from 'hardhat/types';
-import { DeployFunction } from 'hardhat-deploy/types';
-import { networkConfig } from '../helper-hardhat-config';
+import { HardhatRuntimeEnvironment } from 'hardhat/types'
+import { DeployFunction } from 'hardhat-deploy/types'
+import { networkConfig } from '../helper-hardhat-config'
 
 const func: DeployFunction = async function ({
   deployments,
   getNamedAccounts,
-  getChainId
+  getChainId,
 }: HardhatRuntimeEnvironment) {
-
-  const { deploy, get } = deployments;
-  const { deployer } = await getNamedAccounts();
-  const chainId = await getChainId();
-  let linkTokenAddress: string;
-  let vrfCoordinatorAddress: string;
+  const { deploy, get } = deployments
+  const { deployer } = await getNamedAccounts()
+  const chainId = await getChainId()
+  let linkTokenAddress: string
+  let vrfCoordinatorAddress: string
 
   if (chainId === '1337') {
-    const LinkToken = await get('LinkToken');
-    linkTokenAddress = LinkToken.address;
-    const VRFCoordinatorMock = await get('VRFCoordinatorMock');
-    vrfCoordinatorAddress = VRFCoordinatorMock.address;
+    const LinkToken = await get('LinkToken')
+    linkTokenAddress = LinkToken.address
+    const VRFCoordinatorMock = await get('VRFCoordinatorMock')
+    vrfCoordinatorAddress = VRFCoordinatorMock.address
   } else {
-    linkTokenAddress = networkConfig[chainId].linkToken as string;
-    vrfCoordinatorAddress = networkConfig[chainId].vrfCoordinator as string;
+    linkTokenAddress = networkConfig[chainId].linkToken as string
+    vrfCoordinatorAddress = networkConfig[chainId].vrfCoordinator as string
   }
-  const { keyHash, fee } = networkConfig[chainId];
+  const { keyHash, fee } = networkConfig[chainId]
 
   await deploy('RandomNumberConsumer', {
     from: deployer,
     args: [vrfCoordinatorAddress, linkTokenAddress, keyHash, fee],
-    log: true
-  });
+    log: true,
+  })
 }
 
-func.tags = ['all', 'vrf', 'main'];
+func.tags = ['all', 'vrf', 'main']
 
-export default func;
+export default func

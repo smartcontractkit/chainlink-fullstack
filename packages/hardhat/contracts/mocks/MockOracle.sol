@@ -13,12 +13,12 @@ import "@chainlink/contracts/src/v0.6/vendor/SafeMathChainlink.sol";
 contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
   using SafeMathChainlink for uint256;
 
-  uint256 constant public EXPIRY_TIME = 5 minutes;
-  uint256 constant private MINIMUM_CONSUMER_GAS_LIMIT = 400000;
+  uint256 public constant EXPIRY_TIME = 5 minutes;
+  uint256 private constant MINIMUM_CONSUMER_GAS_LIMIT = 400000;
 
   struct Request {
-      address callbackAddr;
-      bytes4 callbackFunctionId;
+    address callbackAddr;
+    bytes4 callbackFunctionId;
   }
 
   LinkTokenInterface internal LinkToken;
@@ -36,18 +36,14 @@ contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
     bytes data
   );
 
-  event CancelOracleRequest(
-    bytes32 indexed requestId
-  );
+  event CancelOracleRequest(bytes32 indexed requestId);
 
   /**
    * @notice Deploy with the address of the LINK token
    * @dev Sets the LinkToken address for the imported LinkTokenInterface
    * @param _link The address of the LINK token
    */
-  constructor(address _link)
-    public
-  {
+  constructor(address _link) public {
     LinkToken = LinkTokenInterface(_link); // external but already deployed and unalterable
   }
 
@@ -73,21 +69,13 @@ contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
     uint256 _nonce,
     uint256 _dataVersion,
     bytes calldata _data
-  )
-    external
-    override
-    onlyLINK()
-    checkCallbackAddress(_callbackAddress)
-  {
+  ) external override onlyLINK checkCallbackAddress(_callbackAddress) {
     bytes32 requestId = keccak256(abi.encodePacked(_sender, _nonce));
     require(commitments[requestId].callbackAddr == address(0), "Must use a unique ID");
     // solhint-disable-next-line not-rely-on-time
     uint256 expiration = now.add(EXPIRY_TIME);
 
-    commitments[requestId] = Request(
-        _callbackAddress,
-        _callbackFunctionId
-    );
+    commitments[requestId] = Request(_callbackAddress, _callbackFunctionId);
 
     emit OracleRequest(
       _specId,
@@ -98,7 +86,8 @@ contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
       _callbackFunctionId,
       expiration,
       _dataVersion,
-      _data);
+      _data
+    );
   }
 
   /**
@@ -110,14 +99,7 @@ contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
    * @param _data The data to return to the consuming contract
    * @return Status if the external call was successful
    */
-  function fulfillOracleRequest(
-    bytes32 _requestId,
-    bytes32 _data
-  )
-    external
-    isValidRequest(_requestId)
-    returns (bool)
-  {
+  function fulfillOracleRequest(bytes32 _requestId, bytes32 _data) external isValidRequest(_requestId) returns (bool) {
     Request memory req = commitments[_requestId];
     delete commitments[_requestId];
     require(gasleft() >= MINIMUM_CONSUMER_GAS_LIMIT, "Must provide consumer enough gas");
@@ -142,10 +124,7 @@ contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
     uint256 _payment,
     bytes4,
     uint256 _expiration
-  )
-    external
-    override
-  {
+  ) external override {
     require(commitments[_requestId].callbackAddr != address(0), "Must use a unique ID");
     // solhint-disable-next-line not-rely-on-time
     require(_expiration <= now, "Request is not expired");
@@ -161,12 +140,7 @@ contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
    * @dev This is the public implementation for chainlinkTokenAddress, which is
    * an internal method of the ChainlinkClient contract
    */
-  function getChainlinkToken()
-    public
-    view
-    override
-    returns (address)
-  {
+  function getChainlinkToken() public view override returns (address) {
     return address(LinkToken);
   }
 
@@ -180,7 +154,6 @@ contract MockOracle is ChainlinkRequestInterface, LinkTokenReceiver {
     require(commitments[_requestId].callbackAddr != address(0), "Must have a valid requestId");
     _;
   }
-
 
   /**
    * @dev Reverts if the callback address is the LINK token
