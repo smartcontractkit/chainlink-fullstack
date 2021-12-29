@@ -1,1 +1,1 @@
-declare module "mocha-skip-if";
+declare module 'mocha-skip-if'
