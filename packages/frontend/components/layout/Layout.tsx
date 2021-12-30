@@ -97,7 +97,7 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
               </NextLink>
               <NextLink href="/vrf" passHref>
                 <Link px="4" py="1">
-                  VRF
+                  Randomness
                 </Link>
               </NextLink>
               <NextLink href="/external-api" passHref>
