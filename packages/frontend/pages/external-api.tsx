@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Box, Heading, Text, Button } from '@chakra-ui/react'
+import { Box, Heading, Text, Button, Link } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import {
   useContractFunction,
   TransactionState,
@@ -85,27 +86,39 @@ function ExternalAPI(): JSX.Element {
       <Heading as="h1" mb="8">
         External API
       </Heading>
+      <Text fontSize="xl">
+        Request & Receive data from any API in your smart contracts.
+      </Text>
       {chainId === ChainId.Rinkeby && (
         <Error message="Oracle on Rinkeby is in maintenance mode. Please switch to Kovan." />
       )}
       <Box maxWidth="container.sm" p="8" mt="8" bg="gray.100">
         {hasError && <Error message={state.errorMessage} />}
-        <Heading as="h2" size="md" mb="4">
-          Volume data from CryptoCompare API
-        </Heading>
         <Button
           onClick={requestVolumeData}
           isLoading={isLoading}
           loadingText={getLoadingText(state.status)}
           colorScheme="teal"
         >
-          New Oracle Request
+          Request External API
         </Button>
         {volumeData && (
           <Text fontSize="xl" mt="2">
             ETH VOLUME 24H: {formatEther(volumeData)}
           </Text>
         )}
+        <Text my="4">
+          Consume data from CryptoCompare API via HTTP GET request, through
+          Chainlink&apos;s decentralized oracle network. It provides smart
+          contracts with the ability to push and pull data, facilitating the
+          interoperability between on-chain and off-chain applications.
+        </Text>
+        <Link
+          href="https://docs.chain.link/docs/make-a-http-get-request/"
+          isExternal
+        >
+          Learn More <ExternalLinkIcon mx="2px" />
+        </Link>
       </Box>
     </Layout>
   )
