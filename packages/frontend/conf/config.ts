@@ -14,6 +14,9 @@ import MulticallContract from '../artifacts/contracts/localhost/Multicall.json'
 import LocalhostAPIConsumer from '../artifacts/contracts/localhost/APIConsumer.json'
 import RinkebyAPIConsumer from '../artifacts/contracts/rinkeby/APIConsumer.json'
 import KovanAPIConsumer from '../artifacts/contracts/kovan/APIConsumer.json'
+import LocalhostAPIRequestBuilder from '../artifacts/contracts/localhost/APIRequestBuilder.json'
+import RinkebyAPIRequestBuilder from '../artifacts/contracts/rinkeby/APIRequestBuilder.json'
+import KovanAPIRequestBuilder from '../artifacts/contracts/kovan/APIRequestBuilder.json'
 import WbtcPorAggregator from '../artifacts/contracts/mainnet/WbtcPorAggregator.json'
 
 const INFURA_KEY = process.env.NEXT_PUBLIC_INFURA_KEY
@@ -43,6 +46,7 @@ export enum ContractId {
   RandomNumberConsumer = 'randomNumberConsumer',
   RandomSvg = 'randomSvg',
   ApiConsumer = 'apiConsumer',
+  APIRequestBuilder = 'apiRequestConsumer',
   WbtcPorAggregator = 'wbtcPorAggregator',
 }
 
@@ -57,6 +61,7 @@ type NetworkConfig = {
   [ContractId.RandomNumberConsumer]?: ContractDeployment
   [ContractId.RandomSvg]?: ContractDeployment
   [ContractId.ApiConsumer]?: ContractDeployment
+  [ContractId.APIRequestBuilder]?: ContractDeployment
   [ContractId.WbtcPorAggregator]?: ContractDeployment
 }
 
@@ -67,12 +72,14 @@ export const contractConfig: Record<number, NetworkConfig> = {
     [ContractId.RandomNumberConsumer]: LocalhostRandomNumberConsumer,
     [ContractId.RandomSvg]: LocalhostRandomSVG,
     [ContractId.ApiConsumer]: LocalhostAPIConsumer,
+    [ContractId.APIRequestBuilder]: LocalhostAPIRequestBuilder,
   },
   [ChainId.Rinkeby]: {
     [ContractId.PriceConsumerV3]: RinkebyPriceConsumerV3,
     [ContractId.RandomNumberConsumer]: RinkebyRandomNumberConsumer,
     [ContractId.RandomSvg]: RinkebyRandomSVG,
     [ContractId.ApiConsumer]: RinkebyAPIConsumer,
+    [ContractId.APIRequestBuilder]: RinkebyAPIRequestBuilder,
   },
   [ChainId.Kovan]: {
     [ContractId.PriceConsumer]: KovanPriceConsumer,
@@ -80,6 +87,7 @@ export const contractConfig: Record<number, NetworkConfig> = {
     [ContractId.RandomNumberConsumer]: KovanRandomNumberConsumer,
     [ContractId.RandomSvg]: KovanRandomSVG,
     [ContractId.ApiConsumer]: KovanAPIConsumer,
+    [ContractId.APIRequestBuilder]: KovanAPIRequestBuilder,
   },
   [ChainId.Mainnet]: {
     [ContractId.WbtcPorAggregator]: WbtcPorAggregator,

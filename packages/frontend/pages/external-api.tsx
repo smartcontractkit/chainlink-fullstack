@@ -5,6 +5,7 @@ import { useEthers, ChainId } from '@usedapp/core'
 import { Consumer } from '../components/api/Consumer'
 import { Section, Layout } from '../components/layout'
 import { Error } from '../components/Error'
+import { ExternalApi } from '../components/api'
 
 function ExternalAPI(): JSX.Element {
   const { chainId } = useEthers()
@@ -34,6 +35,9 @@ function ExternalAPI(): JSX.Element {
         >
           Learn More <ExternalLinkIcon mx="2px" />
         </Link>
+      </Section>
+      <Section>
+        <ExternalApi/>
       </Section>
     </Layout>
   )
