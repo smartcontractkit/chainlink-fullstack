@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react'
-import { Text, Image, Button, Stack } from '@chakra-ui/react'
+import { Text, Image, Button, Stack, Tooltip } from '@chakra-ui/react'
 import { useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { getRequestStatus } from '../../../lib/utils'
@@ -111,24 +111,39 @@ export function RandomNFT(): JSX.Element {
     <>
       {hasError && <Error message={errorMessage} />}
       {!pending && (
-        <Button
-          onClick={createRequest}
-          isLoading={isCreating}
-          loadingText={getRequestStatus(createState.status)}
-          colorScheme="teal"
+        <Tooltip
+          label="Request random number and mint new NFT associated with the result"
+          placement="right-start"
+          fontSize="xs"
+          hasArrow
         >
-          {metadata ? 'Request New NFT' : 'Request NFT'}
-        </Button>
+          <Button
+            onClick={createRequest}
+            isLoading={isCreating}
+            loadingText={getRequestStatus(createState.status)}
+            colorScheme="teal"
+          >
+            {metadata ? 'Request New NFT' : 'Request NFT'}
+          </Button>
+        </Tooltip>
       )}
       {pending && (
-        <Button
-          onClick={() => finish(tokenId)}
-          isLoading={isFinishing}
-          loadingText="Finishing Minting"
-          colorScheme="teal"
+        <Tooltip
+          label="Use the random number from first step to generate unique SVG and store it as on-chain NFT metadata"
+          placement="right-start"
+          fontSize="xs"
+          defaultIsOpen
+          hasArrow
         >
-          Finish Minting
-        </Button>
+          <Button
+            onClick={() => finish(tokenId)}
+            isLoading={isFinishing}
+            loadingText="Finishing Minting"
+            colorScheme="teal"
+          >
+            Finish Minting
+          </Button>
+        </Tooltip>
       )}
       {metadata && (
         <Stack spacing={2} mt={4}>
