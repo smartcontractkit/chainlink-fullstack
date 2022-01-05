@@ -20,7 +20,7 @@ contract MockFeedRegistry {
     getStartedAt[latestRound] = block.timestamp;
   }
 
-  function latestRoundData(address base, address quote)
+  function latestRoundData(address, address)
     external
     view
     returns (
