@@ -18,7 +18,7 @@ skip
       linkToken = (await ethers.getContractAt(
         'LinkToken',
         LinkToken.address
-      )) as unknown as LinkToken
+      )) as LinkToken
 
       const linkTokenAddress = linkToken.address
 
@@ -26,7 +26,7 @@ skip
       randomNumberConsumer = (await ethers.getContractAt(
         'RandomNumberConsumer',
         RandomNumberConsumer.address
-      )) as unknown as RandomNumberConsumer
+      )) as RandomNumberConsumer
 
       if (
         await autoFundCheck(

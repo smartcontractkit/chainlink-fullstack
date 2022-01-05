@@ -20,7 +20,7 @@ skip
       linkToken = (await ethers.getContractAt(
         'LinkToken',
         LinkToken.address
-      )) as unknown as LinkToken
+      )) as LinkToken
 
       const linkTokenAddress = linkToken.address
 
@@ -28,13 +28,13 @@ skip
       rsNFT = (await ethers.getContractAt(
         'RandomSVG',
         RandomSVG.address
-      )) as unknown as RandomSVG
+      )) as RandomSVG
 
       const VRFCoordinatorMock = await deployments.get('VRFCoordinatorMock')
       vrfCoordinator = (await ethers.getContractAt(
         'VRFCoordinatorMock',
         VRFCoordinatorMock.address
-      )) as unknown as VRFCoordinatorMock
+      )) as VRFCoordinatorMock
 
       if (await autoFundCheck(rsNFT.address, chainId, linkTokenAddress)) {
         await run('fund-link', {

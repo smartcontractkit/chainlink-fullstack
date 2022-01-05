@@ -14,7 +14,7 @@ skip
       priceConsumer = (await ethers.getContractAt(
         'PriceConsumer',
         PriceConsumer.address
-      )) as unknown as PriceConsumer
+      )) as PriceConsumer
     })
 
     it('should successfully make request and get a result', async () => {

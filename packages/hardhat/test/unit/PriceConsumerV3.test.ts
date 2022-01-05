@@ -15,7 +15,7 @@ skip
       priceConsumerV3 = (await ethers.getContractAt(
         'PriceConsumerV3',
         PriceConsumerV3.address
-      )) as unknown as PriceConsumerV3
+      )) as PriceConsumerV3
     })
 
     it('should return a positive value', async () => {
