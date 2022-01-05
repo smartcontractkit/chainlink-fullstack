@@ -1,4 +1,11 @@
-import { ChainId, Config, MULTICALL_ADDRESSES } from '@usedapp/core'
+import {
+  ChainId,
+  Config,
+  Rinkeby,
+  Kovan,
+  Localhost,
+  Hardhat,
+} from '@usedapp/core'
 import LocalhostPriceConsumer from '../artifacts/contracts/localhost/PriceConsumer.json'
 import KovanPriceConsumer from '../artifacts/contracts/kovan/PriceConsumer.json'
 import LocalhostPriceConsumerV3 from '../artifacts/contracts/localhost/PriceConsumerV3.json'
@@ -24,14 +31,8 @@ const config: Config = {
     [ChainId.Kovan]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
     [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
   },
-  supportedChains: [
-    ChainId.Rinkeby,
-    ChainId.Kovan,
-    ChainId.Hardhat,
-    ChainId.Localhost,
-  ],
+  networks: [Rinkeby, Kovan, Hardhat, Localhost],
   multicallAddresses: {
-    ...MULTICALL_ADDRESSES,
     [ChainId.Hardhat]: MulticallContract.address,
     [ChainId.Localhost]: MulticallContract.address,
   },
