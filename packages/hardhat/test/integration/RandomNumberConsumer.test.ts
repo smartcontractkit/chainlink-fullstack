@@ -14,7 +14,7 @@ skip
       randomNumberConsumer = (await ethers.getContractAt(
         'RandomNumberConsumer',
         RandomNumberConsumer.address
-      )) as unknown as RandomNumberConsumer
+      )) as RandomNumberConsumer
     })
 
     it('should successfully make a VRF request and get a result', async () => {

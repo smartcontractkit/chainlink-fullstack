@@ -14,7 +14,7 @@ skip
       apiConsumer = (await ethers.getContractAt(
         'APIConsumer',
         APIConsumer.address
-      )) as unknown as APIConsumer
+      )) as APIConsumer
     })
 
     it('should successfully make an external API request and get a result', async () => {

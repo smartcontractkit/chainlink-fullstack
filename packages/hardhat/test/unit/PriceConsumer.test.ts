@@ -16,13 +16,13 @@ skip
       priceConsumer = (await ethers.getContractAt(
         'PriceConsumer',
         PriceConsumer.address
-      )) as unknown as PriceConsumer
+      )) as PriceConsumer
 
       const MockFeedRegistry = await deployments.get('MockFeedRegistry')
       mockFeedRegistry = (await ethers.getContractAt(
         'MockFeedRegistry',
         MockFeedRegistry.address
-      )) as unknown as MockFeedRegistry
+      )) as MockFeedRegistry
     })
 
     it('should return the expected value', async () => {

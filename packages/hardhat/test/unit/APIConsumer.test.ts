@@ -18,7 +18,7 @@ skip
       linkToken = (await ethers.getContractAt(
         'LinkToken',
         LinkToken.address
-      )) as unknown as LinkToken
+      )) as LinkToken
 
       const linkTokenAddress = linkToken.address
 
@@ -26,7 +26,7 @@ skip
       apiConsumer = (await ethers.getContractAt(
         'APIConsumer',
         APIConsumer.address
-      )) as unknown as APIConsumer
+      )) as APIConsumer
 
       if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress)) {
         await run('fund-link', {
