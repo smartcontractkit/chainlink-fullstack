@@ -129,6 +129,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.APIConsumer__factory>;
     getContractFactory(
+      name: "APIRequestBuilder",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.APIRequestBuilder__factory>;
+    getContractFactory(
       name: "MockFeedRegistry",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.MockFeedRegistry__factory>;
