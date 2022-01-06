@@ -4,8 +4,9 @@ import { useContractFunction, TransactionState } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useContract } from '../../hooks/useContract'
 import { ContractId } from '../../conf/config'
-import { APIConsumer } from '../../../types/typechain'
 import { Error } from '../../components/Error'
+// @ts-ignore
+import { APIConsumer } from '../../../types/typechain'
 
 /**
  * Helpers
