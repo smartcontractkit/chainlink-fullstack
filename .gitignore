@@ -45,3 +45,6 @@ packages/frontend/out/
 packages/frontend/build
 # contracts
 # packages/frontend/artifacts/*
+
+# Typechain Files ##
+packages/types/typechain

@@ -4,8 +4,9 @@ import { useContractFunction } from '@usedapp/core'
 import { getRequestStatus } from '../../lib/utils'
 import { useContract } from '../../hooks/useContract'
 import { ContractId } from '../../conf/config'
-import { RandomNumberConsumer } from '../../../types/typechain'
 import { Error } from '../Error'
+// @ts-ignore
+import { RandomNumberConsumer } from '../../../types/typechain'
 
 export function RandomNumber(): JSX.Element {
   const [requestId, setRequestId] = useState('')

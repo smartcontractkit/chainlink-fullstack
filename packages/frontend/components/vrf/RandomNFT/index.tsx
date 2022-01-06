@@ -5,9 +5,10 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { getRequestStatus } from '../../../lib/utils'
 import { useContract } from '../../../hooks/useContract'
 import { ContractId } from '../../../conf/config'
-import { RandomSVG } from '../../../../types/typechain'
 import { ExternalLink } from './ExternalLink'
 import { Error } from '../../Error'
+// @ts-ignore
+import { RandomSVG } from '../../../../types/typechain'
 
 /**
  * Constants & Helpers

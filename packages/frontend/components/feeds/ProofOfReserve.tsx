@@ -4,6 +4,7 @@ import { ChainId } from '@usedapp/core'
 import { BigNumber, ethers } from 'ethers'
 import { formatBtc } from '../../lib/utils'
 import config, { contractConfig, ContractId } from '../../conf/config'
+// @ts-ignore
 import { AggregatorV3Interface } from 'types/typechain'
 
 const providerMainnet = new ethers.providers.JsonRpcProvider(
