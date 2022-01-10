@@ -71,7 +71,6 @@ export function RandomNFT(): JSX.Element {
       }
     }
   }, [createEvents])
-
   useEffect(() => {
     if (randomSvg && tokenId) {
       randomSvg.on('CreatedUnfinishedRandomSVG', (id: BigNumber) => {
