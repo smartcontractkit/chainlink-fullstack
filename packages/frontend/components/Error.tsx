@@ -5,6 +5,7 @@ import {
   AlertIcon,
   AlertTitle,
 } from '@chakra-ui/react'
+import { useEthers } from '@usedapp/core'
 
 /**
  * Prop Types
@@ -18,9 +19,10 @@ interface ErrorProps {
  */
 export function Error({ message }: ErrorProps): JSX.Element {
   const [errorMsg, setErrorMsg] = useState(String)
+  const { account } = useEthers()
 
   useEffect(() => {
-    if (message === 'unknown account #0') {
+    if (account === null) {
       setErrorMsg('No metamask account connected')
     } else {
       setErrorMsg(message)
