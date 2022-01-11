@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from '@chakra-ui/react'
+import { Badge, HStack, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { ChainId, useEthers } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
@@ -29,11 +29,14 @@ export interface Props {
 export function ExternalLink({ tokenId }: Props): JSX.Element {
   const { chainId } = useEthers()
 
+  const active = chainId === OPENSEA_TESTNET
+
   return (
-    chainId === OPENSEA_TESTNET && (
-      <Link href={getUrl(tokenId)} isExternal>
+    <HStack>
+      <Link href={active && getUrl(tokenId)} isExternal>
         See on OpenSea Testnet Marketplace <ExternalLinkIcon mx="2px" />
       </Link>
-    )
+      {!active && <Badge>Rinkeby Only</Badge>}
+    </HStack>
   )
 }
