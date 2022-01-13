@@ -3,6 +3,7 @@ import { Heading, Text, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { useEthers, ChainId } from '@usedapp/core'
 import { Consumer } from '../components/api/Consumer'
+import { RequestBuilder } from '../components/api'
 import { Section, Layout } from '../components/layout'
 import { Error } from '../components/Error'
 
@@ -34,6 +35,9 @@ function ExternalAPI(): JSX.Element {
         >
           Learn More <ExternalLinkIcon mx="2px" />
         </Link>
+      </Section>
+      <Section>
+        <RequestBuilder />
       </Section>
     </Layout>
   )
