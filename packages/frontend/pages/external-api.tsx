@@ -19,7 +19,7 @@ function ExternalAPI(): JSX.Element {
         External API
       </Heading>
       <Text fontSize="xl">
-        Request & Receive data from any API in your smart contracts.
+        Request &amp; Receive data from any API in your smart contracts.
       </Text>
       <Section>
         <Consumer />
