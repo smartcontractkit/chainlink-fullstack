@@ -19,6 +19,8 @@ const func: DeployFunction = async function ({
     feedRegistryAddress = networkConfig[chainId].feedRegistry as string
   }
 
+  if (!feedRegistryAddress) return
+
   await deploy('PriceConsumer', {
     from: deployer,
     args: [feedRegistryAddress],

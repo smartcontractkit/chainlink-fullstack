@@ -3,19 +3,18 @@ import { HStack, Spinner, Text } from '@chakra-ui/react'
 import { ChainId } from '@usedapp/core'
 import { BigNumber, ethers } from 'ethers'
 import { formatBtc } from '../../lib/utils'
-import config, { contractConfig, ContractId } from '../../conf/config'
+import config, { WbtcPorAddress } from '../../conf/config'
+import { AggregatorV3InterfaceABI } from '../../contracts/external'
 // @ts-ignore
 import { AggregatorV3Interface } from 'types/typechain'
 
 const providerMainnet = new ethers.providers.JsonRpcProvider(
   config.readOnlyUrls[ChainId.Mainnet]
 )
-const contractDeployment =
-  contractConfig[ChainId.Mainnet][ContractId.WbtcPorAggregator]
 
 const wbtcPorAggregator = new ethers.Contract(
-  contractDeployment.address,
-  contractDeployment.abi,
+  WbtcPorAddress,
+  AggregatorV3InterfaceABI,
   providerMainnet
 ) as AggregatorV3Interface
 

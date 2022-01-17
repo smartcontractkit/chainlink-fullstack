@@ -39,9 +39,6 @@ const ETHERSCAN_API_KEY =
  * @type import('hardhat/config').HardhatUserConfig
  */
 const config: HardhatUserConfig = {
-  paths: {
-    deployments: '../frontend/artifacts/contracts',
-  },
   networks: {
     hardhat: {
       chainId: 1337,
