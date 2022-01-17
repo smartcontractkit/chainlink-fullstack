@@ -43,3 +43,11 @@ export const formatUsd = (value: BigNumber): string =>
 export const getRequestStatus = (status: TransactionState): string =>
   (status === 'Mining' && 'Mining Request') ||
   (status === 'Success' && 'Fulfilling Request')
+
+export const checkForNoAcc = (account) => {
+  if (account == null) {
+    return true
+  } else {
+    return false
+  }
+}

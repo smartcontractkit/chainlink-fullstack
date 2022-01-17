@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Text, Button } from '@chakra-ui/react'
-import { useContractFunction, TransactionState } from '@usedapp/core'
+import { useContractFunction, TransactionState, useEthers } from '@usedapp/core'
 import { BigNumber, utils } from 'ethers'
 import { useContract } from '../../hooks/useContract'
 import { ContractId } from '../../conf/config'
 import { Error } from '../../components/Error'
+import { checkForNoAcc } from '../../lib/utils'
 // @ts-ignore
 import { APIConsumer } from '../../../types/typechain'
 
@@ -27,17 +28,17 @@ const getLoadingText = (status: TransactionState) =>
  * Component
  */
 export function Consumer(): JSX.Element {
+  const { account } = useEthers()
+
   const [requestId, setRequestId] = useState('')
   const [volumeData, setVolumeData] = useState<BigNumber | undefined>()
 
   const apiConsumer = useContract<APIConsumer>(ContractId.ApiConsumer)
-
   const { send, state, events } = useContractFunction(
     apiConsumer,
     'requestVolumeData',
     { transactionName: 'External API Request' }
   )
-
   const requestVolumeData = async () => {
     await send()
     setVolumeData(null)
@@ -81,6 +82,7 @@ export function Consumer(): JSX.Element {
         isLoading={isLoading}
         loadingText={getLoadingText(state.status)}
         colorScheme="teal"
+        disabled={checkForNoAcc(account)}
       >
         Request External API
       </Button>
