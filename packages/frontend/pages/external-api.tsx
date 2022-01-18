@@ -2,7 +2,6 @@ import React from 'react'
 import { Heading, Text, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { useEthers, ChainId } from '@usedapp/core'
-import { Consumer } from '../components/api/Consumer'
 import { RequestBuilder } from '../components/api'
 import { Section, Layout } from '../components/layout'
 import { Error } from '../components/Error'
@@ -22,9 +21,9 @@ function ExternalAPI(): JSX.Element {
         Request &amp; Receive data from any API in your smart contracts.
       </Text>
       <Section>
-        <Consumer />
+        <RequestBuilder />
         <Text my="4">
-          Consume data from CryptoCompare API via HTTP GET request, through
+          Consume data from any API via HTTP GET request, through
           Chainlink&apos;s decentralized oracle network. It provides smart
           contracts with the ability to push and pull data, facilitating the
           interoperability between on-chain and off-chain applications.
@@ -35,9 +34,6 @@ function ExternalAPI(): JSX.Element {
         >
           Learn More <ExternalLinkIcon mx="2px" />
         </Link>
-      </Section>
-      <Section>
-        <RequestBuilder />
       </Section>
     </Layout>
   )

@@ -164,8 +164,8 @@ export function RequestBuilder(): JSX.Element {
         Custom API Request
       </Button>
       {data && (
-        <Text fontSize="xl" mt="2">
-          Data: {data}
+        <Text fontSize="xl" mt="4">
+          Result: {data}
         </Text>
       )}
     </>

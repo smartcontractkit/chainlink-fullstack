@@ -24,7 +24,6 @@ export enum ContractId {
   PriceConsumerV3 = 'priceConsumerV3',
   RandomNumberConsumer = 'randomNumberConsumer',
   RandomSvg = 'randomSvg',
-  ApiConsumer = 'apiConsumer',
   APIRequestBuilder = 'apiRequestConsumer',
 }
 
@@ -38,7 +37,6 @@ type NetworkConfig = {
   [ContractId.PriceConsumerV3]?: ContractDeployment
   [ContractId.RandomNumberConsumer]?: ContractDeployment
   [ContractId.RandomSvg]?: ContractDeployment
-  [ContractId.ApiConsumer]?: ContractDeployment
   [ContractId.APIRequestBuilder]?: ContractDeployment
 }
 
@@ -48,14 +46,12 @@ export const contractConfig: Record<number, NetworkConfig> = {
     [ContractId.PriceConsumerV3]: localhostContracts.PriceConsumerV3,
     [ContractId.RandomNumberConsumer]: localhostContracts.RandomNumberConsumer,
     [ContractId.RandomSvg]: localhostContracts.RandomSVG,
-    [ContractId.ApiConsumer]: localhostContracts.APIConsumer,
     [ContractId.APIRequestBuilder]: localhostContracts.APIRequestBuilder,
   },
   [ChainId.Rinkeby]: {
     [ContractId.PriceConsumerV3]: rinkebyContracts.PriceConsumerV3,
     [ContractId.RandomNumberConsumer]: rinkebyContracts.RandomNumberConsumer,
     [ContractId.RandomSvg]: rinkebyContracts.RandomSVG,
-    [ContractId.ApiConsumer]: rinkebyContracts.APIConsumer,
     [ContractId.APIRequestBuilder]: rinkebyContracts.APIRequestBuilder,
   },
   [ChainId.Kovan]: {
@@ -63,7 +59,6 @@ export const contractConfig: Record<number, NetworkConfig> = {
     [ContractId.PriceConsumerV3]: kovanContracts.PriceConsumerV3,
     [ContractId.RandomNumberConsumer]: kovanContracts.RandomNumberConsumer,
     [ContractId.RandomSvg]: kovanContracts.RandomSVG,
-    [ContractId.ApiConsumer]: kovanContracts.APIConsumer,
     [ContractId.APIRequestBuilder]: kovanContracts.APIRequestBuilder,
   },
 }
