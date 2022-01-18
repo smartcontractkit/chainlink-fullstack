@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { BigNumber } from 'ethers'
 import { formatFixed } from '@ethersproject/bignumber'
-import { useContractFunction, TransactionState } from '@usedapp/core'
+import { useContractFunction, TransactionState, useEthers } from '@usedapp/core'
 import { ContractId } from '../../conf/config'
 import { Error } from '../../components/Error'
 import { useContract } from '../../hooks/useContract'
@@ -27,6 +27,8 @@ const PATH_REGEX = /^[a-zA-Z_][\w]*(?:\.[\w]+)*$/
 const MULTIPLIER_REGEX = /^(1(0)*)$/
 
 export function RequestBuilder(): JSX.Element {
+  const { account } = useEthers()
+  
   const [url, setURL] = useState(DEFAULT_URL)
   const [path, setPath] = useState(DEFAULT_PATH)
   const [multiplier, setMultiplier] = useState(DEFAULT_MULTIPLIER)
@@ -159,7 +161,7 @@ export function RequestBuilder(): JSX.Element {
         isLoading={isLoading}
         loadingText={getLoadingText(state.status)}
         colorScheme="teal"
-        disabled={isInvalid || isLoading}
+        disabled={isInvalid || isLoading || !account}
       >
         Custom API Request
       </Button>
