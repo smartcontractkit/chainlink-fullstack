@@ -4,7 +4,7 @@ import { BigNumber } from 'ethers'
 import { useEthers, ChainId } from '@usedapp/core'
 import { useContractCall } from '../../hooks/useContractCall'
 import { formatUsd } from '../../lib/utils'
-import { ContractId, Denominations, LinkTokenAddress } from '../../conf/config'
+import { Denominations, LinkTokenAddress } from '../../conf/config'
 import { Error } from '../Error'
 
 export function SelectFeed(): JSX.Element {
@@ -12,11 +12,10 @@ export function SelectFeed(): JSX.Element {
 
   const { chainId } = useEthers()
 
-  const result = useContractCall<BigNumber>(
-    ContractId.PriceConsumer,
-    'getPrice',
-    [base, Denominations.USD]
-  )
+  const result = useContractCall<BigNumber>('PriceConsumer', 'getPrice', [
+    base,
+    Denominations.USD,
+  ])
 
   return (
     <>

@@ -11,7 +11,6 @@ import {
 import { BigNumber } from 'ethers'
 import { formatFixed } from '@ethersproject/bignumber'
 import { useContractFunction, TransactionState, useEthers } from '@usedapp/core'
-import { ContractId } from '../../conf/config'
 import { Error } from '../../components/Error'
 import { useContract } from '../../hooks/useContract'
 // @ts-ignore
@@ -28,16 +27,14 @@ const MULTIPLIER_REGEX = /^(1(0)*)$/
 
 export function RequestBuilder(): JSX.Element {
   const { account } = useEthers()
-  
+
   const [url, setURL] = useState(DEFAULT_URL)
   const [path, setPath] = useState(DEFAULT_PATH)
   const [multiplier, setMultiplier] = useState(DEFAULT_MULTIPLIER)
   const [requestId, setRequestId] = useState('')
   const [data, setData] = useState('')
 
-  const apiRequestBuilder = useContract<APIRequestBuilder>(
-    ContractId.APIRequestBuilder
-  )
+  const apiRequestBuilder = useContract<APIRequestBuilder>('APIRequestBuilder')
 
   const { send, state, events } = useContractFunction(
     apiRequestBuilder,

@@ -41,7 +41,7 @@ Start up the local Hardhat network and deploy all contracts
 
 ```bash
 yarn chain
-yarn deploy --network localhost
+yarn deploy
 ```
 
 Start up the local development server to make the front-end app running at http://localhost:3000
@@ -65,7 +65,7 @@ To make this easier there are `.env` example files in the `hardhat` and `fronten
 
 This will run the deploy scripts to a local Hardhat network
 ```bash
-yarn deploy --network localhost
+yarn deploy
 ```
 
 To deploy on testnet

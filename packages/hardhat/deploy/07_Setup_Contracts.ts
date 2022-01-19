@@ -13,7 +13,7 @@ const func: DeployFunction = async function ({
   const chainId = await getChainId()
   let linkTokenAddress: string
 
-  if (chainId == '1337') {
+  if (chainId == '31337') {
     const linkToken = await get('LinkToken')
     linkTokenAddress = linkToken.address
   } else {
@@ -41,19 +41,6 @@ const func: DeployFunction = async function ({
   if (await autoFundCheck(randomSVG.address, chainId, linkTokenAddress)) {
     await run('fund-link', {
       contract: randomSVG.address,
-      linkaddress: linkTokenAddress,
-    })
-  }
-
-  // Try Auto-fund APIConsumer contract with LINK
-  const APIConsumer = await deployments.get('APIConsumer')
-  const apiConsumer = await ethers.getContractAt(
-    'APIConsumer',
-    APIConsumer.address
-  )
-  if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress)) {
-    await run('fund-link', {
-      contract: apiConsumer.address,
       linkaddress: linkTokenAddress,
     })
   }

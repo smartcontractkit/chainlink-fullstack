@@ -3,13 +3,9 @@ import { HStack, Spinner, Text } from '@chakra-ui/react'
 import { BigNumber } from 'ethers'
 import { useContractCall } from '../../hooks/useContractCall'
 import { formatUsd } from '../../lib/utils'
-import { ContractId } from '../../conf/config'
 
 export function PriceFeed(): JSX.Element {
-  const result = useContractCall<BigNumber>(
-    ContractId.PriceConsumerV3,
-    'getLatestPrice'
-  )
+  const result = useContractCall<BigNumber>('PriceConsumerV3', 'getLatestPrice')
 
   return (
     <HStack>

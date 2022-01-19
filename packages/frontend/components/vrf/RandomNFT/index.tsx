@@ -4,7 +4,6 @@ import { useContractFunction, useEthers } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { getRequestStatus } from '../../../lib/utils'
 import { useContract } from '../../../hooks/useContract'
-import { ContractId } from '../../../conf/config'
 import { ExternalLink } from './ExternalLink'
 import { Error } from '../../Error'
 // @ts-ignore
@@ -36,7 +35,7 @@ export function RandomNFT(): JSX.Element {
   const [tokenId, setTokenId] = useState<BigNumber | undefined>()
   const [metadata, setMetadata] = useState<Metadata | undefined>()
 
-  const randomSvg = useContract<RandomSVG>(ContractId.RandomSvg)
+  const randomSvg = useContract<RandomSVG>('RandomSVG')
 
   const {
     send: create,

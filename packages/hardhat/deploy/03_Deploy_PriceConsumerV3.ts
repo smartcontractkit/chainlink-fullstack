@@ -12,7 +12,7 @@ const func: DeployFunction = async function ({
   const chainId = await getChainId()
 
   let ethUsdPriceFeedAddress: string
-  if (chainId === '1337') {
+  if (chainId === '31337') {
     const EthUsdAggregator = await deployments.get('EthUsdAggregator')
     ethUsdPriceFeedAddress = EthUsdAggregator.address
   } else {

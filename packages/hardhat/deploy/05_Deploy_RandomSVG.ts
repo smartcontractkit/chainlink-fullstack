@@ -13,7 +13,7 @@ const func: DeployFunction = async function ({
   let linkTokenAddress: string
   let vrfCoordinatorAddress: string
 
-  if (chainId === '1337') {
+  if (chainId === '31337') {
     const LinkToken = await get('LinkToken')
     linkTokenAddress = LinkToken.address
     const VRFCoordinatorMock = await get('VRFCoordinatorMock')
