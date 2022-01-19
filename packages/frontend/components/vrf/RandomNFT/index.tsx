@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import { Text, Image, Button, Stack, Tooltip } from '@chakra-ui/react'
-import { useContractFunction } from '@usedapp/core'
+import { useContractFunction, useEthers } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { getRequestStatus } from '../../../lib/utils'
 import { useContract } from '../../../hooks/useContract'
@@ -29,6 +29,8 @@ type Metadata = {
  * Component
  */
 export function RandomNFT(): JSX.Element {
+  const { account } = useEthers()
+  
   const [pending, setPending] = useState(false)
   const [fulfilled, setFulfilled] = useState(false)
   const [tokenId, setTokenId] = useState<BigNumber | undefined>()
@@ -123,6 +125,7 @@ export function RandomNFT(): JSX.Element {
             isLoading={isCreating}
             loadingText={getRequestStatus(createState.status)}
             colorScheme="teal"
+            disabled={!account}
           >
             {metadata ? 'Request New NFT' : 'Request NFT'}
           </Button>
@@ -141,6 +144,7 @@ export function RandomNFT(): JSX.Element {
             isLoading={isFinishing}
             loadingText="Finishing Minting"
             colorScheme="teal"
+            disabled={!account}
           >
             Finish Minting
           </Button>
