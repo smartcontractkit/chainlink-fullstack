@@ -1,15 +1,10 @@
 import React from 'react'
 import { Badge, HStack, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { ChainId, useEthers } from '@usedapp/core'
+import { useEthers } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { useContractConfig } from '../../../hooks/useContractConfig'
-
-/**
- * Constants & Helpers
- */
-const OPENSEA_URL = 'https://testnets.opensea.io'
-const OPENSEA_TESTNET = ChainId.Rinkeby
+import { OpenSeaTestnet, OpenSeaUrl } from '../../../conf/config'
 
 /**
  * Prop Types
@@ -26,9 +21,9 @@ export function ExternalLink({ tokenId }: Props): JSX.Element {
 
   const contract = useContractConfig('RandomSVG')
 
-  const active = chainId === OPENSEA_TESTNET
+  const active = chainId === OpenSeaTestnet
 
-  const url = active && `${OPENSEA_URL}/assets/${contract.address}/${tokenId}`
+  const url = active && `${OpenSeaUrl}/assets/${contract.address}/${tokenId}`
 
   return (
     <HStack>

@@ -26,4 +26,7 @@ export enum Denominations {
   USD = '0x0000000000000000000000000000000000000348',
 }
 
+export const OpenSeaUrl = 'https://testnets.opensea.io'
+export const OpenSeaTestnet = ChainId.Rinkeby
+
 export default config
