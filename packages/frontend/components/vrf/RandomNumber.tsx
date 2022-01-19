@@ -10,7 +10,7 @@ import { RandomNumberConsumer } from '../../../types/typechain'
 
 export function RandomNumber(): JSX.Element {
   const { account } = useEthers()
-  
+
   const [requestId, setRequestId] = useState('')
   const [randomNumber, setRandomNumber] = useState('')
 
@@ -67,7 +67,7 @@ export function RandomNumber(): JSX.Element {
         isLoading={isLoading}
         loadingText={getRequestStatus(state.status)}
         colorScheme="teal"
-        disabled={!account}
+        disabled={isLoading || !account}
       >
         Request Randomness
       </Button>

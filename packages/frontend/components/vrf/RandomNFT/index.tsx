@@ -30,7 +30,7 @@ type Metadata = {
  */
 export function RandomNFT(): JSX.Element {
   const { account } = useEthers()
-  
+
   const [pending, setPending] = useState(false)
   const [fulfilled, setFulfilled] = useState(false)
   const [tokenId, setTokenId] = useState<BigNumber | undefined>()
@@ -125,7 +125,7 @@ export function RandomNFT(): JSX.Element {
             isLoading={isCreating}
             loadingText={getRequestStatus(createState.status)}
             colorScheme="teal"
-            disabled={!account}
+            disabled={isCreating || !account}
           >
             {metadata ? 'Request New NFT' : 'Request NFT'}
           </Button>
@@ -144,7 +144,7 @@ export function RandomNFT(): JSX.Element {
             isLoading={isFinishing}
             loadingText="Finishing Minting"
             colorScheme="teal"
-            disabled={!account}
+            disabled={isFinishing || !account}
           >
             Finish Minting
           </Button>
