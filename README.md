@@ -94,13 +94,13 @@ yarn deploy --tags main
 Unit tests will run only locally
 
 ```bash
-yarn test:hardhat
+yarn test:contracts
 ```
 
 To run integration tests a public network must be specified
 
 ```bash
-yarn test:hardhat --network kovan
+yarn test:contracts --network kovan
 ```
 
 ## Verify on Etherscan
