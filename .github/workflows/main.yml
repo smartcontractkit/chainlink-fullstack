@@ -29,7 +29,7 @@ jobs:
         run: yarn test:contracts --network hardhat
 
       - name: Coverage
-        run: yarn coverage:hardhat --network hardhat
+        run: yarn coverage:contracts --network hardhat
 
       - name: Coveralls
         uses: codecov/codecov-action@v2 

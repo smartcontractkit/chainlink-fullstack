@@ -12,7 +12,7 @@
     "compile": "yarn workspace chainlink-fullstack-hardhat compile",
     "test:contracts": "yarn workspace chainlink-fullstack-hardhat test",
     "test:frontend": "yarn workspace chainlink-fullstack-frontend test",
-    "coverage:hardhat": "yarn workspace chainlink-fullstack-hardhat coverage",
+    "coverage:contracts": "yarn workspace chainlink-fullstack-hardhat coverage",
     "lint:frontend": "yarn workspace chainlink-fullstack-frontend lint",
     "format:frontend": "yarn workspace chainlink-fullstack-frontend format",
     "format:hardhat": "yarn workspace chainlink-fullstack-hardhat format"
