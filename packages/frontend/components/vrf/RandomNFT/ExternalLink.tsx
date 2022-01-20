@@ -23,7 +23,9 @@ export function ExternalLink({ tokenId }: Props): JSX.Element {
 
   const active = chainId === OpenSeaTestnet
 
-  const url = active && `${OpenSeaUrl}/assets/${contract.address}/${tokenId}`
+  const url = active
+    ? `${OpenSeaUrl}/assets/${contract.address}/${tokenId}`
+    : undefined
 
   return (
     <HStack>
