@@ -48,7 +48,9 @@ Start up the local development server to make the front-end app running at http:
 yarn dev
 ```
 
-To interact with the local contract, be sure to switch your MetaMask Network to Localhost 8545
+To interact with the local network, follow this step-by-step guide on how to use [MetaMask with a Hardhat node](https://support.chainstack.com/hc/en-us/articles/4408642503449-Using-MetaMask-with-a-Hardhat-node).
+
+If you've set the mnemonic from MetaMask the first 20 accounts will be funded with ETH.
 
 ## Environment Variables
 
