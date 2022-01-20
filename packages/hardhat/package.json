@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "0.0.1",
   "scripts": {
-    "chain": "npx hardhat node --no-deploy --network hardhat",
+    "chain": "npx hardhat node --network hardhat",
     "compile": "npx hardhat compile",
     "deploy": "npx hardhat deploy --export-all ../frontend/contracts/hardhat_contracts.json",
     "test": "npx hardhat test",

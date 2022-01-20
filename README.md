@@ -41,7 +41,6 @@ Start up the local Hardhat network and deploy all contracts
 
 ```bash
 yarn chain
-yarn deploy
 ```
 
 Start up the local development server to make the front-end app running at http://localhost:3000
