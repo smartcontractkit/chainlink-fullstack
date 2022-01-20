@@ -47,7 +47,7 @@ export const autoFundCheck = async (
         ' --network ' +
         networkConfig[chainId].name +
         chainId ===
-        '1337'
+        '31337'
         ? ' --linkaddress ' + linkTokenAddress
         : ''
     )

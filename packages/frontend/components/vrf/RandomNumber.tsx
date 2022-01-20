@@ -3,7 +3,6 @@ import { Text, Button, Code, Stack } from '@chakra-ui/react'
 import { useContractFunction, useEthers } from '@usedapp/core'
 import { getRequestStatus } from '../../lib/utils'
 import { useContract } from '../../hooks/useContract'
-import { ContractId } from '../../conf/config'
 import { Error } from '../Error'
 // @ts-ignore
 import { RandomNumberConsumer } from '../../../types/typechain'
@@ -15,7 +14,7 @@ export function RandomNumber(): JSX.Element {
   const [randomNumber, setRandomNumber] = useState('')
 
   const randomNumberConsumer = useContract<RandomNumberConsumer>(
-    ContractId.RandomNumberConsumer
+    'RandomNumberConsumer'
   )
 
   const { send, state, events } = useContractFunction(

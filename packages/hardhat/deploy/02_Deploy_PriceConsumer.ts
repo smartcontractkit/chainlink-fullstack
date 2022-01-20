@@ -12,7 +12,7 @@ const func: DeployFunction = async function ({
   const chainId = await getChainId()
 
   let feedRegistryAddress: string
-  if (chainId === '1337') {
+  if (chainId === '31337') {
     const MockFeedRegistry = await deployments.get('MockFeedRegistry')
     feedRegistryAddress = MockFeedRegistry.address
   } else {

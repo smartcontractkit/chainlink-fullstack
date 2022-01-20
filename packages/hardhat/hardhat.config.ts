@@ -39,13 +39,10 @@ const ETHERSCAN_API_KEY =
  * @type import('hardhat/config').HardhatUserConfig
  */
 const config: HardhatUserConfig = {
+  defaultNetwork: 'localhost',
   networks: {
-    hardhat: {
-      chainId: 1337,
-      // accounts: [PRIVATE_KEY],
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
+    localhost: {
+      url: 'http://localhost:8545',
     },
     rinkeby: {
       url: RINKEBY_RPC_URL,

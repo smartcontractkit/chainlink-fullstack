@@ -13,7 +13,7 @@ const func: DeployFunction = async function ({
   const { deployer } = await getNamedAccounts()
   const chainId = await getChainId()
 
-  if (chainId === '1337') {
+  if (chainId === '31337') {
     await deploy('MockFeedRegistry', {
       from: deployer,
       log: true,

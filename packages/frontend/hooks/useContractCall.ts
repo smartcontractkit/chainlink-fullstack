@@ -1,18 +1,13 @@
-import {
-  useEthers,
-  useContractCall as useDappContractCall,
-} from '@usedapp/core'
+import { useContractCall as useDappContractCall } from '@usedapp/core'
 import { Interface } from '@ethersproject/abi'
-import { contractConfig, ContractId } from '../conf/config'
+import { useContractConfig } from './useContractConfig'
 
 export function useContractCall<T>(
-  id: ContractId,
+  name: string,
   method: string,
   args: any[] = []
 ): T | undefined {
-  const { chainId } = useEthers()
-
-  const contract = chainId && contractConfig[chainId][id]
+  const contract = useContractConfig(name)
 
   const [result] =
     useDappContractCall(
