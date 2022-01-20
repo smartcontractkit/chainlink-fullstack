@@ -105,6 +105,12 @@ To run integration tests a public network must be specified
 yarn test:contracts --network kovan
 ```
 
+For coverage report
+
+```bash
+yarn coverage:contracts
+```
+
 ## Verify on Etherscan
 
 You'll need an `ETHERSCAN_API_KEY` environment variable. You can get one from the [Etherscan API site.](https://etherscan.io/apis)
