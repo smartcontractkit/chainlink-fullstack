@@ -58,7 +58,7 @@ Deploying to a public network requires setting `RPC_URL` [environment variables]
 
 Additionally you'll need to set a `MNEMONIC` variable from your wallet, ie Metamask. The account must have enough funds to deploy the contracts, as well as LINK which can be obtained from faucets. It is also possible to set a `PRIVATE_KEY` instead with some changes in `hardhat.config.js`.
 
-Running the front-end app in read-only mode also requires setting an environment variable `INFURA_KEY`.
+The front-end app also requires setting an environment variable `INFURA_KEY` to be able to run in read-only mode and use WalletConnect.
 
 To make this easier there are `.env` example files in the `hardhat` and `frontend` workspaces.
 
