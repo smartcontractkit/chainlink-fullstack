@@ -12,10 +12,11 @@ export function SelectFeed(): JSX.Element {
 
   const { chainId } = useEthers()
 
-  const result = useContractCall<BigNumber>('PriceConsumer', 'getPrice', [
-    base,
-    Denominations.USD,
-  ])
+  const result = useContractCall<BigNumber>(
+    'FeedRegistryConsumer',
+    'getPrice',
+    [base, Denominations.USD]
+  )
 
   return (
     <>

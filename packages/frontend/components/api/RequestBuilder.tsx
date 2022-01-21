@@ -14,7 +14,7 @@ import { useContractFunction, TransactionState, useEthers } from '@usedapp/core'
 import { Error } from '../../components/Error'
 import { useContract } from '../../hooks/useContract'
 // @ts-ignore
-import { APIRequestBuilder } from 'types/typechain'
+import { APIConsumer } from 'types/typechain'
 
 const DEFAULT_MULTIPLIER = '1000000000000000000'
 const DEFAULT_URL =
@@ -34,10 +34,10 @@ export function RequestBuilder(): JSX.Element {
   const [requestId, setRequestId] = useState('')
   const [data, setData] = useState('')
 
-  const apiRequestBuilder = useContract<APIRequestBuilder>('APIRequestBuilder')
+  const apiConsumer = useContract<APIConsumer>('APIConsumer')
 
   const { send, state, events } = useContractFunction(
-    apiRequestBuilder,
+    apiConsumer,
     'requestData',
     { transactionName: 'External API Request' }
   )
@@ -49,13 +49,13 @@ export function RequestBuilder(): JSX.Element {
   }
 
   const readData = useCallback(async () => {
-    const res = await apiRequestBuilder.data()
+    const res = await apiConsumer.data()
     const data = formatFixed(
       res,
       multiplier.split('').filter((e) => e === '0').length
     )
     setData(data)
-  }, [apiRequestBuilder, multiplier])
+  }, [apiConsumer, multiplier])
 
   useEffect(() => {
     if (events) {
@@ -67,15 +67,15 @@ export function RequestBuilder(): JSX.Element {
   }, [events])
 
   useEffect(() => {
-    if (apiRequestBuilder && requestId) {
-      apiRequestBuilder.on('ChainlinkFulfilled', (id: string) => {
+    if (apiConsumer && requestId) {
+      apiConsumer.on('ChainlinkFulfilled', (id: string) => {
         if (requestId === id) {
           readData()
-          apiRequestBuilder.removeAllListeners()
+          apiConsumer.removeAllListeners()
         }
       })
     }
-  }, [apiRequestBuilder, requestId, readData])
+  }, [apiConsumer, requestId, readData])
 
   const isLoading =
     state.status === 'Mining' || (state.status === 'Success' && !data)
