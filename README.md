@@ -25,7 +25,7 @@ Built with:
 
 ## Quick Start
 
-Clone the repo and install all dependencies
+Clone the repo and install all dependencies:
 
 ```bash
 git clone https://github.com/hackbg/chainlink-fullstack
@@ -37,13 +37,14 @@ git submodule update
 yarn install
 ```
 
-Start up the local Hardhat network and deploy all contracts
+Start up the local Hardhat network and deploy all contracts:
 
 ```bash
 yarn chain
 ```
 
-Start up the local development server to make the front-end app running at http://localhost:3000
+In a second terminal start up the local development server run the front-end app:
+
 ```bash
 yarn dev
 ```
@@ -64,12 +65,12 @@ To make this easier there are `.env` example files in the `hardhat` and `fronten
 
 ## Deploy Contracts
 
-This will run the deploy scripts to a local Hardhat network
+This will run the deploy scripts to a local Hardhat network:
 ```bash
 yarn deploy
 ```
 
-To deploy on testnet
+To deploy on a public network:
 
 ```bash
 yarn deploy --network kovan
@@ -93,19 +94,19 @@ yarn deploy --tags main
 
 ## Test
 
-Unit tests will run only locally
+When the test command is without a network specified it will run locally and perform only the unit tests:
 
 ```bash
 yarn test:contracts
 ```
 
-To run integration tests a public network must be specified
+Integration tests must be run on a public testnet that have Chainlink oracles responding:
 
 ```bash
 yarn test:contracts --network kovan
 ```
 
-For coverage report
+For coverage report:
 
 ```bash
 yarn coverage:contracts
@@ -115,17 +116,17 @@ yarn coverage:contracts
 
 You'll need an `ETHERSCAN_API_KEY` environment variable. You can get one from the [Etherscan API site.](https://etherscan.io/apis)
 
-```
+```bash
 npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
 ```
 example:
 
-```
+```bash
 npx hardhat verify --network kovan 0x9279791897f112a41FfDa267ff7DbBC46b96c296 "0x9326BFA02ADD2366b30bacB125260Af641031331"
 ```
 
 ## Format
-Fix formatting according to prettier config in the respective workspace
+Fix formatting according to prettier config in the respective workspace:
 
 ```bash
 yarn format:frontend
