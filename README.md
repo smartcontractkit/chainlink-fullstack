@@ -138,6 +138,31 @@ yarn format:hardhat
 yarn lint:frontend
 ```
 
+## Testnet Contracts
+
+This repo includes deployed and verified contracts on Kovan and Rinkeby so the front-end can run without the need to deploy them.
+
+Once the `deploy` command is executed on any network the contracts config will be overwritten and you can start from scratch with your own deployments.
+
+#### Kovan
+
+| Name | Address |
+| ---- | ------- |
+| `PriceConsumerV3` | [0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00](https://kovan.etherscan.io/address/0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00) |
+| `FeedRegistryConsumer` | [0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50](https://kovan.etherscan.io/address/0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50) |
+| `APIConsumer` |  [0x14005AB90bc520E20Ffd7815Cae64372abb6b04d](https://kovan.etherscan.io/address/0x14005AB90bc520E20Ffd7815Cae64372abb6b04d) |
+| `RandomNumberConsumer` | [0xF9556187bf86823Cf0D7081625F97391642Fc242](https://kovan.etherscan.io/address/0xF9556187bf86823Cf0D7081625F97391642Fc242#code) |
+| `RandomSVG` | [0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76](https://kovan.etherscan.io/address/0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76) |
+
+#### Rinkeby
+
+| Name | Address |
+| ---- | ------- |
+| `PriceConsumerV3` | [0x4998Bd433216bBc56976BCb4Fe5AA240bA766763](https://rinkeby.etherscan.io/address/0x4998Bd433216bBc56976BCb4Fe5AA240bA766763) |
+| `APIConsumer` | [0x43a87559277fd5F6F1AdC6e6331998899634e9Aa](https://rinkeby.etherscan.io/address/0x43a87559277fd5F6F1AdC6e6331998899634e9Aa) |
+| `RandomNumberConsumer` | [0xA0e617aaA36Ff4A6bf61C4Ce2Ed66822B1e24726](https://rinkeby.etherscan.io/address/0xA0e617aaA36Ff4A6bf61C4Ce2Ed66822B1e24726) |
+| `RandomSVG` | [0xeC6CcE025e538D12E52D8C90181849B099a776A3](https://rinkeby.etherscan.io/address/0xeC6CcE025e538D12E52D8C90181849B099a776A3) |
+
 ## References
 * [Chainlink Docs](https://docs.chain.link)
 * [Chainlink Hardhat Box](https://github.com/smartcontractkit/hardhat-starter-kit)
