@@ -19,7 +19,7 @@ export function SelectFeed(): JSX.Element {
 
   return (
     <>
-      {chainId !== ChainId.Kovan && (
+      {chainId === ChainId.Rinkeby && (
         <Error message="Not available on this network. Please switch to Kovan." />
       )}
       <HStack>

@@ -41,6 +41,11 @@ const ETHERSCAN_API_KEY =
 const config: HardhatUserConfig = {
   defaultNetwork: 'localhost',
   networks: {
+    hardhat: {
+      accounts: {
+        mnemonic: MNEMONIC,
+      },
+    },
     localhost: {
       url: 'http://localhost:8545',
     },

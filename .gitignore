@@ -32,6 +32,8 @@ packages/hardhat/*.txt
 packages/hardhat/cache
 packages/hardhat/artifacts
 packages/hardhat/deployments
+packages/hardhat/coverage
+packages/hardhat/coverage.json
 
 ## Frontend Files ##
 # testing

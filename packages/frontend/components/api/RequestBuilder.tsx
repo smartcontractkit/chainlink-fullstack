@@ -10,9 +10,10 @@ import {
 } from '@chakra-ui/react'
 import { BigNumber } from 'ethers'
 import { formatFixed } from '@ethersproject/bignumber'
-import { useContractFunction, TransactionState, useEthers } from '@usedapp/core'
+import { useContractFunction, useEthers } from '@usedapp/core'
 import { Error } from '../../components/Error'
 import { useContract } from '../../hooks/useContract'
+import { getRequestStatus } from '../../lib/utils'
 // @ts-ignore
 import { APIRequestBuilder } from 'types/typechain'
 
@@ -81,10 +82,6 @@ export function RequestBuilder(): JSX.Element {
     state.status === 'Mining' || (state.status === 'Success' && !data)
 
   const hasError = state.status === 'Exception'
-
-  const getLoadingText = (status: TransactionState) =>
-    (status === 'Mining' && 'Mining Request') ||
-    (status === 'Success' && 'Fulfilling Request')
 
   const isInvalidUrl = !URL_REGEX.test(url)
   const isInvalidPath = !PATH_REGEX.test(path)
@@ -156,7 +153,7 @@ export function RequestBuilder(): JSX.Element {
         mt="4"
         onClick={requestData}
         isLoading={isLoading}
-        loadingText={getLoadingText(state.status)}
+        loadingText={getRequestStatus(state.status)}
         colorScheme="teal"
         disabled={isInvalid || isLoading || !account}
       >

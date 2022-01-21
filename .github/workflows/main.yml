@@ -26,10 +26,10 @@ jobs:
         run: yarn compile
 
       - name: Run tests
-        run: yarn test:hardhat --network hardhat
+        run: yarn test:contracts --network hardhat
 
       - name: Coverage
-        run: yarn coverage:hardhat --network hardhat
+        run: yarn coverage:contracts
 
       - name: Coveralls
         uses: codecov/codecov-action@v2 

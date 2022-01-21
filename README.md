@@ -41,7 +41,6 @@ Start up the local Hardhat network and deploy all contracts
 
 ```bash
 yarn chain
-yarn deploy
 ```
 
 Start up the local development server to make the front-end app running at http://localhost:3000
@@ -49,7 +48,9 @@ Start up the local development server to make the front-end app running at http:
 yarn dev
 ```
 
-To interact with the local contract, be sure to switch your MetaMask Network to Localhost 8545
+To interact with the local network, follow this step-by-step guide on how to use [MetaMask with a Hardhat node](https://support.chainstack.com/hc/en-us/articles/4408642503449-Using-MetaMask-with-a-Hardhat-node).
+
+If you've set the mnemonic from MetaMask the first 20 accounts will be funded with ETH.
 
 ## Environment Variables
 
@@ -57,7 +58,7 @@ Deploying to a public network requires setting `RPC_URL` [environment variables]
 
 Additionally you'll need to set a `MNEMONIC` variable from your wallet, ie Metamask. The account must have enough funds to deploy the contracts, as well as LINK which can be obtained from faucets. It is also possible to set a `PRIVATE_KEY` instead with some changes in `hardhat.config.js`.
 
-Running the front-end app in read-only mode also requires setting an environment variable `INFURA_KEY`.
+The front-end app also requires setting an environment variable `INFURA_KEY` to be able to run in read-only mode and use WalletConnect.
 
 To make this easier there are `.env` example files in the `hardhat` and `frontend` workspaces.
 
@@ -95,13 +96,19 @@ yarn deploy --tags main
 Unit tests will run only locally
 
 ```bash
-yarn test:hardhat
+yarn test:contracts
 ```
 
 To run integration tests a public network must be specified
 
 ```bash
-yarn test:hardhat --network kovan
+yarn test:contracts --network kovan
+```
+
+For coverage report
+
+```bash
+yarn coverage:contracts
 ```
 
 ## Verify on Etherscan
