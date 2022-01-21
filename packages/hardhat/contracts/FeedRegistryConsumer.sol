@@ -4,7 +4,7 @@ pragma solidity ^0.8.3;
 import "@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol";
 import "@chainlink/contracts/src/v0.8/Denominations.sol";
 
-contract PriceConsumer {
+contract FeedRegistryConsumer {
   FeedRegistryInterface internal registry;
 
   /**

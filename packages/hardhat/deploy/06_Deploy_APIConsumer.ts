@@ -24,7 +24,7 @@ const func: DeployFunction = async function ({
   }
   const { jobId, fee } = networkConfig[chainId]
 
-  await deploy('APIRequestBuilder', {
+  await deploy('APIConsumer', {
     from: deployer,
     args: [oracleAddress, jobId, fee, linkTokenAddress],
     log: true,

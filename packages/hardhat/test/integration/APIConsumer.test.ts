@@ -2,23 +2,23 @@ import { ethers, deployments, network } from 'hardhat'
 import { expect } from 'chai'
 import skip from 'mocha-skip-if'
 import { developmentChains } from '../../helper-hardhat-config'
-import { APIRequestBuilder } from 'types/typechain'
+import { APIConsumer } from 'types/typechain'
 
 skip
   .if(developmentChains.includes(network.name))
-  .describe('APIRequestBuilder Integration Tests', () => {
-    let apiRequestBuilder: APIRequestBuilder
+  .describe('APIConsumer Integration Tests', () => {
+    let apiConsumer: APIConsumer
 
     beforeEach(async () => {
-      const APIRequestBuilder = await deployments.get('APIRequestBuilder')
-      apiRequestBuilder = (await ethers.getContractAt(
-        'APIRequestBuilder',
-        APIRequestBuilder.address
-      )) as APIRequestBuilder
+      const APIConsumer = await deployments.get('APIConsumer')
+      apiConsumer = (await ethers.getContractAt(
+        'APIConsumer',
+        APIConsumer.address
+      )) as APIConsumer
     })
 
     it('should successfully make an external API request and get a result', async () => {
-      const transaction = await apiRequestBuilder.requestData(
+      const transaction = await apiConsumer.requestData(
         'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD',
         'RAW.ETH.USD.VOLUME24HOUR',
         '1000000000000000000'
@@ -29,7 +29,7 @@ skip
       await new Promise((resolve) => setTimeout(resolve, 30000))
 
       //Now check the result
-      const result = await apiRequestBuilder.data()
+      const result = await apiConsumer.data()
       expect(result).to.be.gt(0)
     })
   })

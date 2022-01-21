@@ -45,17 +45,15 @@ const func: DeployFunction = async function ({
     })
   }
 
-  // Try Auto-fund APIRequestBuilder contract with LINK
-  const APIRequestBuilder = await deployments.get('APIRequestBuilder')
-  const apiRequestBuilder = await ethers.getContractAt(
-    'APIRequestBuilder',
-    APIRequestBuilder.address
+  // Try Auto-fund APIConsumer contract with LINK
+  const APIConsumer = await deployments.get('APIConsumer')
+  const apiConsumer = await ethers.getContractAt(
+    'APIConsumer',
+    APIConsumer.address
   )
-  if (
-    await autoFundCheck(apiRequestBuilder.address, chainId, linkTokenAddress)
-  ) {
+  if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress)) {
     await run('fund-link', {
-      contract: apiRequestBuilder.address,
+      contract: apiConsumer.address,
       linkaddress: linkTokenAddress,
     })
   }

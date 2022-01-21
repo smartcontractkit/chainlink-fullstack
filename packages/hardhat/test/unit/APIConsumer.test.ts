@@ -4,12 +4,12 @@ import { expect } from 'chai'
 import skip from 'mocha-skip-if'
 import { developmentChains } from '../../helper-hardhat-config'
 import { autoFundCheck } from '../../utils'
-import { APIRequestBuilder, LinkToken } from 'types/typechain'
+import { APIConsumer, LinkToken } from 'types/typechain'
 
 skip
   .if(!developmentChains.includes(network.name))
-  .describe('APIRequestBuilder Unit Tests', () => {
-    let apiRequestBuilder: APIRequestBuilder, linkToken: LinkToken
+  .describe('APIConsumer Unit Tests', () => {
+    let apiConsumer: APIConsumer, linkToken: LinkToken
 
     beforeEach(async () => {
       const chainId = await getChainId()
@@ -22,28 +22,22 @@ skip
 
       const linkTokenAddress = linkToken.address
 
-      const APIRequestBuilder = await deployments.get('APIRequestBuilder')
-      apiRequestBuilder = (await ethers.getContractAt(
-        'APIRequestBuilder',
-        APIRequestBuilder.address
-      )) as unknown as APIRequestBuilder
+      const APIConsumer = await deployments.get('APIConsumer')
+      apiConsumer = (await ethers.getContractAt(
+        'APIConsumer',
+        APIConsumer.address
+      )) as APIConsumer
 
-      if (
-        await autoFundCheck(
-          apiRequestBuilder.address,
-          chainId,
-          linkTokenAddress
-        )
-      ) {
+      if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress)) {
         await run('fund-link', {
-          contract: apiRequestBuilder.address,
+          contract: apiConsumer.address,
           linkaddress: linkTokenAddress,
         })
       }
     })
 
     it('should successfully make an API request', async () => {
-      const transaction = await apiRequestBuilder.requestData(
+      const transaction = await apiConsumer.requestData(
         'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD',
         'RAW.ETH.USD.VOLUME24HOUR',
         '1000000000000000000'

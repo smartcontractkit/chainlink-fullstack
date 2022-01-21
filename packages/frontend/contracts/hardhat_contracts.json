@@ -4,8 +4,8 @@
       "name": "rinkeby",
       "chainId": "4",
       "contracts": {
-        "APIRequestBuilder": {
-          "address": "0x76dE7D899Ea3217269BC02DcDB54eAAFA9ec53E1",
+        "APIConsumer": {
+          "address": "0x43a87559277fd5F6F1AdC6e6331998899634e9Aa",
           "abi": [
             {
               "inputs": [
@@ -1139,8 +1139,8 @@
       "name": "kovan",
       "chainId": "42",
       "contracts": {
-        "APIRequestBuilder": {
-          "address": "0x8194198c18B82cB0006D639349899Ea9144D9E72",
+        "APIConsumer": {
+          "address": "0x14005AB90bc520E20Ffd7815Cae64372abb6b04d",
           "abi": [
             {
               "inputs": [
@@ -1366,8 +1366,8 @@
             }
           ]
         },
-        "PriceConsumer": {
-          "address": "0x03dD466218284DbF1e9De8Dd692C1b425095CB65",
+        "FeedRegistryConsumer": {
+          "address": "0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50",
           "abi": [
             {
               "inputs": [
@@ -3650,7 +3650,7 @@
             }
           ]
         },
-        "PriceConsumer": {
+        "FeedRegistryConsumer": {
           "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
           "abi": [
             {
@@ -4603,7 +4603,7 @@
             }
           ]
         },
-        "APIRequestBuilder": {
+        "APIConsumer": {
           "address": "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
           "abi": [
             {
