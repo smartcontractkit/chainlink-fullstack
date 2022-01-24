@@ -55,13 +55,22 @@ If you've set the mnemonic from MetaMask the first 20 accounts will be funded wi
 
 ## Environment Variables
 
-Deploying to a public network requires setting `RPC_URL` [environment variables](https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa). If you're not running a node you can get one at [Infura's site](https://infura.io).
+To make setting environment variables easier there are `.env.example` files in the `hardhat` and `frontend` workspaces. You can copy them to new `.env` files and replace the values with your own.
 
-Additionally you'll need to set a `MNEMONIC` variable from your wallet, ie Metamask. The account must have enough funds to deploy the contracts, as well as LINK which can be obtained from faucets. It is also possible to set a `PRIVATE_KEY` instead with some changes in `hardhat.config.js`.
+#### Hardhat
 
-The front-end app also requires setting an environment variable `INFURA_KEY` to be able to run in read-only mode and use WalletConnect.
+| Name | Description |
+| ---- | ----------- |
+| `NETWORK_RPC_URL` | Required to deploy to public networks. Obtain from [Infura's site](https://infura.io). |
+| `MNEMONIC` | Used to derive accounts from wallet seed phrase, ie Metamask. The first account must have enough ETH to deploy the contracts, as well as LINK which can be obtained from [Chainlink's faucets](https://faucets.chain.link). |
+| `PRIVATE_KEY` | Alternative to using mnemonic. Some changes are required in `hardhat.config.js` |
+| `ETHERSCAN_API_KEY`| Verify contract code on Etherscan. |
 
-To make this easier there are `.env` example files in the `hardhat` and `frontend` workspaces.
+#### Front-end
+
+| Name | Description |
+| ---- | ----------- |
+| `NEXT_PUBLIC_INFURA_KEY` | Read-only mode and WalletConnect. |
 
 ## Deploy Contracts
 
@@ -94,13 +103,13 @@ yarn deploy --tags main
 
 ## Test
 
-When the test command is without a network specified it will run locally and perform only the unit tests:
+If the test command is executed without a specified network it will run locally and only perform the unit tests:
 
 ```bash
 yarn test:contracts
 ```
 
-Integration tests must be run on a public testnet that have Chainlink oracles responding:
+Integration tests must be run on a public testnet that has Chainlink oracles responding:
 
 ```bash
 yarn test:contracts --network kovan
