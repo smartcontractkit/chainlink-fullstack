@@ -103,6 +103,7 @@ export function RequestBuilder(): JSX.Element {
             value={url}
             placeholder="Enter API URL..."
             id="url"
+            bgColor="white"
             onChange={(event) => setURL(event.target.value)}
           />
         </Tooltip>
@@ -121,6 +122,7 @@ export function RequestBuilder(): JSX.Element {
             value={path}
             placeholder="Enter Path..."
             id="path"
+            bgColor="white"
             onChange={(event) => setPath(event.target.value)}
           />
         </Tooltip>
@@ -141,6 +143,7 @@ export function RequestBuilder(): JSX.Element {
           <Input
             value={multiplier}
             placeholder="Enter Multiplier..."
+            bgColor="white"
             onChange={(event) => setMultiplier(event.target.value)}
           />
         </Tooltip>
