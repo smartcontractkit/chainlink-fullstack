@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Text, Button, Code, Stack } from '@chakra-ui/react'
 import { useContractFunction, useEthers } from '@usedapp/core'
-import { getRequestStatus } from '../../lib/utils'
+import { getRequestStatus, getContractError } from '../../lib/utils'
 import { useContract } from '../../hooks/useContract'
 import { Error } from '../Error'
 // @ts-ignore
@@ -60,7 +60,7 @@ export function RandomNumber(): JSX.Element {
 
   return (
     <>
-      {hasError && <Error message={state.errorMessage} />}
+      {hasError && <Error message={getContractError(state.errorMessage)} />}
       <Button
         onClick={requestRandomNumber}
         isLoading={isLoading}
