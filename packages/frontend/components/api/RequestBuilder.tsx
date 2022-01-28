@@ -13,7 +13,7 @@ import { formatFixed } from '@ethersproject/bignumber'
 import { useContractFunction, useEthers } from '@usedapp/core'
 import { Error } from '../../components/Error'
 import { useContract } from '../../hooks/useContract'
-import { getRequestStatus } from '../../lib/utils'
+import { getRequestStatus, getContractError } from '../../lib/utils'
 // @ts-ignore
 import { APIConsumer } from 'types/typechain'
 
@@ -90,7 +90,7 @@ export function RequestBuilder(): JSX.Element {
 
   return (
     <>
-      {hasError && <Error message={state.errorMessage} />}
+      {hasError && <Error message={getContractError(state.errorMessage)} />}
       <FormControl isInvalid={isInvalidUrl}>
         <FormLabel htmlFor="url">Data Source</FormLabel>
         <Tooltip

@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react'
 import { Text, Image, Button, Stack, Tooltip } from '@chakra-ui/react'
 import { useContractFunction, useEthers } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
-import { getRequestStatus } from '../../../lib/utils'
+import { getRequestStatus, getContractError } from '../../../lib/utils'
 import { useContract } from '../../../hooks/useContract'
 import { ExternalLink } from './ExternalLink'
 import { Error } from '../../Error'
@@ -111,7 +111,7 @@ export function RandomNFT(): JSX.Element {
 
   return (
     <>
-      {hasError && <Error message={errorMessage} />}
+      {hasError && <Error message={getContractError(errorMessage)} />}
       {!pending && (
         <Tooltip
           label="Request random number and mint new NFT associated with the result"

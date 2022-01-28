@@ -25,6 +25,14 @@ export function getErrorMessage(error: Error): string {
   }
 }
 
+export function getContractError(msg: string): string {
+  if (msg.includes('The execution failed due to an exception.')) {
+    return `${msg} Please check if the contract has enough LINK to pay the oracle.`
+  } else {
+    return msg
+  }
+}
+
 const btcFormatter = new Currency('Bitcoin', 'BTC', 8, {
   fixedPrecisionDigits: 2,
   useFixedPrecision: true,
