@@ -27,7 +27,7 @@ git checkout -f "$target_branch"
 mv .git "$build_dir"
 cd "$build_dir"
 touch .nojekyll
-echo -n "chainlink-example.app" > CNAME
+echo -n "chainlink-demo.app" > CNAME
 echo "[![Deploy to GitHub Pages](https://github.com/hackbg/chainlink-fullstack/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/hackbg/chainlink-fullstack/actions/workflows/gh-pages.yml)" > README.md
 
 git add .
