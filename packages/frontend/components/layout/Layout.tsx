@@ -3,10 +3,12 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Text,
   Box,
   Button,
   Container,
   Flex,
+  HStack,
   Image,
   Link,
   Menu,
@@ -20,7 +22,6 @@ import blockies from 'blockies-ts'
 import NextLink from 'next/link'
 import React, { useEffect } from 'react'
 import { getErrorMessage } from '../../lib/utils'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Balance } from '../Balance'
 import { ConnectWallet } from '../ConnectWallet'
 import { Head, MetaProps } from './Head'
@@ -171,8 +172,11 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
       </main>
       <footer>
         <Container mt="8" py="8" maxWidth="container.xl">
-          <Link href="https://github.com/hackbg/chainlink-fullstack">
-            GitHub <ExternalLinkIcon mx="2px" />
+          <Link href="https://github.com/hackbg/chainlink-fullstack" isExternal>
+            <HStack>
+              <Image src="images/github.svg" width="20px" />
+              <Text>GitHub</Text>
+            </HStack>
           </Link>
         </Container>
       </footer>
