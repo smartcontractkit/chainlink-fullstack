@@ -24,7 +24,15 @@ Built with:
 
 ## Requirements
 
-[Node](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable) and [Git](https://git-scm.com/downloads)
+- [Node](https://nodejs.org/en/download/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+- [Git](https://git-scm.com/downloads)
+
+In order to use the frontend portion of the demo application you will need
+
+- A crypto wallet such as [Metamask](https://metamask.io/) or  [Coinbase Wallet](https://www.coinbase.com/wallet)
+- Test $LINK for the relevant testnet. You can get some at the [Chainlink Faucets](https://faucets.chain.link/) page.
+- Test $ETH to pay for gas costs. You can get some at the [Chainlink Faucets](https://faucets.chain.link/) page.
 
 ## Quick Start
 
