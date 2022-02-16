@@ -29,4 +29,6 @@ export enum Denominations {
 export const OpenSeaUrl = 'https://testnets.opensea.io'
 export const OpenSeaTestnet = ChainId.Rinkeby
 
+export const GTagId = 'GTM-NKVNWTG'
+
 export default config
