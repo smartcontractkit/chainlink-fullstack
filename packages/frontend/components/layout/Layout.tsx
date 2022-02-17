@@ -25,6 +25,7 @@ import { getErrorMessage } from '../../lib/utils'
 import { Balance } from '../Balance'
 import { ConnectWallet } from '../ConnectWallet'
 import { Head, MetaProps } from './Head'
+import { GTag } from './GTag'
 import { Error } from '../Error'
 
 // Extends `window` to add `ethereum`.
@@ -169,6 +170,7 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
             )
           })}
         </Container>
+        <GTag />
       </main>
       <footer>
         <Container mt="8" py="8" maxWidth="container.xl">
