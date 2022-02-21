@@ -20,12 +20,12 @@ import {
 import { useEthers, useNotifications } from '@usedapp/core'
 import blockies from 'blockies-ts'
 import NextLink from 'next/link'
+import TagManager from 'react-gtm-module'
 import React, { useEffect } from 'react'
 import { getErrorMessage } from '../../lib/utils'
 import { Balance } from '../Balance'
 import { ConnectWallet } from '../ConnectWallet'
 import { Head, MetaProps } from './Head'
-import { GTag } from './GTag'
 import { Error } from '../Error'
 
 // Extends `window` to add `ethereum`.
@@ -44,6 +44,8 @@ const TRANSACTION_TYPE_TITLES = {
   transactionStarted: 'Started',
   transactionSucceed: 'Completed',
 }
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
 // Takes a long hash string and truncates it.
 function truncateHash(hash: string, length = 38): string {
@@ -70,6 +72,12 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
       setError(error)
     }
   }, [error, setError])
+
+  useEffect(() => {
+    if (GTM_ID) {
+      TagManager.initialize({ gtmId: GTM_ID })
+    }
+  }, [])
 
   let blockieImageSrc
   if (typeof window !== 'undefined') {
@@ -170,7 +178,6 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
             )
           })}
         </Container>
-        <GTag />
       </main>
       <footer>
         <Container mt="8" py="8" maxWidth="container.xl">
