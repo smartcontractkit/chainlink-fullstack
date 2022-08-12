@@ -1,4 +1,11 @@
-import { ChainId, Config, Rinkeby, Kovan, Hardhat, Mainnet } from '@usedapp/core'
+import {
+  ChainId,
+  Config,
+  Rinkeby,
+  Kovan,
+  Mainnet,
+  Hardhat,
+} from '@usedapp/core'
 import deployedContracts from '../contracts/hardhat_contracts.json'
 
 const INFURA_KEY = process.env.NEXT_PUBLIC_INFURA_KEY
@@ -9,6 +16,7 @@ const config: Config = {
     [ChainId.Kovan]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
     [ChainId.Rinkeby]: `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
     [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
+    [ChainId.Hardhat]: 'http://127.0.0.1:8545',
   },
   networks: [Rinkeby, Kovan, Hardhat],
   multicallAddresses: {
