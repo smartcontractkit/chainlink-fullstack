@@ -3,14 +3,14 @@ import { Heading, Text, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { useEthers, ChainId } from '@usedapp/core'
 import { RequestBuilder } from '../components/api'
-import { Section, Layout } from '../components/layout'
+import { Section } from '../components/layout'
 import { Error } from '../components/Error'
 
 function ExternalAPI(): JSX.Element {
   const { chainId } = useEthers()
 
   return (
-    <Layout>
+    <>
       {chainId === ChainId.Rinkeby && (
         <Error message="Oracle on Rinkeby is in maintenance mode. Please switch to Kovan." />
       )}
@@ -35,7 +35,7 @@ function ExternalAPI(): JSX.Element {
           Learn More <ExternalLinkIcon mx="2px" />
         </Link>
       </Section>
-    </Layout>
+    </>
   )
 }
 
