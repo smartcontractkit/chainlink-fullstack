@@ -27,7 +27,7 @@ const PATH_REGEX = /^[a-zA-Z_][\w]*(?:\.[\w]+)*$/
 const MULTIPLIER_REGEX = /^(1(0)*)$/
 
 export function RequestBuilder(): JSX.Element {
-  const { account } = useEthers()
+  const { account, error } = useEthers()
 
   const [url, setURL] = useState(DEFAULT_URL)
   const [path, setPath] = useState(DEFAULT_PATH)
@@ -158,7 +158,7 @@ export function RequestBuilder(): JSX.Element {
         isLoading={isLoading}
         loadingText={getRequestStatus(state.status)}
         colorScheme="teal"
-        disabled={isInvalid || isLoading || !account}
+        disabled={isInvalid || isLoading || !account || !!error}
       >
         Custom API Request
       </Button>

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Heading, Text, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Layout, Section } from '../components/layout'
+import { Section } from '../components/layout'
 import { RandomNFT, RandomNumber } from '../components/vrf'
 
 function VRF(): JSX.Element {
   return (
-    <Layout>
+    <>
       <Heading as="h1" mb="4">
         Randomness
       </Heading>
@@ -39,7 +39,7 @@ function VRF(): JSX.Element {
           Learn More <ExternalLinkIcon mx="2px" />
         </Link>
       </Section>
-    </Layout>
+    </>
   )
 }
 

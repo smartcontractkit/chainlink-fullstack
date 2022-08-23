@@ -9,7 +9,7 @@ import { AggregatorV3InterfaceABI } from '../../contracts/external'
 import { AggregatorV3Interface } from 'types/typechain'
 
 const providerMainnet = new ethers.providers.JsonRpcProvider(
-  config.readOnlyUrls[ChainId.Mainnet]
+  config.readOnlyUrls[ChainId.Mainnet].toString()
 )
 
 const wbtcPorAggregator = new ethers.Contract(

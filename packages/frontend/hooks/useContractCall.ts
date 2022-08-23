@@ -1,5 +1,5 @@
-import { useContractCall as useDappContractCall } from '@usedapp/core'
-import { Interface } from '@ethersproject/abi'
+import { Contract } from 'ethers'
+import { useCall } from '@usedapp/core'
 import { useContractConfig } from './useContractConfig'
 
 export function useContractCall<T>(
@@ -9,15 +9,14 @@ export function useContractCall<T>(
 ): T | undefined {
   const contract = useContractConfig(name)
 
-  const [result] =
-    useDappContractCall(
+  const { value } =
+    useCall(
       contract && {
-        abi: new Interface(contract.abi),
-        address: contract.address,
+        contract: new Contract(contract.address, contract.abi),
         method,
         args,
       }
-    ) ?? []
+    ) ?? {}
 
-  return result as T
+  return value?.[0]
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Code, Heading, HStack, Link, Text } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Layout, Section } from '../components/layout'
+import { Section } from '../components/layout'
 import { SelectFeed, PriceFeed, ProofOfReserve } from '../components/feeds'
 
 function Feeds(): JSX.Element {
   return (
-    <Layout>
+    <>
       <Heading as="h1" mb="4">
         Data Feeds
       </Heading>
@@ -56,7 +56,7 @@ function Feeds(): JSX.Element {
           Learn More <ExternalLinkIcon mx="2px" />
         </Link>
       </Section>
-    </Layout>
+    </>
   )
 }
 

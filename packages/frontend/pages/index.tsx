@@ -1,11 +1,11 @@
 import NextLink from 'next/link'
 import { Heading, Text, Link } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { Layout, Section } from '../components/layout'
+import { Section } from '../components/layout'
 
 function HomeIndex(): JSX.Element {
   return (
-    <Layout>
+    <>
       <Heading as="h1" mb="4">
         Welcome to the Chainlink Demo App
       </Heading>
@@ -54,7 +54,7 @@ function HomeIndex(): JSX.Element {
           </Link>
         </NextLink>
       </Section>
-    </Layout>
+    </>
   )
 }
 
