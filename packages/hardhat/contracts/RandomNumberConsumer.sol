@@ -12,10 +12,10 @@ contract RandomNumberConsumer is VRFConsumerBase {
   /**
    * Constructor inherits VRFConsumerBase
    *
-   * Network: Kovan
-   * Chainlink VRF Coordinator address: 0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9
-   * LINK token address:                0xa36085F69e2889c224210F603D836748e7dC0088
-   * Key Hash: 0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4
+   * Network: Goerli
+   * Chainlink VRF Coordinator address: 0x2bce784e69d2Ff36c71edcB9F88358dB0DfB55b4
+   * LINK token address:                0x326C977E6efc84E512bB9C30f76E30c160eD06FB
+   * Key Hash: 0x0476f9a745b61ea5c0ab224d3a6e4c99f0b02fce4da01143a4f70aa80ae76e8a
    */
   constructor(
     address _vrfCoordinator,

@@ -2,7 +2,7 @@ import fs from 'fs'
 import { ethers, deployments, network, getChainId, run } from 'hardhat'
 import { expect } from 'chai'
 import skip from 'mocha-skip-if'
-import { developmentChains } from '../../helper-hardhat-config'
+import { developmentChains, networkConfig } from '../../helper-hardhat-config'
 import { autoFundCheck } from '../../utils'
 import { RandomSVG, VRFCoordinatorMock, LinkToken } from 'types/typechain'
 
@@ -40,6 +40,7 @@ skip
         await run('fund-link', {
           contract: rsNFT.address,
           linkaddress: linkTokenAddress,
+          fundamount: networkConfig[chainId].fundAmount,
         })
       }
     })

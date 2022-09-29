@@ -24,12 +24,8 @@ task('accounts', 'Prints the list of accounts', async (_args, hre) => {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
-const RINKEBY_RPC_URL =
-  process.env.RINKEBY_RPC_URL || 'https://rinkeby.infura.io/v3/your-api-key'
-const KOVAN_RPC_URL =
-  process.env.KOVAN_RPC_URL || 'https://kovan.infura.io/v3/your-api-key'
-const MUMBAI_RPC_URL =
-  process.env.MUMBAI_RPC_URL || 'https://mumbai.infura.io/v3/your-api-key'
+const GOERLI_RPC_URL =
+  process.env.GOERLI_RPC_URL || 'https://goerli.infura.io/v3/your-api-key'
 const MNEMONIC = process.env.MNEMONIC || 'your mnemonic'
 const ETHERSCAN_API_KEY =
   process.env.ETHERSCAN_API_KEY || 'Your etherscan API key'
@@ -46,24 +42,8 @@ const config: HardhatUserConfig = {
     localhost: {
       url: 'http://localhost:8545',
     },
-    rinkeby: {
-      url: RINKEBY_RPC_URL,
-      // accounts: [PRIVATE_KEY],
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-      saveDeployments: true,
-    },
-    kovan: {
-      url: KOVAN_RPC_URL,
-      // accounts: [PRIVATE_KEY],
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-      saveDeployments: true,
-    },
-    mumbai: {
-      url: MUMBAI_RPC_URL,
+    goerli: {
+      url: GOERLI_RPC_URL,
       // accounts: [PRIVATE_KEY],
       accounts: {
         mnemonic: MNEMONIC,
