@@ -2,7 +2,7 @@ import { ethers, deployments, network, getChainId, run } from 'hardhat'
 import { BigNumber } from 'ethers'
 import { expect } from 'chai'
 import skip from 'mocha-skip-if'
-import { developmentChains } from '../../helper-hardhat-config'
+import { developmentChains, networkConfig } from '../../helper-hardhat-config'
 import { autoFundCheck } from '../../utils'
 import { APIConsumer, LinkToken } from 'types/typechain'
 
@@ -32,6 +32,7 @@ skip
         await run('fund-link', {
           contract: apiConsumer.address,
           linkaddress: linkTokenAddress,
+          fundamount: networkConfig[chainId].fundAmount,
         })
       }
     })
@@ -39,7 +40,7 @@ skip
     it('should successfully make an API request', async () => {
       const transaction = await apiConsumer.requestData(
         'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD',
-        'RAW.ETH.USD.VOLUME24HOUR',
+        'RAW,ETH,USD,VOLUME24HOUR',
         '1000000000000000000'
       )
       const tx_receipt = await transaction.wait()

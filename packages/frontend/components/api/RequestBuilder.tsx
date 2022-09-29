@@ -20,10 +20,10 @@ import { APIConsumer } from 'types/typechain'
 const DEFAULT_MULTIPLIER = '1000000000000000000'
 const DEFAULT_URL =
   'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD'
-const DEFAULT_PATH = 'RAW.ETH.USD.VOLUME24HOUR'
+const DEFAULT_PATH = 'RAW,ETH,USD,VOLUME24HOUR'
 const URL_REGEX =
   /^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/
-const PATH_REGEX = /^[a-zA-Z_][\w]*(?:\.[\w]+)*$/
+const PATH_REGEX = /^[a-zA-Z_][\w]*(?:,[\w]+)*$/
 const MULTIPLIER_REGEX = /^(1(0)*)$/
 
 export function RequestBuilder(): JSX.Element {
