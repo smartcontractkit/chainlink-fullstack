@@ -30,6 +30,11 @@ const func: DeployFunction = async function ({
       log: true,
       args: [linkToken.address],
     })
+    await deploy('VRFCoordinatorMockV2', {
+      from: deployer,
+      log: true,
+      args: [],
+    })
     await deploy('MockOracle', {
       from: deployer,
       log: true,

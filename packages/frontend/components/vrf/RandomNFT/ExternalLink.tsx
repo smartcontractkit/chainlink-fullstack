@@ -19,7 +19,7 @@ export interface Props {
 export function ExternalLink({ tokenId }: Props): JSX.Element {
   const { chainId } = useEthers()
 
-  const contract = useContractConfig('RandomSVG')
+  const contract = useContractConfig('RandomSVGV2')
 
   const active = chainId === OpenSeaTestnet
 

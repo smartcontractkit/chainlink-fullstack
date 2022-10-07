@@ -7,7 +7,7 @@ import { useContract } from '../../../hooks/useContract'
 import { ExternalLink } from './ExternalLink'
 import { Error } from '../../Error'
 // @ts-ignore
-import { RandomSVG } from '../../../../types/typechain'
+import { RandomSVGV2 } from '../../../../types/typechain'
 
 /**
  * Constants & Helpers
@@ -35,7 +35,7 @@ export function RandomNFT(): JSX.Element {
   const [tokenId, setTokenId] = useState<BigNumber | undefined>()
   const [metadata, setMetadata] = useState<Metadata | undefined>()
 
-  const randomSvg = useContract<RandomSVG>('RandomSVG')
+  const randomSvg = useContract<RandomSVGV2>('RandomSVGV2')
 
   const {
     send: create,
