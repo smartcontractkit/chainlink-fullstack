@@ -110,6 +110,11 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
                   External API
                 </Link>
               </NextLink>
+              <NextLink href="/automation" passHref>
+                <Link px="4" py="1">
+                  Automation
+                </Link>
+              </NextLink>
             </Flex>
             {account ? (
               <Flex
