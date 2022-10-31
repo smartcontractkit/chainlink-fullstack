@@ -20,7 +20,9 @@ const config: Config = {
 
 export const WbtcPorAddress = '0xa81FE04086865e63E12dD3776978E49DEEa2ea4e'
 
-export const LinkTokenAddress = '0xa36085F69e2889c224210F603D836748e7dC0088'
+export const FeedRegistryAddress = '0x47Fb2585D2C56Fe188D0E6ec628a38b74fCeeeDf'
+
+export const LinkTokenAddress = '0x514910771AF9Ca656af840dff83E8264EcF986CA'
 
 export enum Denominations {
   ETH = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',

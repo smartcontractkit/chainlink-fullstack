@@ -2,7 +2,7 @@ import React from 'react'
 import { Code, Heading, HStack, Link, Text } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Section } from '../components/layout'
-import { PriceFeed, ProofOfReserve } from '../components/feeds'
+import { SelectFeed, PriceFeed, ProofOfReserve } from '../components/feeds'
 
 function Feeds(): JSX.Element {
   return (
@@ -35,7 +35,7 @@ function Feeds(): JSX.Element {
           </Link>
         </HStack>
       </Section>
-      {/* <Section>
+      <Section>
         <SelectFeed />
         <Text my="4">
           Feed Registry is an on-chain mapping of assets to feeds. It enables
@@ -45,7 +45,7 @@ function Feeds(): JSX.Element {
         <Link href="https://docs.chain.link/docs/feed-registry" isExternal>
           Learn More <ExternalLinkIcon mx="2px" />
         </Link>
-      </Section> */}
+      </Section>
       <Section>
         <ProofOfReserve />
         <Text my="4">
