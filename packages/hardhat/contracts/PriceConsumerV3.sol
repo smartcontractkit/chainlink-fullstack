@@ -6,9 +6,9 @@ contract PriceConsumerV3 {
   AggregatorV3Interface internal priceFeed;
 
   /**
-   * Network: Kovan
+   * Network: Goerli
    * Aggregator: ETH/USD
-   * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+   * Address: 0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e
    */
   constructor(address _priceFeed) public {
     priceFeed = AggregatorV3Interface(_priceFeed);

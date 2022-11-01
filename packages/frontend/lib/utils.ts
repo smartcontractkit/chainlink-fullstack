@@ -7,7 +7,7 @@ export function getErrorMessage(error: Error): string {
   if (error.message.includes("No injected provider available") ) {
     return 'No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.'
   } else if (error.name === "ChainIdError") {
-    return "You're connected to an unsupported network. Please switch to Kovan or Rinkeby."
+    return "You're connected to an unsupported network. Please switch to Goerli."
   } else if (
     error.message.includes("The user rejected the request") ||
     error.message.includes("User rejected the request")

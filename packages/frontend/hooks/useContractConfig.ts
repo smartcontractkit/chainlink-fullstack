@@ -2,8 +2,8 @@ import { useEthers } from '@usedapp/core'
 import deployedContracts from '../contracts/hardhat_contracts.json'
 
 type DeployedHardhatContractsJson = {
-  [chainId: string]: {
-    [networkName: string]: {
+  [chainId: string]: [
+     {
       name: string
       chainId: string
       contracts: {
@@ -13,10 +13,10 @@ type DeployedHardhatContractsJson = {
         }
       }
     }
-  }
+  ]
 }
 
-const contractsConfig = deployedContracts as DeployedHardhatContractsJson
+const contractsConfig = deployedContracts as unknown as DeployedHardhatContractsJson
 
 export function useContractConfig(name: string) {
   const { chainId } = useEthers()

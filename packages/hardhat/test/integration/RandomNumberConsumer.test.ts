@@ -21,12 +21,12 @@ skip
       const transaction = await randomNumberConsumer.getRandomNumber()
       await transaction.wait()
 
-      //wait 60 secs for oracle to callback
-      await new Promise((resolve) => setTimeout(resolve, 60000))
+      //wait 7 min for oracle to callback
+      await new Promise((resolve) => setTimeout(resolve, 420000))
 
       //Now check the result
       const result = await randomNumberConsumer.randomResult()
       //console.log("VRF Result: ", result.toString());
       expect(result).to.be.gt(0)
-    })
+    }).timeout(520000)
   })

@@ -32,6 +32,7 @@ const func: DeployFunction = async function ({
     await run('fund-link', {
       contract: randomNumberConsumer.address,
       linkaddress: linkTokenAddress,
+      fundamount: networkConfig[chainId].fundAmount,
     })
   }
 
@@ -42,6 +43,7 @@ const func: DeployFunction = async function ({
     await run('fund-link', {
       contract: randomSVG.address,
       linkaddress: linkTokenAddress,
+      fundamount: networkConfig[chainId].fundAmount,
     })
   }
 
@@ -55,6 +57,7 @@ const func: DeployFunction = async function ({
     await run('fund-link', {
       contract: apiConsumer.address,
       linkaddress: linkTokenAddress,
+      fundamount: networkConfig[chainId].fundAmount,
     })
   }
 }

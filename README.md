@@ -94,7 +94,7 @@ yarn deploy
 To deploy on a public network:
 
 ```bash
-yarn deploy --network kovan
+yarn deploy --network goerli
 ```
 
 ## Auto-Funding
@@ -124,7 +124,7 @@ yarn test:contracts
 Integration tests must be run on a public testnet that has Chainlink oracles responding:
 
 ```bash
-yarn test:contracts --network kovan
+yarn test:contracts --network goerli
 ```
 
 For coverage report:
@@ -144,7 +144,7 @@ npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETER
 example:
 
 ```bash
-npx hardhat verify --network kovan 0x9279791897f112a41FfDa267ff7DbBC46b96c296 "0x9326BFA02ADD2366b30bacB125260Af641031331"
+npx hardhat verify --network goerli 0x9279791897f112a41FfDa267ff7DbBC46b96c296 "0x9326BFA02ADD2366b30bacB125260Af641031331"
 ```
 
 ## Format
@@ -164,21 +164,30 @@ yarn lint:frontend
 
 ## Testnet Contracts
 
-This repo includes deployed and verified contracts on Kovan and Rinkeby so the front-end can run without the need to deploy them.
+This repo includes deployed and verified contracts on Goerli so the front-end can run without the need to deploy them.
 
 Once the `deploy` command is executed on any network the contracts config will be overwritten and you can start from scratch with your own deployments.
 
-#### Kovan
+#### Goerli
+
+| Name                   | Address                                                                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `PriceConsumerV3`      | [0x870Ad4995160C65A31478Fb438Dca267D6053EAF](https://goerli.etherscan.io/address/0x870Ad4995160C65A31478Fb438Dca267D6053EAF)      |
+| `APIConsumer`          | [0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b](https://goerli.etherscan.io/address/0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b)      |
+| `RandomNumberConsumer` | [0xF498E392f010b6513781418BAfC2F540690F3E13](https://goerli.etherscan.io/address/0xF498E392f010b6513781418BAfC2F540690F3E13) |
+| `RandomSVG`            | [0xF32b62E03cEeA101B30b0B90aD0038B97f635025](https://goerli.etherscan.io/address/0xF32b62E03cEeA101B30b0B90aD0038B97f635025)      |
+
+#### Kovan (deprecated)
 
 | Name                   | Address                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `PriceConsumerV3`      | [0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00](https://kovan.etherscan.io/address/0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00)      |
 | `FeedRegistryConsumer` | [0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50](https://kovan.etherscan.io/address/0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50)      |
 | `APIConsumer`          | [0x14005AB90bc520E20Ffd7815Cae64372abb6b04d](https://kovan.etherscan.io/address/0x14005AB90bc520E20Ffd7815Cae64372abb6b04d)      |
-| `RandomNumberConsumer` | [0xF9556187bf86823Cf0D7081625F97391642Fc242](https://kovan.etherscan.io/address/0xF9556187bf86823Cf0D7081625F97391642Fc242#code) |
+| `RandomNumberConsumer` | [0xF9556187bf86823Cf0D7081625F97391642Fc242](https://kovan.etherscan.io/address/0xF9556187bf86823Cf0D7081625F97391642Fc242) |
 | `RandomSVG`            | [0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76](https://kovan.etherscan.io/address/0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76)      |
 
-#### Rinkeby
+#### Rinkeby (deprecated)
 
 | Name                   | Address                                                                                                                       |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |

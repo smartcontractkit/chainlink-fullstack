@@ -13,9 +13,9 @@ contract APIConsumer is ChainlinkClient, Ownable {
   uint256 private fee;
 
   /**
-   * Network: Kovan
-   * Oracle: 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8
-   * Job ID: d5270d1c311941d0b08bead21fea7747
+   * Network: Goerli
+   * Oracle: 0xCC79157eb46F5624204f47AB42b3906cAA40eaB7
+   * Job ID: ca98366cc7314957b8c012c72f05aeeb
    * Fee: 0.1 LINK
    */
   constructor(
@@ -29,8 +29,8 @@ contract APIConsumer is ChainlinkClient, Ownable {
     } else {
       setChainlinkToken(_link);
     }
-    // oracle = 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8;
-    // jobId = "d5270d1c311941d0b08bead21fea7747";
+    // oracle = 0xCC79157eb46F5624204f47AB42b3906cAA40eaB7;
+    // jobId = "ca98366cc7314957b8c012c72f05aeeb";
     // fee = 0.1 * 10 ** 18; // 0.1 LINK
     oracle = _oracle;
     jobId = stringToBytes32(_jobId);

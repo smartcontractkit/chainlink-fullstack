@@ -32,7 +32,7 @@ export function ExternalLink({ tokenId }: Props): JSX.Element {
       <Link href={url} isExternal>
         See on OpenSea Testnet Marketplace <ExternalLinkIcon mx="2px" />
       </Link>
-      {!active && <Badge>Rinkeby Only</Badge>}
+      {!active && <Badge>Goerli Only</Badge>}
     </HStack>
   )
 }

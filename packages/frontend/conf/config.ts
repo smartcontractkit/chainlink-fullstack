@@ -1,34 +1,28 @@
-import {
-  ChainId,
-  Config,
-  Rinkeby,
-  Kovan,
-  Mainnet,
-  Hardhat,
-} from '@usedapp/core'
+import { ChainId, Config, Goerli, Mainnet, Hardhat } from '@usedapp/core'
 import deployedContracts from '../contracts/hardhat_contracts.json'
 
 const INFURA_KEY = process.env.NEXT_PUBLIC_INFURA_KEY
 
 const config: Config = {
-  readOnlyChainId: ChainId.Kovan,
+  readOnlyChainId: ChainId.Goerli,
   readOnlyUrls: {
-    [ChainId.Kovan]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
-    [ChainId.Rinkeby]: `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
+    [ChainId.Goerli]: `https://goerli.infura.io/v3/${INFURA_KEY}`,
     [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
     [ChainId.Hardhat]: 'http://127.0.0.1:8545',
   },
-  networks: [Rinkeby, Kovan, Hardhat],
+  networks: [Goerli, Hardhat],
   multicallAddresses: {
     [ChainId.Hardhat]:
-      deployedContracts[ChainId.Hardhat].localhost.contracts.Multicall.address,
+      deployedContracts[ChainId.Hardhat][0].contracts.Multicall.address,
     [ChainId.Mainnet]: Mainnet.multicallAddress,
   },
 }
 
 export const WbtcPorAddress = '0xa81FE04086865e63E12dD3776978E49DEEa2ea4e'
 
-export const LinkTokenAddress = '0xa36085F69e2889c224210F603D836748e7dC0088'
+export const FeedRegistryAddress = '0x47Fb2585D2C56Fe188D0E6ec628a38b74fCeeeDf'
+
+export const LinkTokenAddress = '0x514910771AF9Ca656af840dff83E8264EcF986CA'
 
 export enum Denominations {
   ETH = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
@@ -37,6 +31,6 @@ export enum Denominations {
 }
 
 export const OpenSeaUrl = 'https://testnets.opensea.io'
-export const OpenSeaTestnet = ChainId.Rinkeby
+export const OpenSeaTestnet = ChainId.Goerli
 
 export default config
