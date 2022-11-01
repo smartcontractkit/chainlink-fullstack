@@ -54,6 +54,19 @@ function HomeIndex(): JSX.Element {
           </Link>
         </NextLink>
       </Section>
+      <Section>
+        <Heading as="h2" size="md" mb="2">
+          Automation
+        </Heading>
+        <Text mb="4">
+          Reliably execute smart contract functions using a variety of triggers.
+        </Text>
+        <NextLink href="/automation" passHref>
+          <Link>
+            Go to Demo <ArrowForwardIcon />
+          </Link>
+        </NextLink>
+      </Section>
     </>
   )
 }
