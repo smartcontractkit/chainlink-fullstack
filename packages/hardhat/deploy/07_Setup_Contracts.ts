@@ -39,13 +39,8 @@ const func: DeployFunction = async function ({
   // Try Auto-fund RandomSVG contract
   const RandomSVG = await deployments.get('RandomSVG')
   const randomSVG = await ethers.getContractAt('RandomSVG', RandomSVG.address)
-  if (await autoFundCheck(randomSVG.address, chainId, linkTokenAddress)) {
-    await run('fund-link', {
-      contract: randomSVG.address,
-      linkaddress: linkTokenAddress,
-      fundamount: networkConfig[chainId].fundAmount,
-    })
-  }
+  console.log(`Contract RandomSVG deployed on address: ${randomSVG.address} ` +
+    `Please add the contract addess in you chainlink sucscription on https://vrf.chain.link`)
 
   // Try Auto-fund APIConsumer contract with LINK
   const APIConsumer = await deployments.get('APIConsumer')

@@ -30,7 +30,7 @@ Built with:
 
 In order to use the frontend portion of the demo application you will need
 
-- A crypto wallet such as [Metamask](https://metamask.io/) or  [Coinbase Wallet](https://www.coinbase.com/wallet)
+- A crypto wallet such as [Metamask](https://metamask.io/) or [Coinbase Wallet](https://www.coinbase.com/wallet)
 - Test $LINK for the relevant testnet. You can get some at the [Chainlink Faucets](https://faucets.chain.link/) page.
 - Test $ETH to pay for gas costs. You can get some at the [Chainlink Faucets](https://faucets.chain.link/) page.
 
@@ -84,6 +84,10 @@ To make setting environment variables easier there are `.env.example` files in t
 | `NEXT_PUBLIC_INFURA_KEY` | Read-only mode and WalletConnect. |
 
 ## Deploy Contracts
+
+Before deploying the contracts in the config file `helper-hardhat-config.ts` the `vrfSubscriptionId` need to be changed with your subscription id.
+
+How to do that is explained in the link: [How to Create and Fund a Subscription](https://docs.chain.link/docs/vrf/v2/subscription/ui/)
 
 This will run the deploy scripts to a local Hardhat network:
 
@@ -170,22 +174,22 @@ Once the `deploy` command is executed on any network the contracts config will b
 
 #### Goerli
 
-| Name                   | Address                                                                                                                          |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `PriceConsumerV3`      | [0x870Ad4995160C65A31478Fb438Dca267D6053EAF](https://goerli.etherscan.io/address/0x870Ad4995160C65A31478Fb438Dca267D6053EAF)      |
-| `APIConsumer`          | [0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b](https://goerli.etherscan.io/address/0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b)      |
-| `RandomNumberConsumer` | [0xF498E392f010b6513781418BAfC2F540690F3E13](https://goerli.etherscan.io/address/0xF498E392f010b6513781418BAfC2F540690F3E13) |
-| `RandomSVG`            | [0xF32b62E03cEeA101B30b0B90aD0038B97f635025](https://goerli.etherscan.io/address/0xF32b62E03cEeA101B30b0B90aD0038B97f635025)      |
+| Name                   | Address                                                                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `PriceConsumerV3`      | [0x46b73aca4AF8D060355beAb7f3C941B214ba0E1F](https://goerli.etherscan.io/address/0x46b73aca4AF8D060355beAb7f3C941B214ba0E1F) |
+| `APIConsumer`          | [0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b](https://goerli.etherscan.io/address/0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b) |
+| `RandomNumberConsumer` | [0x7498DA7c2d345290A6a6C27587d74e01862457DE](https://goerli.etherscan.io/address/0x7498DA7c2d345290A6a6C27587d74e01862457DE) |
+| `RandomSVG`            | [0x59Af7037ADCA1401bBc4A3f6F6312Aed9989d2b6](https://goerli.etherscan.io/address/0x59Af7037ADCA1401bBc4A3f6F6312Aed9989d2b6) |
 
 #### Kovan (deprecated)
 
-| Name                   | Address                                                                                                                          |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `PriceConsumerV3`      | [0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00](https://kovan.etherscan.io/address/0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00)      |
-| `FeedRegistryConsumer` | [0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50](https://kovan.etherscan.io/address/0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50)      |
-| `APIConsumer`          | [0x14005AB90bc520E20Ffd7815Cae64372abb6b04d](https://kovan.etherscan.io/address/0x14005AB90bc520E20Ffd7815Cae64372abb6b04d)      |
+| Name                   | Address                                                                                                                     |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `PriceConsumerV3`      | [0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00](https://kovan.etherscan.io/address/0x01E2C7cA6D6A82D059287Cb0bC43a39Cd0ff4B00) |
+| `FeedRegistryConsumer` | [0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50](https://kovan.etherscan.io/address/0xB9ebb63D4820c45a2Db09d71cefA24daBd047b50) |
+| `APIConsumer`          | [0x14005AB90bc520E20Ffd7815Cae64372abb6b04d](https://kovan.etherscan.io/address/0x14005AB90bc520E20Ffd7815Cae64372abb6b04d) |
 | `RandomNumberConsumer` | [0xF9556187bf86823Cf0D7081625F97391642Fc242](https://kovan.etherscan.io/address/0xF9556187bf86823Cf0D7081625F97391642Fc242) |
-| `RandomSVG`            | [0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76](https://kovan.etherscan.io/address/0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76)      |
+| `RandomSVG`            | [0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76](https://kovan.etherscan.io/address/0xb4Bac68d9Fa99D2852E5dFb124be74de2E8c4F76) |
 
 #### Rinkeby (deprecated)
 
