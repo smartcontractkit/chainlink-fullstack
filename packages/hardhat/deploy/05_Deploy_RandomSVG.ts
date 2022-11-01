@@ -20,7 +20,7 @@ const func: DeployFunction = async function ({
     vrfCoordinatorAddress = VRFCoordinatorMock.address
   } else {
     linkTokenAddress = networkConfig[chainId].linkToken as string
-    vrfCoordinatorAddress = networkConfig[chainId].vrfCoordinator as string
+    vrfCoordinatorAddress = networkConfig[chainId].vrfCoordinatorV2 as string
   }
   const { keyHash, fee } = networkConfig[chainId]
 

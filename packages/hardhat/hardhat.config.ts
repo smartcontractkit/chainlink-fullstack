@@ -37,8 +37,7 @@ const ETHERSCAN_API_KEY =
 const config: HardhatUserConfig = {
   defaultNetwork: 'localhost',
   networks: {
-    hardhat: {
-    },
+    hardhat: {},
     localhost: {
       url: 'http://localhost:8545',
     },
@@ -70,6 +69,12 @@ const config: HardhatUserConfig = {
   },
   solidity: {
     compilers: [
+      {
+        version: '0.8.6',
+      },
+      {
+        version: '0.8.4',
+      },
       {
         version: '0.8.3',
       },
