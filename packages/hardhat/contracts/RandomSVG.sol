@@ -3,38 +3,31 @@ pragma solidity 0.8.4;
 
 import "../vendor/openzeppelin/contracts/access/Ownable.sol";
 import "../vendor/openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "base64-sol/base64.sol";
 import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
+import "base64-sol/base64.sol";
 
-contract RandomSVG is
-  ERC721URIStorage,
-  Ownable,
-  VRFConsumerBaseV2
-{
+contract RandomSVG is ERC721URIStorage, VRFConsumerBaseV2, Ownable {
   // MUTABLE STORAGE
 
   uint256 public tokenCounter;
-
   uint256 public maxNumberOfPaths;
   uint256 public maxNumberOfPathCommands;
   uint256 public size;
   string[] public pathCommands;
   string[] public colors;
-
   mapping(uint256 => address) public requestIdToSender;
   mapping(uint256 => uint256) public tokenIdToRandomNumber;
   mapping(uint256 => uint256) public requestIdToTokenId;
 
   // VRF CONSTANTS & IMMUTABLE
 
-  uint16 private constant VRF_REQUEST_CONFIRMATIONS = 3;
-  uint32 private constant VRF_NUM_WORDS = 1;
-
-  VRFCoordinatorV2Interface private immutable VRF_COORDINATOR_V2;
-  uint64 private immutable VRF_SUBSCRIPTION_ID;
-  bytes32 private immutable VRF_GAS_LANE;
-  uint32 private immutable VRF_CALLBACK_GAS_LIMIT;
+  uint16 private constant vrfRequestConfirmations = 3;
+  uint32 private constant vrfNumWords = 1;
+  VRFCoordinatorV2Interface private immutable vrfCoordinatorV2;
+  uint64 private immutable vrfSubscriptionId;
+  bytes32 private immutable vrfGasLane;
+  uint32 private immutable vrfCallbackGasLimit;
 
   // EVENTS
 
@@ -48,10 +41,10 @@ contract RandomSVG is
     bytes32 _vrfGasLane,
     uint32 _vrfCallbackGasLimit
   ) VRFConsumerBaseV2(_vrfCoordinatorV2) ERC721("RandomSVG", "rsNFT") {
-    VRF_COORDINATOR_V2 = VRFCoordinatorV2Interface(_vrfCoordinatorV2);
-    VRF_SUBSCRIPTION_ID = _vrfSubscriptionId;
-    VRF_GAS_LANE = _vrfGasLane;
-    VRF_CALLBACK_GAS_LIMIT = _vrfCallbackGasLimit;
+    vrfCoordinatorV2 = VRFCoordinatorV2Interface(_vrfCoordinatorV2);
+    vrfSubscriptionId = _vrfSubscriptionId;
+    vrfGasLane = _vrfGasLane;
+    vrfCallbackGasLimit = _vrfCallbackGasLimit;
 
     maxNumberOfPaths = 10;
     maxNumberOfPathCommands = 5;
@@ -63,12 +56,12 @@ contract RandomSVG is
   // ACTIONS
 
   function create() public {
-    uint256 requestId = VRF_COORDINATOR_V2.requestRandomWords(
-      VRF_GAS_LANE,
-      VRF_SUBSCRIPTION_ID,
-      VRF_REQUEST_CONFIRMATIONS,
-      VRF_CALLBACK_GAS_LIMIT,
-      VRF_NUM_WORDS
+    uint256 requestId = vrfCoordinatorV2.requestRandomWords(
+      vrfGasLane,
+      vrfSubscriptionId,
+      vrfRequestConfirmations,
+      vrfCallbackGasLimit,
+      vrfNumWords
     );
     requestIdToSender[requestId] = msg.sender;
     uint256 tokenId = tokenCounter;
@@ -90,6 +83,38 @@ contract RandomSVG is
 
   function withdraw() public payable onlyOwner {
     payable(owner()).transfer(address(this).balance);
+  }
+
+  // VRF
+
+  function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords) internal override {
+    address nftOwner = requestIdToSender[requestId];
+    uint256 tokenId = requestIdToTokenId[requestId];
+    _safeMint(nftOwner, tokenId);
+    tokenIdToRandomNumber[tokenId] = randomWords[0];
+    emit CreatedUnfinishedRandomSVG(tokenId, randomWords[0]);
+  }
+
+  // GETTERS
+
+  function formatTokenURI(string memory imageURI) public pure returns (string memory) {
+    return
+      string(
+        abi.encodePacked(
+          "data:application/json;base64,",
+          Base64.encode(
+            bytes(
+              abi.encodePacked(
+                '{"name":"',
+                "SVG NFT", // You can add whatever name here
+                '", "description":"An NFT based on SVG!", "attributes":"", "image":"',
+                imageURI,
+                '"}'
+              )
+            )
+          )
+        )
+      );
   }
 
   // HELPERS
@@ -163,38 +188,5 @@ contract RandomSVG is
     string memory baseURL = "data:image/svg+xml;base64,";
     string memory svgBase64Encoded = Base64.encode(bytes(string(abi.encodePacked(svg))));
     return string(abi.encodePacked(baseURL, svgBase64Encoded));
-  }
-
-    // VRF
-
-  function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords)
-      internal
-      override
-    {
-      address nftOwner = requestIdToSender[requestId];
-      uint256 tokenId = requestIdToTokenId[requestId];
-      _safeMint(nftOwner, tokenId);
-      tokenIdToRandomNumber[tokenId] = randomWords[0];
-      emit CreatedUnfinishedRandomSVG(tokenId, randomWords[0]);
-    }
-
-  function formatTokenURI(string memory imageURI) public pure returns (string memory) {
-    return
-    string(
-      abi.encodePacked(
-      "data:application/json;base64,",
-        Base64.encode(
-          bytes(
-            abi.encodePacked(
-              '{"name":"',
-              "SVG NFT", // You can add whatever name here
-              '", "description":"An NFT based on SVG!", "attributes":"", "image":"',
-              imageURI,
-              '"}'
-            )
-          )
-        )
-      )
-    );
   }
 }

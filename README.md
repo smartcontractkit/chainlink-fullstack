@@ -85,10 +85,6 @@ To make setting environment variables easier there are `.env.example` files in t
 
 ## Deploy Contracts
 
-Before deploying the contracts in the config file `helper-hardhat-config.ts` the `vrfSubscriptionId` need to be changed with your subscription id.
-
-How to do that is explained in the link: [How to Create and Fund a Subscription](https://docs.chain.link/docs/vrf/v2/subscription/ui/)
-
 This will run the deploy scripts to a local Hardhat network:
 
 ```bash
@@ -100,6 +96,10 @@ To deploy on a public network:
 ```bash
 yarn deploy --network goerli
 ```
+
+Before deploying `RandomSVG` contract on a public network, an ID of a prefunded VRF subscription must be set in [`helper-hardhat-config.ts`](/packages/hardhat/helper-hardhat-config.ts).
+
+See how to [Create and Fund a Subscription](https://docs.chain.link/docs/vrf/v2/subscription/ui/).
 
 ## Auto-Funding
 

@@ -1,45 +1,43 @@
-import { HardhatRuntimeEnvironment } from 'hardhat/types'
-import { DeployFunction } from 'hardhat-deploy/types'
-import { networkConfig } from '../helper-hardhat-config'
 import { ethers } from 'hardhat'
+import { networkConfig } from '../helper-hardhat-config'
+import { HardhatRuntimeEnvironment } from 'hardhat/types'
+import { DeployFunction, DeploymentsExtension } from 'hardhat-deploy/types'
 import { VRFCoordinatorV2Mock } from 'types/typechain'
-import {
-  Deployment,
-  DeployOptions,
-  DeployResult,
-} from 'hardhat-deploy/dist/types'
 
 const func: DeployFunction = async function ({
   deployments,
   getNamedAccounts,
   getChainId,
 }: HardhatRuntimeEnvironment) {
-  const { deploy, get } = deployments
   const { deployer } = await getNamedAccounts()
   const chainId = await getChainId()
 
   if (chainId === '31337') {
-    await deployToLocalNetwork(deploy, get, deployer)
+    await deployToLocalNetwork(deployments, deployer, chainId)
   } else {
-    await deployToPublicNetwork(deploy, deployer, chainId)
+    await deployToPublicNetwork(deployments, deployer, chainId)
   }
 }
 
 async function deployToLocalNetwork(
-  deploy: (name: string, option: DeployOptions) => Promise<DeployResult>,
-  get: (name: string) => Promise<Deployment>,
-  deployer: string
+  deployments: DeploymentsExtension,
+  deployer: string,
+  chainId: string
 ) {
-  let { vrfGasLane, vrfCallbackGasLimit } = networkConfig[31337]
+  const { deploy, get } = deployments
+  const { vrfGasLane, vrfCallbackGasLimit } = networkConfig[chainId]
 
   const VRFCoordinatorMockV2 = await get('VRFCoordinatorV2Mock')
-  let vrfCoordinatorV2Mock = (await ethers.getContractAt(
+  const vrfCoordinatorV2Mock = (await ethers.getContractAt(
     'VRFCoordinatorV2Mock',
     VRFCoordinatorMockV2.address
   )) as VRFCoordinatorV2Mock
 
-  let vrfCoordinatorV2 = vrfCoordinatorV2Mock.address
-  let vrfSubscriptionId = await createMockSubscription(vrfCoordinatorV2Mock)
+  const vrfCoordinatorV2 = vrfCoordinatorV2Mock.address
+  const vrfSubscriptionId = await createMockSubscription(
+    vrfCoordinatorV2Mock,
+    chainId
+  )
 
   await deploy('RandomSVG', {
     from: deployer,
@@ -47,7 +45,7 @@ async function deployToLocalNetwork(
       vrfCoordinatorV2,
       vrfSubscriptionId,
       vrfGasLane,
-      vrfCallbackGasLimit?.RandomSVG,
+      vrfCallbackGasLimit?.randomSVG,
     ],
     log: true,
   })
@@ -67,12 +65,17 @@ async function deployToLocalNetwork(
 }
 
 async function deployToPublicNetwork(
-  deploy: (name: string, option: DeployOptions) => Promise<DeployResult>,
+  deployments: DeploymentsExtension,
   deployer: string,
   chainId: string
 ) {
-  let { vrfCoordinatorV2, vrfSubscriptionId, vrfGasLane, vrfCallbackGasLimit } =
-    networkConfig[chainId]
+  const { deploy } = deployments
+  const {
+    vrfCoordinatorV2,
+    vrfSubscriptionId,
+    vrfGasLane,
+    vrfCallbackGasLimit,
+  } = networkConfig[chainId]
 
   await deploy('RandomSVG', {
     from: deployer,
@@ -80,21 +83,24 @@ async function deployToPublicNetwork(
       vrfCoordinatorV2,
       vrfSubscriptionId,
       vrfGasLane,
-      vrfCallbackGasLimit?.RandomSVG,
+      vrfCallbackGasLimit?.randomSVG,
     ],
     log: true,
   })
 }
 
 async function createMockSubscription(
-  vrfCoordinatorV2Mock: VRFCoordinatorV2Mock
+  vrfCoordinatorV2Mock: VRFCoordinatorV2Mock,
+  chainId: string
 ): Promise<string> {
-  const fundAmount = networkConfig[31337]['fundAmount']
+  const { fundAmount } = networkConfig[chainId]
+
   const transaction = await vrfCoordinatorV2Mock.createSubscription()
-  const transactionReceipt = await transaction.wait(1)
-  let vrfSubscriptionId = ethers.BigNumber.from(
+  const transactionReceipt = await transaction.wait()
+  const vrfSubscriptionId = ethers.BigNumber.from(
     transactionReceipt!.events![0].topics[1]
   ).toString()
+
   await vrfCoordinatorV2Mock.fundSubscription(vrfSubscriptionId, fundAmount)
 
   return vrfSubscriptionId

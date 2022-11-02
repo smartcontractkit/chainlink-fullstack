@@ -18,8 +18,6 @@ export function RandomNumber(): JSX.Element {
     'RandomNumberConsumer'
   )
 
-  // gasLimitBufferPercentage adds a safety buffer of additional gas limit to the estimated transaction
-  // metamask doesnt calculate correctly the gas limit
   const { send, state, events } = useContractFunction(
     randomNumberConsumer,
     'getRandomNumber',

@@ -8,7 +8,7 @@ import { RandomSVG, VRFCoordinatorV2Mock } from 'types/typechain'
 skip
   .if(!developmentChains.includes(network.name))
   .describe('RandomSVG Unit Tests', () => {
-    let rsNFT: RandomSVG
+    let randomSvg: RandomSVG
     let vrfCoordinatorV2: VRFCoordinatorV2Mock
 
     beforeEach(async () => {
@@ -21,31 +21,32 @@ skip
       )) as VRFCoordinatorV2Mock
 
       const RandomSVG = await deployments.get('RandomSVG')
-      rsNFT = (await ethers.getContractAt(
+      randomSvg = (await ethers.getContractAt(
         'RandomSVG',
         RandomSVG.address
       )) as RandomSVG
     })
 
     it('should return the correct URI', async () => {
-      const transactionCreate = await rsNFT.create()
+      const transactionCreate = await randomSvg.create()
       const receipt = await transactionCreate.wait()
       const [, requestId, tokenId] =
         (receipt.events && receipt.events[1].topics) || []
       const fakeRandomNumber = 77777
 
-      const transactionResponse = await vrfCoordinatorV2.fulfillRandomWordsWithOverride(
-        requestId,
-        rsNFT.address,
-        [fakeRandomNumber]
-      )
+      const transactionResponse =
+        await vrfCoordinatorV2.fulfillRandomWordsWithOverride(
+          requestId,
+          randomSvg.address,
+          [fakeRandomNumber]
+        )
 
       await transactionResponse.wait()
-      const transactionMint = await rsNFT.finishMint(tokenId)
+      const transactionMint = await randomSvg.finishMint(tokenId)
       await transactionMint.wait()
 
       const expectedURI = fs.readFileSync('./test/data/randomSVG.txt', 'utf8')
-      const uri = await rsNFT.tokenURI(0)
+      const uri = await randomSvg.tokenURI(0)
       expect(uri).to.equal(expectedURI)
     })
   })

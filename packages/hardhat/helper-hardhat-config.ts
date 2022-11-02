@@ -10,8 +10,8 @@ export const networkConfig: Record<
     vrfSubscriptionId?: string
     vrfGasLane?: string
     vrfCallbackGasLimit?: {
-      RandomNumberConsumer: string
-      RandomSVG: string
+      randomNumberConsumer: string
+      randomSVG: string
     }
     keyHash: string
     oracle?: string
@@ -28,8 +28,8 @@ export const networkConfig: Record<
     vrfGasLane:
       '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15',
     vrfCallbackGasLimit: {
-      RandomNumberConsumer: '500000',
-      RandomSVG: '500000',
+      randomNumberConsumer: '500000',
+      randomSVG: '500000',
     },
     fee: '100000000000000000',
     fundAmount: '10000000000000000000',
@@ -44,8 +44,8 @@ export const networkConfig: Record<
     vrfGasLane:
       '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15',
     vrfCallbackGasLimit: {
-      RandomNumberConsumer: '150000',
-      RandomSVG: '200000',
+      randomNumberConsumer: '150000',
+      randomSVG: '200000',
     },
     keyHash:
       '0x0476f9a745b61ea5c0ab224d3a6e4c99f0b02fce4da01143a4f70aa80ae76e8a',

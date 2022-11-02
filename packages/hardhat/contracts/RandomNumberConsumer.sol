@@ -1,21 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import '@chainlink/contracts/src/v0.8/ConfirmedOwner.sol';
 import "@chainlink/contracts/src/v0.8/VRFV2WrapperConsumerBase.sol";
 
-contract RandomNumberConsumer is VRFV2WrapperConsumerBase, ConfirmedOwner {
-  uint32 internal callbackGasLimit;
+contract RandomNumberConsumer is VRFV2WrapperConsumerBase {
   uint256 public randomResult;
-  event RequestedRandomness(uint256 requestId);
-  event FulfilledRandomness(uint256 requestId);
 
+  uint32 internal callbackGasLimit;
   // The default is 3, but you can set this higher.
-  uint16 requestConfirmations = 3;
-
+  uint16 internal requestConfirmations = 3;
   // For this example, retrieve 2 random values in one request.
   // Cannot exceed VRFV2Wrapper.getConfig().maxNumWords.
-  uint32 numWords = 1;
+  uint32 internal numWords = 1;
+
+  event RequestedRandomness(uint256 requestId);
+  event FulfilledRandomness(uint256 requestId);
 
   /**
    * Constructor inherits VRFConsumerBase
@@ -29,7 +28,6 @@ contract RandomNumberConsumer is VRFV2WrapperConsumerBase, ConfirmedOwner {
     address _link,
     uint32 _callbackGasLimit
   )
-    ConfirmedOwner(msg.sender)
     VRFV2WrapperConsumerBase(
       _link, // LINK Token
       _wrapperAddress // VRF Wrapper

@@ -29,7 +29,7 @@ const func: DeployFunction = async function ({
     args: [
       wrapperAddress,
       linkTokenAddress,
-      vrfCallbackGasLimit?.RandomNumberConsumer,
+      vrfCallbackGasLimit?.randomNumberConsumer,
     ],
     log: true,
   })
