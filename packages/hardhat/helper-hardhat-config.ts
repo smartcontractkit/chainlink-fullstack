@@ -32,7 +32,7 @@ export const networkConfig: Record<
       randomSVG: '500000',
     },
     fee: '100000000000000000',
-    fundAmount: '10000000000000000000',
+    fundAmount: '50000000000000000000',
   },
   '5': {
     name: 'goerli',
@@ -52,7 +52,7 @@ export const networkConfig: Record<
     oracle: '0xCC79157eb46F5624204f47AB42b3906cAA40eaB7',
     jobId: 'ca98366cc7314957b8c012c72f05aeeb',
     fee: '100000000000000000',
-    fundAmount: '1000000000000000000',
+    fundAmount: '5000000000000000000',
   },
 }
 

@@ -109,7 +109,7 @@ The amount in LINK to send as part of this process can be modified in this [Hard
 
 | Parameter  | Description                                       | Default Value |
 | ---------- | :------------------------------------------------ | :------------ |
-| fundAmount | Amount of LINK to transfer when funding contracts | 1 LINK        |
+| fundAmount | Amount of LINK to transfer when funding contracts | 5 LINK        |
 
 If you wish to deploy the smart contracts without performing the auto-funding, run the following command when doing your deployment:
 
