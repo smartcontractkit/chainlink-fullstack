@@ -178,8 +178,8 @@ Once the `deploy` command is executed on any network the contracts config will b
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `PriceConsumerV3`      | [0x46b73aca4AF8D060355beAb7f3C941B214ba0E1F](https://goerli.etherscan.io/address/0x46b73aca4AF8D060355beAb7f3C941B214ba0E1F) |
 | `APIConsumer`          | [0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b](https://goerli.etherscan.io/address/0xe40D4f1fDf9f0312905bd938Dd396B9149e1F04b) |
-| `RandomNumberConsumer` | [0x7498DA7c2d345290A6a6C27587d74e01862457DE](https://goerli.etherscan.io/address/0x7498DA7c2d345290A6a6C27587d74e01862457DE) |
-| `RandomSVG`            | [0x59Af7037ADCA1401bBc4A3f6F6312Aed9989d2b6](https://goerli.etherscan.io/address/0x59Af7037ADCA1401bBc4A3f6F6312Aed9989d2b6) |
+| `RandomNumberConsumer` | [0x35ea06342a82e091040CbF415cc899228DB4C936](https://goerli.etherscan.io/address/0x35ea06342a82e091040CbF415cc899228DB4C936) |
+| `RandomSVG`            | [0xa652548CDAb898d9d885896f464Fd4a07F353aBc](https://goerli.etherscan.io/address/0xa652548CDAb898d9d885896f464Fd4a07F353aBc) |
 
 #### Kovan (deprecated)
 
