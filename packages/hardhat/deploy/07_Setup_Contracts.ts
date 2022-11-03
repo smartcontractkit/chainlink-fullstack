@@ -20,7 +20,7 @@ const func: DeployFunction = async function ({
     linkTokenAddress = networkConfig[chainId].linkToken as string
   }
 
-  // Try Auto-fund VRFConsumer contract
+  // Try Auto-fund RandomNumberConsumer contract
   const RandomNumberConsumer = await deployments.get('RandomNumberConsumer')
   const randomNumberConsumer = await ethers.getContractAt(
     'RandomNumberConsumer',
@@ -36,15 +36,11 @@ const func: DeployFunction = async function ({
     })
   }
 
-  // Try Auto-fund RandomSVG contract
-  const RandomSVG = await deployments.get('RandomSVG')
-  const randomSVG = await ethers.getContractAt('RandomSVG', RandomSVG.address)
-  if (await autoFundCheck(randomSVG.address, chainId, linkTokenAddress)) {
-    await run('fund-link', {
-      contract: randomSVG.address,
-      linkaddress: linkTokenAddress,
-      fundamount: networkConfig[chainId].fundAmount,
-    })
+  // Fund RandomSVG instructions
+  if (chainId !== '31337') {
+    console.log(
+      `Please add RandomSVG address in your prefunded Chainlink VRF sucscription at https://vrf.chain.link`
+    )
   }
 
   // Try Auto-fund APIConsumer contract with LINK

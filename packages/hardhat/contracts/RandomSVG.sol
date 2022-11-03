@@ -1,37 +1,51 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.3;
+pragma solidity 0.8.4;
 
 import "../vendor/openzeppelin/contracts/access/Ownable.sol";
 import "../vendor/openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "base64-sol/base64.sol";
-import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 
-contract RandomSVG is ERC721URIStorage, VRFConsumerBase, Ownable {
+contract RandomSVG is ERC721URIStorage, VRFConsumerBaseV2, Ownable {
+  // MUTABLE STORAGE
+
   uint256 public tokenCounter;
-
-  event CreatedRandomSVG(uint256 indexed tokenId, string tokenURI);
-  event CreatedUnfinishedRandomSVG(uint256 indexed tokenId, uint256 randomNumber);
-  event requestedRandomSVG(bytes32 indexed requestId, uint256 indexed tokenId);
-  mapping(bytes32 => address) public requestIdToSender;
-  mapping(uint256 => uint256) public tokenIdToRandomNumber;
-  mapping(bytes32 => uint256) public requestIdToTokenId;
-  bytes32 internal keyHash;
-  uint256 internal fee;
   uint256 public maxNumberOfPaths;
   uint256 public maxNumberOfPathCommands;
   uint256 public size;
   string[] public pathCommands;
   string[] public colors;
+  mapping(uint256 => address) public requestIdToSender;
+  mapping(uint256 => uint256) public tokenIdToRandomNumber;
+  mapping(uint256 => uint256) public requestIdToTokenId;
+
+  // VRF CONSTANTS & IMMUTABLE
+
+  uint16 private constant vrfRequestConfirmations = 3;
+  uint32 private constant vrfNumWords = 1;
+  VRFCoordinatorV2Interface private immutable vrfCoordinatorV2;
+  uint64 private immutable vrfSubscriptionId;
+  bytes32 private immutable vrfGasLane;
+  uint32 private immutable vrfCallbackGasLimit;
+
+  // EVENTS
+
+  event CreatedRandomSVG(uint256 indexed tokenId, string tokenURI);
+  event CreatedUnfinishedRandomSVG(uint256 indexed tokenId, uint256 randomNumber);
+  event requestedRandomSVG(uint256 indexed requestId, uint256 indexed tokenId);
 
   constructor(
-    address _VRFCoordinator,
-    address _LinkToken,
-    bytes32 _keyhash,
-    uint256 _fee
-  ) VRFConsumerBase(_VRFCoordinator, _LinkToken) ERC721("RandomSVG", "rsNFT") {
-    tokenCounter = 0;
-    keyHash = _keyhash;
-    fee = _fee;
+    address _vrfCoordinatorV2,
+    uint64 _vrfSubscriptionId,
+    bytes32 _vrfGasLane,
+    uint32 _vrfCallbackGasLimit
+  ) VRFConsumerBaseV2(_vrfCoordinatorV2) ERC721("RandomSVG", "rsNFT") {
+    vrfCoordinatorV2 = VRFCoordinatorV2Interface(_vrfCoordinatorV2);
+    vrfSubscriptionId = _vrfSubscriptionId;
+    vrfGasLane = _vrfGasLane;
+    vrfCallbackGasLimit = _vrfCallbackGasLimit;
+
     maxNumberOfPaths = 10;
     maxNumberOfPathCommands = 5;
     size = 500;
@@ -39,12 +53,16 @@ contract RandomSVG is ERC721URIStorage, VRFConsumerBase, Ownable {
     colors = ["red", "blue", "green", "yellow", "black", "white"];
   }
 
-  function withdraw() public payable onlyOwner {
-    payable(owner()).transfer(address(this).balance);
-  }
+  // ACTIONS
 
-  function create() public returns (bytes32 requestId) {
-    requestId = requestRandomness(keyHash, fee);
+  function create() public {
+    uint256 requestId = vrfCoordinatorV2.requestRandomWords(
+      vrfGasLane,
+      vrfSubscriptionId,
+      vrfRequestConfirmations,
+      vrfCallbackGasLimit,
+      vrfNumWords
+    );
     requestIdToSender[requestId] = msg.sender;
     uint256 tokenId = tokenCounter;
     requestIdToTokenId[requestId] = tokenId;
@@ -63,13 +81,43 @@ contract RandomSVG is ERC721URIStorage, VRFConsumerBase, Ownable {
     emit CreatedRandomSVG(tokenId, svg);
   }
 
-  function fulfillRandomness(bytes32 requestId, uint256 randomNumber) internal override {
+  function withdraw() public payable onlyOwner {
+    payable(owner()).transfer(address(this).balance);
+  }
+
+  // VRF
+
+  function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords) internal override {
     address nftOwner = requestIdToSender[requestId];
     uint256 tokenId = requestIdToTokenId[requestId];
     _safeMint(nftOwner, tokenId);
-    tokenIdToRandomNumber[tokenId] = randomNumber;
-    emit CreatedUnfinishedRandomSVG(tokenId, randomNumber);
+    tokenIdToRandomNumber[tokenId] = randomWords[0];
+    emit CreatedUnfinishedRandomSVG(tokenId, randomWords[0]);
   }
+
+  // GETTERS
+
+  function formatTokenURI(string memory imageURI) public pure returns (string memory) {
+    return
+      string(
+        abi.encodePacked(
+          "data:application/json;base64,",
+          Base64.encode(
+            bytes(
+              abi.encodePacked(
+                '{"name":"',
+                "SVG NFT", // You can add whatever name here
+                '", "description":"An NFT based on SVG!", "attributes":"", "image":"',
+                imageURI,
+                '"}'
+              )
+            )
+          )
+        )
+      );
+  }
+
+  // HELPERS
 
   function generateSVG(uint256 _randomness) public view returns (string memory finalSvg) {
     // We will only use the path element, with stroke and d elements
@@ -140,25 +188,5 @@ contract RandomSVG is ERC721URIStorage, VRFConsumerBase, Ownable {
     string memory baseURL = "data:image/svg+xml;base64,";
     string memory svgBase64Encoded = Base64.encode(bytes(string(abi.encodePacked(svg))));
     return string(abi.encodePacked(baseURL, svgBase64Encoded));
-  }
-
-  function formatTokenURI(string memory imageURI) public pure returns (string memory) {
-    return
-      string(
-        abi.encodePacked(
-          "data:application/json;base64,",
-          Base64.encode(
-            bytes(
-              abi.encodePacked(
-                '{"name":"',
-                "SVG NFT", // You can add whatever name here
-                '", "description":"An NFT based on SVG!", "attributes":"", "image":"',
-                imageURI,
-                '"}'
-              )
-            )
-          )
-        )
-      );
   }
 }

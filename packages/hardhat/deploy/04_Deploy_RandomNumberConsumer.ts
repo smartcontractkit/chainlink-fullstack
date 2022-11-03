@@ -11,22 +11,26 @@ const func: DeployFunction = async function ({
   const { deployer } = await getNamedAccounts()
   const chainId = await getChainId()
   let linkTokenAddress: string
-  let vrfCoordinatorAddress: string
+  let wrapperAddress: string
 
   if (chainId === '31337') {
     const LinkToken = await get('LinkToken')
     linkTokenAddress = LinkToken.address
-    const VRFCoordinatorMock = await get('VRFCoordinatorMock')
-    vrfCoordinatorAddress = VRFCoordinatorMock.address
+    const VRFV2Wrapper = await get('VRFV2Wrapper')
+    wrapperAddress = VRFV2Wrapper.address
   } else {
     linkTokenAddress = networkConfig[chainId].linkToken as string
-    vrfCoordinatorAddress = networkConfig[chainId].vrfCoordinator as string
+    wrapperAddress = networkConfig[chainId].wrapperAddress as string
   }
-  const { keyHash, fee } = networkConfig[chainId]
+  const { vrfCallbackGasLimit } = networkConfig[chainId]
 
   await deploy('RandomNumberConsumer', {
     from: deployer,
-    args: [vrfCoordinatorAddress, linkTokenAddress, keyHash, fee],
+    args: [
+      wrapperAddress,
+      linkTokenAddress,
+      vrfCallbackGasLimit?.randomNumberConsumer,
+    ],
     log: true,
   })
 }

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Text, Button, Code, Stack } from '@chakra-ui/react'
 import { useContractFunction, useEthers } from '@usedapp/core'
+import { BigNumber } from 'ethers'
 import { getRequestStatus, getContractError } from '../../lib/utils'
 import { useContract } from '../../hooks/useContract'
 import { Error } from '../Error'
@@ -10,7 +11,7 @@ import { RandomNumberConsumer } from '../../../types/typechain'
 export function RandomNumber(): JSX.Element {
   const { account, error } = useEthers()
 
-  const [requestId, setRequestId] = useState('')
+  const [requestId, setRequestId] = useState<BigNumber>()
   const [randomNumber, setRandomNumber] = useState('')
 
   const randomNumberConsumer = useContract<RandomNumberConsumer>(
@@ -20,7 +21,7 @@ export function RandomNumber(): JSX.Element {
   const { send, state, events } = useContractFunction(
     randomNumberConsumer,
     'getRandomNumber',
-    { transactionName: 'Randomness Request' }
+    { transactionName: 'Randomness Request', gasLimitBufferPercentage: 250 }
   )
 
   const requestRandomNumber = async () => {
@@ -44,8 +45,8 @@ export function RandomNumber(): JSX.Element {
 
   useEffect(() => {
     if (randomNumberConsumer && requestId) {
-      randomNumberConsumer.on('FulfilledRandomness', (id: string) => {
-        if (requestId === id) {
+      randomNumberConsumer.on('FulfilledRandomness', (id: BigNumber) => {
+        if (requestId.eq(id)) {
           readRandomNumber()
           randomNumberConsumer.removeAllListeners()
         }
