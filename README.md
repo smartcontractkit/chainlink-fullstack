@@ -28,7 +28,7 @@ Built with:
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
 - [Git](https://git-scm.com/downloads)
 
-In order to use the frontend portion of the demo application you will need
+In order to use the frontend portion of the demo application you will need:
 
 - A crypto wallet such as [Metamask](https://metamask.io/) or [Coinbase Wallet](https://www.coinbase.com/wallet)
 - Test $LINK for the relevant testnet. You can get some at the [Chainlink Faucets](https://faucets.chain.link/) page.
