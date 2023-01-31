@@ -39,7 +39,7 @@ In order to use the frontend portion of the demo application you will need
 Clone the repo and install all dependencies:
 
 ```bash
-git clone https://github.com/hackbg/chainlink-fullstack
+git clone https://github.com/smartcontractkit/chainlink-fullstack
 cd chainlink-fullstack
 
 git submodule init
