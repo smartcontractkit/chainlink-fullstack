@@ -3,21 +3,30 @@ import { DeployFunction } from 'hardhat-deploy/types'
 import { ethers } from 'hardhat'
 import { networkConfig } from '../helper-hardhat-config'
 import { autoFundCheck } from '../utils'
+import { LinkToken } from 'types/typechain'
 
 const func: DeployFunction = async function ({
   deployments,
   getChainId,
-  run,
 }: HardhatRuntimeEnvironment) {
   const { get } = deployments
   const chainId = await getChainId()
+  let linkToken: LinkToken
   let linkTokenAddress: string
+  const fundAmount = networkConfig[chainId]['fundAmount']
 
   if (chainId == '31337') {
-    const linkToken = await get('LinkToken')
-    linkTokenAddress = linkToken.address
+    linkTokenAddress = (await get('LinkToken')).address
+    linkToken = (await ethers.getContractAt(
+      'LinkToken',
+      linkTokenAddress
+    )) as LinkToken
   } else {
     linkTokenAddress = networkConfig[chainId].linkToken as string
+    linkToken = (await ethers.getContractAt(
+      'LinkToken',
+      linkTokenAddress
+    )) as LinkToken
   }
 
   // Try Auto-fund RandomNumberConsumer contract
@@ -29,11 +38,7 @@ const func: DeployFunction = async function ({
   if (
     await autoFundCheck(randomNumberConsumer.address, chainId, linkTokenAddress)
   ) {
-    await run('fund-link', {
-      contract: randomNumberConsumer.address,
-      linkaddress: linkTokenAddress,
-      fundamount: networkConfig[chainId].fundAmount,
-    })
+    await linkToken.transfer(randomNumberConsumer.address, fundAmount)
   }
 
   // Fund RandomSVG instructions
@@ -50,11 +55,7 @@ const func: DeployFunction = async function ({
     APIConsumer.address
   )
   if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress)) {
-    await run('fund-link', {
-      contract: apiConsumer.address,
-      linkaddress: linkTokenAddress,
-      fundamount: networkConfig[chainId].fundAmount,
-    })
+    await linkToken.transfer(apiConsumer.address, fundAmount)
   }
 }
 

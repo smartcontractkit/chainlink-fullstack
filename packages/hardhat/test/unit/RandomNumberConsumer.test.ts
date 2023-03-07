@@ -35,11 +35,8 @@ skip
           linkTokenAddress
         )
       ) {
-        await run('fund-link', {
-          contract: randomNumberConsumer.address,
-          linkaddress: linkTokenAddress,
-          fundamount: networkConfig[chainId].fundAmount,
-        })
+        const fundAmount = networkConfig[chainId]['fundAmount']
+        await linkToken.transfer(randomNumberConsumer.address, fundAmount)
       }
     })
 
