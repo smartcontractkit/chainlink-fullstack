@@ -2176,10 +2176,10 @@
   resolved "https://registry.yarnpkg.com/@ledgerhq/logs/-/logs-4.72.0.tgz#43df23af013ad1135407e5cf33ca6e4c4c7708d5"
   integrity sha512-o+TYF8vBcyySRsb2kqBDv/KMeme8a2nwWoG+lAWzbDmWfb2/MrVWYCVYDYvjXdSoI/Cujqy1i0gIDrkdxa9chA==
 
-"@metamask/detect-provider@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@metamask/detect-provider/-/detect-provider-1.2.0.tgz#3667a7531f2a682e3c3a43eaf3a1958bdb42a696"
-  integrity sha512-ocA76vt+8D0thgXZ7LxFPyqw3H7988qblgzddTDA6B8a/yU0uKV42QR/DhA+Jh11rJjxW0jKvwb5htA6krNZDQ==
+"@metamask/detect-provider@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/detect-provider/-/detect-provider-2.0.0.tgz#4bc2795e5e6f7d8b84b2e845058d2f222c99917d"
+  integrity sha512-sFpN+TX13E9fdBDh9lvQeZdJn4qYoRb/6QF2oZZK/Pn559IhCFacPMU1rMuqyXoFQF3JSJfii2l98B87QDPeCQ==
 
 "@metamask/eth-sig-util@^4.0.0":
   version "4.0.1"
@@ -3179,12 +3179,12 @@
   resolved "https://registry.yarnpkg.com/@uniswap/token-lists/-/token-lists-1.0.0-beta.30.tgz#2103ca23b8007c59ec71718d34cdc97861c409e5"
   integrity sha512-HwY2VvkQ8lNR6ks5NqQfAtg+4IZqz3KV1T8d2DlI8emIn9uMmaoFbIOg0nzjqAVKKnZSbMTRRtUoAh6mmjRvog==
 
-"@usedapp/core@1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@usedapp/core/-/core-1.1.3.tgz#04f087edd96b5a5ec9726ba7fa278a6e68f5b937"
-  integrity sha512-2hWzZ9oCsfgzN8Ewu3of2JuWuiFfBUtSY4b+dz3YygZcx1D48IxjyUO3+VjxVbE5eQAYSjfnA6WVMDIBZ+K5zQ==
+"@usedapp/core@1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@usedapp/core/-/core-1.2.7.tgz#c1560ce2577a518de6ed367f7cddbe48e6d17127"
+  integrity sha512-izqa9eXmMeqLq9vg1bX4xU8LOFDIlyfwQnHNuaYM1QuJ2IU3cRSBjXbcahzGZS+aUgW2ue3/wNmOZf20OWZhYA==
   dependencies:
-    "@metamask/detect-provider" "^1.2.0"
+    "@metamask/detect-provider" "^2.0.0"
     "@uniswap/token-lists" "^1.0.0-beta.27"
     fetch-mock "^9.11.0"
     lodash.merge "^4.6.2"
