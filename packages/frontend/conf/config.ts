@@ -1,16 +1,24 @@
-import { ChainId, Config, Goerli, Mainnet, Hardhat } from '@usedapp/core'
+import {
+  ChainId,
+  Config,
+  Sepolia,
+  Goerli,
+  Mainnet,
+  Hardhat,
+} from '@usedapp/core'
 import deployedContracts from '../contracts/hardhat_contracts.json'
 
 const INFURA_KEY = process.env.NEXT_PUBLIC_INFURA_KEY
 
 const config: Config = {
-  readOnlyChainId: ChainId.Goerli,
+  readOnlyChainId: ChainId.Sepolia,
   readOnlyUrls: {
     [ChainId.Goerli]: `https://goerli.infura.io/v3/${INFURA_KEY}`,
+    [ChainId.Sepolia]: `https://sepolia.infura.io/v3/${INFURA_KEY}`,
     [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
     [ChainId.Hardhat]: 'http://127.0.0.1:8545',
   },
-  networks: [Goerli, Hardhat],
+  networks: [Sepolia, Goerli, Hardhat],
   multicallAddresses: {
     [ChainId.Hardhat]:
       deployedContracts[ChainId.Hardhat][0].contracts.Multicall.address,
@@ -31,6 +39,5 @@ export enum Denominations {
 }
 
 export const OpenSeaUrl = 'https://testnets.opensea.io'
-export const OpenSeaTestnet = ChainId.Goerli
 
 export default config

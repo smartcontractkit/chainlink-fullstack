@@ -168,10 +168,12 @@ export const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
                     {notification.transactionName}{' '}
                     {TRANSACTION_TYPE_TITLES[notification.type]}
                   </AlertTitle>
-                  <AlertDescription overflow="hidden">
-                    Transaction Hash:{' '}
-                    {truncateHash(notification.transaction.hash, 61)}
-                  </AlertDescription>
+                  {'transaction' in notification && (
+                    <AlertDescription overflow="hidden">
+                      Transaction Hash:
+                      {truncateHash(notification.transaction.hash, 61)}
+                    </AlertDescription>
+                  )}
                 </Box>
               </Alert>
             )

@@ -13,8 +13,8 @@ contract APIConsumer is ChainlinkClient, Ownable {
   uint256 private fee;
 
   /**
-   * Network: Goerli
-   * Oracle: 0xCC79157eb46F5624204f47AB42b3906cAA40eaB7
+   * Network: Sepolia
+   * Oracle: 0x6090149792dAAeE9D1D568c9f9a6F6B46AA29eFD
    * Job ID: ca98366cc7314957b8c012c72f05aeeb
    * Fee: 0.1 LINK
    */
@@ -29,7 +29,7 @@ contract APIConsumer is ChainlinkClient, Ownable {
     } else {
       setChainlinkToken(_link);
     }
-    // oracle = 0xCC79157eb46F5624204f47AB42b3906cAA40eaB7;
+    // oracle = 0x6090149792dAAeE9D1D568c9f9a6F6B46AA29eFD;
     // jobId = "ca98366cc7314957b8c012c72f05aeeb";
     // fee = 0.1 * 10 ** 18; // 0.1 LINK
     oracle = _oracle;

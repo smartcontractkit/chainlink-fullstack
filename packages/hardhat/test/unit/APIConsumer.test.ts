@@ -29,11 +29,8 @@ skip
       )) as APIConsumer
 
       if (await autoFundCheck(apiConsumer.address, chainId, linkTokenAddress)) {
-        await run('fund-link', {
-          contract: apiConsumer.address,
-          linkaddress: linkTokenAddress,
-          fundamount: networkConfig[chainId].fundAmount,
-        })
+        const fundAmount = networkConfig[chainId]['fundAmount']
+        await linkToken.transfer(apiConsumer.address, fundAmount)
       }
     })
 

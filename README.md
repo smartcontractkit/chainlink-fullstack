@@ -172,6 +172,15 @@ This repo includes deployed and verified contracts on Goerli so the front-end ca
 
 Once the `deploy` command is executed on any network the contracts config will be overwritten and you can start from scratch with your own deployments.
 
+#### Sepolia
+
+| Name                   | Address                                                                                                                       |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `PriceConsumerV3`      | [0xf37F9826f60870894190B5Ffe89138f3ef10079C](https://sepolia.etherscan.io/address/0xf37F9826f60870894190B5Ffe89138f3ef10079C) |
+| `APIConsumer`          | [0x8fEa7488314D44776C7960B3149258827B8ADa31](https://sepolia.etherscan.io/address/0x8fEa7488314D44776C7960B3149258827B8ADa31) |
+| `RandomNumberConsumer` | [0xBcFd34a46C2Da1E10568B4691ab2678cB24265db](https://sepolia.etherscan.io/address/0xBcFd34a46C2Da1E10568B4691ab2678cB24265db) |
+| `RandomSVG`            | [0xc055B4DA31b7895f60c6335276f47EbD817F98E1](https://sepolia.etherscan.io/address/0xc055B4DA31b7895f60c6335276f47EbD817F98E1) |
+
 #### Goerli
 
 | Name                   | Address                                                                                                                      |

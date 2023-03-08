@@ -2,6 +2,7 @@ import { useEthers } from '@usedapp/core'
 import { Contract, ethers } from 'ethers'
 import { useMemo } from 'react'
 import { useContractConfig } from './useContractConfig'
+import { JsonRpcProvider } from '@ethersproject/providers'
 
 export function useContract<T extends Contract = Contract>(
   name: string
@@ -13,6 +14,9 @@ export function useContract<T extends Contract = Contract>(
   return useMemo(() => {
     if (!library) return null
     if (!contract?.address) return null
+    if (!(library instanceof JsonRpcProvider)) {
+      return null
+    }
 
     return new ethers.Contract(
       contract.address,

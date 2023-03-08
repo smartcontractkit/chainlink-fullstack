@@ -1,10 +1,10 @@
 import React from 'react'
 import { Badge, HStack, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { useEthers } from '@usedapp/core'
+import { ChainId, useEthers } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { useContractConfig } from '../../../hooks/useContractConfig'
-import { OpenSeaTestnet, OpenSeaUrl } from '../../../conf/config'
+import { OpenSeaUrl } from '../../../conf/config'
 
 /**
  * Prop Types
@@ -21,7 +21,7 @@ export function ExternalLink({ tokenId }: Props): JSX.Element {
 
   const contract = useContractConfig('RandomSVG')
 
-  const active = chainId === OpenSeaTestnet
+  const active = chainId === ChainId.Goerli
 
   const url = active
     ? `${OpenSeaUrl}/assets/${contract.address}/${tokenId}`
@@ -32,7 +32,7 @@ export function ExternalLink({ tokenId }: Props): JSX.Element {
       <Link href={url} isExternal>
         See on OpenSea Testnet Marketplace <ExternalLinkIcon mx="2px" />
       </Link>
-      {!active && <Badge>Goerli Only</Badge>}
+      {!active && <Badge>Goerli only</Badge>}
     </HStack>
   )
 }
