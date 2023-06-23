@@ -214,3 +214,5 @@ Once the `deploy` command is executed on any network the contracts config will b
 - [Chainlink Docs](https://docs.chain.link)
 - [Chainlink Hardhat Box](https://github.com/smartcontractkit/hardhat-starter-kit)
 - [Scaffold ETH](https://github.com/scaffold-eth/scaffold-eth/blob/nextjs-typescript)
+
+> :warning: **Disclaimer**: The code used in this Chainlink Functions quickstart template comes from Chainlink community members and has not been audited. The Chainlink team disclaims and shall have no liability with respect to any loss, malfunction, or any other result of deploying a Quickstart Template. By electing to deploy a Quickstart Template you hereby acknowledge and agree to the above.
